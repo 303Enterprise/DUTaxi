@@ -4,7 +4,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".ui.main.f2.SecondFragment" >
+        tools:context=".ui.main.createtripfragment.CreateTripFragment" >
 
     <TextView
             android:id="@+id/phone_description"
@@ -17,7 +17,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="phone" />
+            android:inputType="phone"
+            android:digits="0123456789"
+            android:maxLength="11"/>
 
     <TextView
             android:id="@+id/vkref_description"
@@ -38,12 +40,30 @@
             android:layout_height="wrap_content"
             android:text="Free seats" />
 
-    <EditText
+    <RadioGroup
             android:id="@+id/freeseats_input"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="number"/>
+            android:orientation="horizontal">
+
+        <RadioButton
+                android:id="@+id/freesets_button_one"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1 place" />
+
+        <RadioButton
+                android:id="@+id/freesets_button_two"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2 places" />
+
+        <RadioButton
+                android:id="@+id/freesets_button_three"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="3 places" />
+    </RadioGroup>
 
     <TextView
             android:id="@+id/time_description"
@@ -51,11 +71,10 @@
             android:layout_height="wrap_content"
             android:text="Time" />
 
-    <EditText
+    <Button
             android:id="@+id/time_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="time" />
+            android:text="choose time" />
 
 </LinearLayout>
