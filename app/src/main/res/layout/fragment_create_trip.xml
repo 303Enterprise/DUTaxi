@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.main.f2.SecondFragment" >
+
+    <TextView
+            android:id="@+id/phone_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Phone" />
+
+    <EditText
+            android:id="@+id/phone_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="phone" />
+
+    <TextView
+            android:id="@+id/vkref_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="VK ref" />
+
+    <EditText
+            android:id="@+id/vkref_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"/>
+
+    <TextView
+            android:id="@+id/freeseats_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Free seats" />
+
+    <EditText
+            android:id="@+id/freeseats_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number"/>
+
+    <TextView
+            android:id="@+id/time_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Time" />
+
+    <EditText
+            android:id="@+id/time_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="time" />
+
+</LinearLayout>
