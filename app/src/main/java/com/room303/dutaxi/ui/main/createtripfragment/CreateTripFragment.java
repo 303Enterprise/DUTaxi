@@ -1,6 +1,7 @@
 package com.room303.dutaxi.ui.main.createtripfragment;
 
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -33,6 +34,7 @@ public class CreateTripFragment extends Fragment {
 
     private int tripMinute;
     private int tripHour;
+    private boolean isTimePicked;
 
     public CreateTripFragment() {
     }
@@ -41,27 +43,29 @@ public class CreateTripFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_create_trip, container, false);
+        isTimePicked = false;
         phoneInput = rootView.findViewById(R.id.phone_input);
         timeInputButton = rootView.findViewById(R.id.time_input);
         timeInputButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Calendar cal = Calendar.getInstance();
-                tripHour = cal.get(Calendar.HOUR_OF_DAY);
-                tripMinute = cal.get(Calendar.MINUTE);
+                if (!isTimePicked) {
+                    Calendar cal = Calendar.getInstance();
+                    tripHour = cal.get(Calendar.HOUR_OF_DAY);
+                    tripMinute = cal.get(Calendar.MINUTE);
+                }
 
                 TimePickerDialog.OnTimeSetListener timeSetListener = new TimePickerDialog.OnTimeSetListener() {
                     @Override
-                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        //editTextTime.setText(hourOfDay + ":" + minute );
-                        tripHour = hourOfDay;
+                    public void onTimeSet(TimePicker view, int hour, int minute) {
+                        isTimePicked = true;
+                        tripHour = hour;
                         tripMinute = minute;
                     }
                 };
 
-                TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(),
-                        timeSetListener, tripHour, tripMinute, true);
-
+                TimePickerDialog timePickerDialog = new TimePickerDialog(
+                        getActivity(), timeSetListener, tripHour, tripMinute, true);
                 timePickerDialog.show();
             }
         });
