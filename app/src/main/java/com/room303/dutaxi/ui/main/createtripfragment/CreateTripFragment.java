@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -24,16 +25,18 @@ import java.util.Date;
 import java.util.Locale;
 
 public class CreateTripFragment extends Fragment {
-
     private static final String FIRST_DESCRIPTION = "SAMPLE DESCRIPTION";
 
     private EditText phoneInput;
     private EditText vkrefInput;
     private Button timeInputButton;
     private RadioGroup freeseatsInput;
+    private Spinner departureInput;
+    private Spinner destinationInput;
 
     private int tripMinute;
     private int tripHour;
+    private int freeSeats;
     private boolean isTimePicked;
 
     public CreateTripFragment() {
@@ -42,6 +45,9 @@ public class CreateTripFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
+
         View rootView = inflater.inflate(R.layout.fragment_create_trip, container, false);
         isTimePicked = false;
         phoneInput = rootView.findViewById(R.id.phone_input);
@@ -54,7 +60,6 @@ public class CreateTripFragment extends Fragment {
                     tripHour = cal.get(Calendar.HOUR_OF_DAY);
                     tripMinute = cal.get(Calendar.MINUTE);
                 }
-
                 TimePickerDialog.OnTimeSetListener timeSetListener = new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hour, int minute) {
@@ -63,7 +68,6 @@ public class CreateTripFragment extends Fragment {
                         tripMinute = minute;
                     }
                 };
-
                 TimePickerDialog timePickerDialog = new TimePickerDialog(
                         getActivity(), timeSetListener, tripHour, tripMinute, true);
                 timePickerDialog.show();
@@ -72,25 +76,21 @@ public class CreateTripFragment extends Fragment {
 
         freeseatsInput = rootView.findViewById(R.id.freeseats_input);
         freeseatsInput.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
                     case R.id.freesets_button_one:
-
+                        freeSeats = 1;
                         break;
                     case R.id.freesets_button_two:
-
+                        freeSeats = 2;
                         break;
                     case R.id.freesets_button_three:
+                        freeSeats = 3;
                         break;
                 }
             }
         });
-
-
         return rootView;
     }
-
-
 }

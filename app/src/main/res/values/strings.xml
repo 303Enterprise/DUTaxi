@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">DUTaxi</string>
+    <string-array name="destinations">
+        <item>Деревня универсиады</item>
+        <item>Двойка</item>
+    </string-array>
 </resources>

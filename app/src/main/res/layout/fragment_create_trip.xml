@@ -7,6 +7,30 @@
         tools:context=".ui.main.createtripfragment.CreateTripFragment" >
 
     <TextView
+            android:id="@+id/departure_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Departure" />
+
+    <Spinner
+            android:id="@+id/departure_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/destinations"/>
+
+    <TextView
+            android:id="@+id/destination_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Destination" />
+
+    <Spinner
+            android:id="@+id/destination_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/destinations"/>
+
+    <TextView
             android:id="@+id/phone_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
