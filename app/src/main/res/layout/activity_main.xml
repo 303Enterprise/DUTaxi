@@ -6,8 +6,15 @@
         android:layout_height="match_parent"
         tools:context=".ui.main.MainActivity">
 
+    <FrameLayout
+            android:id="@+id/toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <include layout="@layout/toolbar_layout"/>
+        <include layout="@layout/toolbar_layout" />
+    </FrameLayout>
 
     <FrameLayout
             android:id="@+id/main_container"
@@ -16,8 +23,7 @@
             app:layout_constraintBottom_toTopOf="@+id/bottom_navigation_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-    </FrameLayout>
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_layout"/>
 
     <LinearLayout
             android:id="@+id/bottom_navigation_layout"

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/toolbar_layout"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-
-        />
+        xmlns:xmlans="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/toolbar"
+        android:layout_height="?android:actionBarSize"
+        android:layout_width="match_parent" />

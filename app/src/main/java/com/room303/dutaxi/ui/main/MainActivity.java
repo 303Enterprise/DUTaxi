@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar myActionBar = findViewById(R.id.toolbar_layout);
+        Toolbar myActionBar = findViewById(R.id.toolbar);
         setSupportActionBar(myActionBar);
 
         mainContainer = findViewById(R.id.main_container);
