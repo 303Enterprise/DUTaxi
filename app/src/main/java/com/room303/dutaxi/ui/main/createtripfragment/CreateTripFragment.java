@@ -94,10 +94,7 @@ public class CreateTripFragment extends Fragment {
             }
         });
 
-
-        phoneInput.setText(requestItem.getPhoneNumber());
         return rootView;
-
     }
 
 
@@ -105,6 +102,7 @@ public class CreateTripFragment extends Fragment {
         departureInput = rootView.findViewById(R.id.departure_input);
         destinationInput = rootView.findViewById(R.id.destination_input);
         phoneInput = rootView.findViewById(R.id.phone_input);
+        vkrefInput = rootView.findViewById(R.id.vkref_input);
         freeseatsInput = rootView.findViewById(R.id.freeseats_input);
         timeInputButton = rootView.findViewById(R.id.time_input);
     }

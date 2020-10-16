@@ -1,6 +1,5 @@
 package com.room303.dutaxi.ui.main;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
@@ -40,16 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar myActionBar = findViewById(R.id.toolbar);
-        setSupportActionBar(myActionBar);
-
-        mainContainer = findViewById(R.id.main_container);
-        leftButton = findViewById(R.id.bottom_button_left);
-        middleButton = findViewById(R.id.bottom_button_middle);
-        rightButton = findViewById(R.id.bottom_button_right);
-        leftButton.setOnClickListener(this);
-        middleButton.setOnClickListener(this);
-        rightButton.setOnClickListener(this);
+        initUi();
     }
 
     @Override
@@ -71,5 +61,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.bottom_button_right:
                 break;
         }
+    }
+
+    private void initUi() {
+        Toolbar myActionBar = findViewById(R.id.toolbar);
+        setSupportActionBar(myActionBar);
+        mainContainer = findViewById(R.id.main_container);
+        leftButton = findViewById(R.id.bottom_button_left);
+        leftButton.setOnClickListener(this);
+        middleButton = findViewById(R.id.bottom_button_middle);
+        middleButton.setOnClickListener(this);
+        rightButton = findViewById(R.id.bottom_button_right);
+        rightButton.setOnClickListener(this);
     }
 }
