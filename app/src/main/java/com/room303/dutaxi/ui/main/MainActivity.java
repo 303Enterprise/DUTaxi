@@ -5,6 +5,8 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -31,6 +33,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Toolbar myActionBar = findViewById(R.id.toolbar_layout);
+        setSupportActionBar(myActionBar);
 
         mainContainer = findViewById(R.id.main_container);
         leftButton = findViewById(R.id.bottom_button_left);
@@ -39,6 +43,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         leftButton.setOnClickListener(this);
         middleButton.setOnClickListener(this);
         rightButton.setOnClickListener(this);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_menu_createtrip, menu);
+        return true;
     }
 
     @Override
