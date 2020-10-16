@@ -45,22 +45,25 @@ public class CreateTripFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // creating UI elements
         View rootView = inflater.inflate(R.layout.fragment_create_trip, container, false);
 
         departureInput =  rootView.findViewById(R.id.departure_input);
         destinationInput = rootView.findViewById(R.id.destination_input);
-
-        isTimePicked = false;
         phoneInput = rootView.findViewById(R.id.phone_input);
+
         timeInputButton = rootView.findViewById(R.id.time_input);
+        isTimePicked = false;
         timeInputButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!isTimePicked) {
+                if (!isTimePicked) { // if user didn't chosen time yet
                     Calendar cal = Calendar.getInstance();
                     tripHour = cal.get(Calendar.HOUR_OF_DAY);
                     tripMinute = cal.get(Calendar.MINUTE);
                 }
+
+                // when user clicks OK button at TimePickerDialog
                 TimePickerDialog.OnTimeSetListener timeSetListener = new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hour, int minute) {
@@ -69,6 +72,8 @@ public class CreateTripFragment extends Fragment {
                         tripMinute = minute;
                     }
                 };
+
+                // creating new dialog window
                 TimePickerDialog timePickerDialog = new TimePickerDialog(
                         getActivity(), timeSetListener, tripHour, tripMinute, true);
                 timePickerDialog.show();
@@ -93,5 +98,7 @@ public class CreateTripFragment extends Fragment {
             }
         });
         return rootView;
+
+
     }
 }

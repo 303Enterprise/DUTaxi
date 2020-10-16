@@ -28,6 +28,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button middleButton;
     private Button rightButton;
 
+    { // giving CreateTripFragment instance of RequestItem to complete it with user data
+        createTripFragment.setArguments(new Bundle());
+    }
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
