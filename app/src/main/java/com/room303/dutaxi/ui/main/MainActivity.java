@@ -1,5 +1,6 @@
 package com.room303.dutaxi.ui.main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
@@ -29,7 +30,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button rightButton;
 
     { // giving CreateTripFragment instance of RequestItem to complete it with user data
-        createTripFragment.setArguments(new Bundle());
+        Bundle data = new Bundle();
+        data.putParcelable(requestItem.getClass().getCanonicalName(), requestItem);
+        createTripFragment.setArguments(data);
     }
 
 

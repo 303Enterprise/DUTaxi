@@ -1,11 +1,8 @@
 package com.room303.dutaxi.ui.main.createtripfragment;
 
 import android.app.TimePickerDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,16 +10,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.room303.dutaxi.R;
+import com.room303.dutaxi.requestitem.RequestItem;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
 
 public class CreateTripFragment extends Fragment {
     private static final String FIRST_DESCRIPTION = "SAMPLE DESCRIPTION";
@@ -45,14 +38,17 @@ public class CreateTripFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // creating UI elements
         View rootView = inflater.inflate(R.layout.fragment_create_trip, container, false);
+        initUi(rootView);
 
-        departureInput =  rootView.findViewById(R.id.departure_input);
-        destinationInput = rootView.findViewById(R.id.destination_input);
-        phoneInput = rootView.findViewById(R.id.phone_input);
+        // requestItem existence is guaranteed
+        Bundle args = getArguments();
+        RequestItem requestItem = null;
+        if (args != null) {
+            requestItem = (RequestItem) args.get(RequestItem.class.getCanonicalName());
+        }
 
-        timeInputButton = rootView.findViewById(R.id.time_input);
+
         isTimePicked = false;
         timeInputButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,7 +76,7 @@ public class CreateTripFragment extends Fragment {
             }
         });
 
-        freeseatsInput = rootView.findViewById(R.id.freeseats_input);
+
         freeseatsInput.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -97,8 +93,19 @@ public class CreateTripFragment extends Fragment {
                 }
             }
         });
+
+
+        phoneInput.setText(requestItem.getPhoneNumber());
         return rootView;
 
+    }
 
+
+    private void initUi(View rootView) {
+        departureInput = rootView.findViewById(R.id.departure_input);
+        destinationInput = rootView.findViewById(R.id.destination_input);
+        phoneInput = rootView.findViewById(R.id.phone_input);
+        freeseatsInput = rootView.findViewById(R.id.freeseats_input);
+        timeInputButton = rootView.findViewById(R.id.time_input);
     }
 }
