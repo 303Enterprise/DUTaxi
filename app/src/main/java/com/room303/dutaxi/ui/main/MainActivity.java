@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FragmentManager fragmentManager = getSupportFragmentManager();
     private FragmentTransaction fragmentTransaction;
 
+    private Toolbar mainToolbar;
+    private Toolbar createTripToolbar;
     private Button leftButton;
     private Button middleButton;
     private Button rightButton;
@@ -44,14 +46,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.toolbar_menu_createtrip, menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.bottom_button_left:
+            case R.id.bottom_button_left: // Create Trip Button
+                //setSupportActionBar(createTripToolbar);
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.main_container, createTripFragment);
                 fragmentTransaction.commitAllowingStateLoss();
@@ -64,8 +67,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initUi() {
-        Toolbar myActionBar = findViewById(R.id.toolbar);
-        setSupportActionBar(myActionBar);
+        mainToolbar = findViewById(R.id.toolbar_main);
+        Toolbar sampleToolbar = findViewById(R.id.toolbar_main_layout);
+        setSupportActionBar(sampleToolbar);
+        //setSupportActionBar(mainToolbar);
+        createTripToolbar = findViewById(R.id.toolbar_create_trip);
+        //setSupportActionBar(createTripToolbar);
         mainContainer = findViewById(R.id.main_container);
         leftButton = findViewById(R.id.bottom_button_left);
         leftButton.setOnClickListener(this);

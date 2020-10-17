@@ -6,6 +6,17 @@
         android:layout_height="match_parent"
         tools:context=".ui.main.MainActivity">
 
+    <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_main_layout"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+<!--
     <FrameLayout
             android:id="@+id/toolbar_layout"
             android:layout_width="match_parent"
@@ -13,9 +24,10 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-        <include layout="@layout/toolbar_layout" />
+        <include layout="@layout/toolbar_main" />
+        <include layout="@layout/toolbar_createtrip"/>
     </FrameLayout>
-
+-->
     <FrameLayout
             android:id="@+id/main_container"
             android:layout_width="0dp"
@@ -23,7 +35,7 @@
             app:layout_constraintBottom_toTopOf="@+id/bottom_navigation_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar_layout"/>
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_main_layout" />
 
     <LinearLayout
             android:id="@+id/bottom_navigation_layout"
