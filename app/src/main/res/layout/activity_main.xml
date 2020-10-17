@@ -12,26 +12,58 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:contentInsetStart="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" >
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:titleMargin="0dp">
 
         <LinearLayout
                 android:id="@+id/toolbar_main_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                tools:layout_editor_absoluteX="16dp">
+                tools:layout_editor_absoluteX="16dp"
+                tools:visibility="gone">
 
             <TextView
                     android:id="@+id/toolbar_main_app_name"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:gravity="center_vertical"
                     android:layout_weight="1"
-                    android:textSize="24sp"
+                    android:gravity="center_vertical"
+                    android:text="@string/app_name"
                     android:textColor="@color/white"
-                    android:text="@string/app_name" />
+                    android:textSize="24sp" />
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/toolbar_create_trip_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:theme="@style/ThemeOverlay.AppCompat.Light"
+                android:visibility="gone"
+                tools:context=".ui.main.MainActivity"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="4dp"
+                tools:visibility="visible">
+
+            <ImageButton
+                    android:id="@+id/toolbar_button_cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    app:srcCompat="@drawable/ic_cross" />
+
+            <ImageButton
+                    android:id="@+id/toolbar_button_commit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    app:srcCompat="@drawable/ic_check" />
         </LinearLayout>
     </android.support.v7.widget.Toolbar>
 
@@ -75,5 +107,4 @@
                 android:text="Account" />
 
     </LinearLayout>
-
 </android.support.constraint.ConstraintLayout>

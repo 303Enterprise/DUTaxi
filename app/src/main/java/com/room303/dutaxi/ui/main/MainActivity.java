@@ -9,8 +9,11 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -18,6 +21,8 @@ import android.widget.LinearLayout;
 import com.room303.dutaxi.R;
 import com.room303.dutaxi.requestitem.RequestItem;
 import com.room303.dutaxi.ui.main.createtripfragment.CreateTripFragment;
+
+import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -65,11 +70,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.bottom_button_left: // Create Trip Button
-                changeToolbar();
                 isCreateTripFragmentDisplayed = true;
+                changeToolbar();
                 changeFragment(createTripFragment);
-                //setSupportActionBar(createTripToolbar);
-
                 break;
             case R.id.bottom_button_middle:
                 break;
@@ -90,8 +93,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (toolbar != null) { // true guaranteed
             toolbar.invalidateOptionsMenu();
         }
-        LinearLayout toolbarLayout = findViewById(R.id.toolbar_main_layout);
 
+        LinearLayout toolbarLayout = findViewById(R.id.toolbar_main_layout);
+        toolbarLayout.setVisibility(View.GONE);
+        LinearLayout layoutToInstall = findViewById(R.id.toolbar_create_trip_layout);
+        layoutToInstall.setVisibility(View.VISIBLE);
     }
 
     private void initUi() {
