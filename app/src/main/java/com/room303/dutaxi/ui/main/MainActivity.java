@@ -1,15 +1,19 @@
 package com.room303.dutaxi.ui.main;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 
 import com.room303.dutaxi.R;
 import com.room303.dutaxi.requestitem.RequestItem;
@@ -24,11 +28,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FragmentManager fragmentManager = getSupportFragmentManager();
     private FragmentTransaction fragmentTransaction;
 
-    private Toolbar mainToolbar;
-    private Toolbar createTripToolbar;
     private Button leftButton;
     private Button middleButton;
     private Button rightButton;
+    private boolean isCreateTripFragmentDisplayed = false;
 
     { // giving CreateTripFragment instance of RequestItem to complete it with user data
         Bundle data = new Bundle();
@@ -45,6 +48,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        // being called by invalidateOptionsMenu();
+        // hides the menu button at main toolbar
+        // if now CreateTripFragment is being displayed
+        return !isCreateTripFragmentDisplayed;
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
@@ -54,10 +65,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.bottom_button_left: // Create Trip Button
+                changeToolbar();
+                isCreateTripFragmentDisplayed = true;
+                changeFragment(createTripFragment);
                 //setSupportActionBar(createTripToolbar);
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.main_container, createTripFragment);
-                fragmentTransaction.commitAllowingStateLoss();
+
                 break;
             case R.id.bottom_button_middle:
                 break;
@@ -66,13 +78,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    private void changeFragment(Fragment fragment) {
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.main_container, fragment);
+        fragmentTransaction.commitAllowingStateLoss();
+    }
+
+    @SuppressLint("RestrictedApi")
+    private void changeToolbar() {
+        ActionBar toolbar = getSupportActionBar();
+        if (toolbar != null) { // true guaranteed
+            toolbar.invalidateOptionsMenu();
+        }
+        LinearLayout toolbarLayout = findViewById(R.id.toolbar_main_layout);
+
+    }
+
     private void initUi() {
-        mainToolbar = findViewById(R.id.toolbar_main);
-        Toolbar sampleToolbar = findViewById(R.id.toolbar_main_layout);
-        setSupportActionBar(sampleToolbar);
-        //setSupportActionBar(mainToolbar);
-        createTripToolbar = findViewById(R.id.toolbar_create_trip);
-        //setSupportActionBar(createTripToolbar);
+        Toolbar mainToolbar = findViewById(R.id.toolbar_main);
+        setSupportActionBar(mainToolbar);
         mainContainer = findViewById(R.id.main_container);
         leftButton = findViewById(R.id.bottom_button_left);
         leftButton.setOnClickListener(this);
