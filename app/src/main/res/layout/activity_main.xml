@@ -24,14 +24,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                tools:layout_editor_absoluteX="16dp"
-                tools:visibility="gone">
+                tools:layout_editor_absoluteX="16dp">
 
             <TextView
                     android:id="@+id/toolbar_main_app_name"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:paddingStart="18dp"
                     android:gravity="center_vertical"
                     android:text="@string/app_name"
                     android:textColor="@color/white"
@@ -46,8 +46,7 @@
                 android:visibility="gone"
                 tools:context=".ui.main.MainActivity"
                 tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="4dp"
-                tools:visibility="visible">
+                tools:layout_editor_absoluteY="4dp">
 
             <ImageButton
                     android:id="@+id/toolbar_button_cancel"
