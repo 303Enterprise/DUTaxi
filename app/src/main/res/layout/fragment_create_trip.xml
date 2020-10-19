@@ -71,10 +71,11 @@
             android:orientation="horizontal">
 
         <RadioButton
-                android:id="@+id/freesets_button_one"
+                android:id="@+id/freesets_button_three"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="1 place" />
+                android:checked="true"
+                android:text="3 places" />
 
         <RadioButton
                 android:id="@+id/freesets_button_two"
@@ -83,10 +84,11 @@
                 android:text="2 places" />
 
         <RadioButton
-                android:id="@+id/freesets_button_three"
+                android:id="@+id/freesets_button_one"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="3 places" />
+                android:text="1 place" />
+
     </RadioGroup>
 
     <TextView

@@ -21,13 +21,14 @@ import java.util.Calendar;
 
 /**
  * TODO
- * - Add displaying chosen time
- * - Make sending data to Firebase when commitButton is pressed
- * - Make returning to TripsFragment when cancelButton is pressed
- * - Make taking data about telephone number and vk reference from local database,
- * when registration will be done
- * - Maybe make better TimePicker
- * - Add material design
+ *  - Add displaying chosen time
+ *  - Make sending data to Firebase when commitButton is pressed
+ *  - Make returning to TripsFragment when cancelButton is pressed
+ *  - Make taking data about telephone number and vk reference from local database,
+ *  when registration will be done
+ *  - Maybe make better TimePicker
+ *  - Replace hardcoded strings with strings from resources
+ *  - Add material design
  */
 
 public class CreateTripFragment extends Fragment implements View.OnClickListener {
@@ -134,16 +135,8 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
         timeDisplay = rootView.findViewById(R.id.time_display);
     }
 
-    private void changeFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction;
-        fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.main_container, fragment);
-        fragmentTransaction.commitAllowingStateLoss();
-    }
-
     private void setTimeDisplay(int hour, int minute) {
-        String timeString = Integer.toString(hour) + ":" + Integer.toString(minute);
+        String timeString = hour + ":" + minute;
         if(timeString.charAt(1) == ':') {
             timeString = '0' + timeString;
         }
