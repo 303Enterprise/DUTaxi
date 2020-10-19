@@ -18,6 +18,17 @@ import com.room303.dutaxi.R;
 
 import java.util.Calendar;
 
+/**
+ * TODO
+ * - Add displaying chosen time
+ * - Make sending data to Firebase when commitButton is pressed
+ * - Make returning to TripsFragment when cancelButton is pressed
+ * - Make taking data about telephone number and vk reference from local database,
+ * when registration will be done
+ * - Maybe make better TimePicker
+ * - Add material design
+ */
+
 public class CreateTripFragment extends Fragment implements View.OnClickListener {
     private static final String FIRST_DESCRIPTION = "SAMPLE DESCRIPTION";
 
@@ -94,14 +105,18 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.toolbar_button_cancel:
                 // go to TripsFragment
                 break;
             case R.id.toolbar_button_commit:
-                // go to TripsFragment
-                // and create a new trip in the list
-                // if everything correct
+                if (phoneInput.getText().toString().length() == 11 &&
+                        vkrefInput.getText().toString().length() != 0 &&
+                        freeSeats != -1) {
+                    // go to TripsFragment
+                    // and create a new trip in the list
+                    // if everything correct
+                }
                 break;
         }
     }
