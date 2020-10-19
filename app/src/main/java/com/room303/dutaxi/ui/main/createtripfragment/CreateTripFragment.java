@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.room303.dutaxi.R;
@@ -40,6 +41,7 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
     private Spinner destinationInput;
     private Button cancelButton;
     private Button commitButton;
+    private TextView timeDisplay;
 
     private int tripMinute;
     private int tripHour;
@@ -55,23 +57,22 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
         View rootView = inflater.inflate(R.layout.fragment_create_trip, container, false);
         initUi(rootView);
 
-        isTimePicked = false;
+        Calendar cal = Calendar.getInstance();
+        tripHour = cal.get(Calendar.HOUR_OF_DAY);
+
+        tripMinute = cal.get(Calendar.MINUTE);
+        setTimeDisplay(tripHour, tripMinute);
+
         timeInputButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!isTimePicked) { // if user didn't chosen time yet
-                    Calendar cal = Calendar.getInstance();
-                    tripHour = cal.get(Calendar.HOUR_OF_DAY);
-                    tripMinute = cal.get(Calendar.MINUTE);
-                }
-
                 // when user clicks OK button at TimePickerDialog
                 TimePickerDialog.OnTimeSetListener timeSetListener = new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hour, int minute) {
-                        isTimePicked = true;
                         tripHour = hour;
                         tripMinute = minute;
+                        setTimeDisplay(tripHour, tripMinute);
                     }
                 };
 
@@ -130,6 +131,7 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
         timeInputButton = rootView.findViewById(R.id.time_input);
         cancelButton = rootView.findViewById(R.id.toolbar_button_cancel);
         commitButton = rootView.findViewById(R.id.toolbar_button_commit);
+        timeDisplay = rootView.findViewById(R.id.time_display);
     }
 
     private void changeFragment(Fragment fragment) {
@@ -138,5 +140,16 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.main_container, fragment);
         fragmentTransaction.commitAllowingStateLoss();
+    }
+
+    private void setTimeDisplay(int hour, int minute) {
+        String timeString = Integer.toString(hour) + ":" + Integer.toString(minute);
+        if(timeString.charAt(1) == ':') {
+            timeString = '0' + timeString;
+        }
+        if(timeString.length() == 4) {
+            timeString += '0';
+        }
+        timeDisplay.setText(timeString);
     }
 }
