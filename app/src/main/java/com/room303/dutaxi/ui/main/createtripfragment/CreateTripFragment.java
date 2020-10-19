@@ -3,6 +3,8 @@ package com.room303.dutaxi.ui.main.createtripfragment;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +19,7 @@ import com.room303.dutaxi.requestitem.RequestItem;
 
 import java.util.Calendar;
 
-public class CreateTripFragment extends Fragment {
+public class CreateTripFragment extends Fragment implements View.OnClickListener {
     private static final String FIRST_DESCRIPTION = "SAMPLE DESCRIPTION";
 
     private EditText phoneInput;
@@ -26,6 +28,8 @@ public class CreateTripFragment extends Fragment {
     private RadioGroup freeseatsInput;
     private Spinner departureInput;
     private Spinner destinationInput;
+    private Button cancelButton;
+    private Button commitButton;
 
     private int tripMinute;
     private int tripHour;
@@ -97,6 +101,19 @@ public class CreateTripFragment extends Fragment {
         return rootView;
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.toolbar_button_cancel:
+                // go to TripsFragment
+                break;
+            case R.id.toolbar_button_commit:
+                // go to TripsFragment
+                // and create a new trip in the list
+                // if everything correct
+                break;
+        }
+    }
 
     private void initUi(View rootView) {
         departureInput = rootView.findViewById(R.id.departure_input);
@@ -105,5 +122,15 @@ public class CreateTripFragment extends Fragment {
         vkrefInput = rootView.findViewById(R.id.vkref_input);
         freeseatsInput = rootView.findViewById(R.id.freeseats_input);
         timeInputButton = rootView.findViewById(R.id.time_input);
+        cancelButton = rootView.findViewById(R.id.toolbar_button_cancel);
+        commitButton = rootView.findViewById(R.id.toolbar_button_commit);
+    }
+
+    private void changeFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction;
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.main_container, fragment);
+        fragmentTransaction.commitAllowingStateLoss();
     }
 }

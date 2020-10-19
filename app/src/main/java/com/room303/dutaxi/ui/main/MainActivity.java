@@ -3,6 +3,7 @@ package com.room303.dutaxi.ui.main;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -92,11 +93,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ActionBar toolbar = getSupportActionBar();
         if (toolbar != null) { // true guaranteed
             toolbar.invalidateOptionsMenu();
+            // telling to call onPrepareOptionsMenu();
         }
-
         LinearLayout toolbarLayout = findViewById(R.id.toolbar_main_layout);
         toolbarLayout.setVisibility(View.GONE);
-        LinearLayout layoutToInstall = findViewById(R.id.toolbar_create_trip_layout);
+        ConstraintLayout layoutToInstall = findViewById(R.id.toolbar_create_trip_layout);
         layoutToInstall.setVisibility(View.VISIBLE);
     }
 
