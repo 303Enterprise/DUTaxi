@@ -15,7 +15,6 @@ import android.widget.Spinner;
 import android.widget.TimePicker;
 
 import com.room303.dutaxi.R;
-import com.room303.dutaxi.requestitem.RequestItem;
 
 import java.util.Calendar;
 
@@ -44,14 +43,6 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_create_trip, container, false);
         initUi(rootView);
-
-        // requestItem existence is guaranteed
-        Bundle args = getArguments();
-        RequestItem requestItem = null;
-        if (args != null) {
-            requestItem = (RequestItem) args.get(RequestItem.class.getCanonicalName());
-        }
-
 
         isTimePicked = false;
         timeInputButton.setOnClickListener(new View.OnClickListener() {

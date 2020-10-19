@@ -10,24 +10,17 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.room303.dutaxi.R;
-import com.room303.dutaxi.requestitem.RequestItem;
 import com.room303.dutaxi.ui.main.createtripfragment.CreateTripFragment;
-
-import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private final RequestItem requestItem = new RequestItem();
     private static final String TAG = "AppDebug_MainActivity";
     private final CreateTripFragment createTripFragment = new CreateTripFragment();
     private FrameLayout mainContainer;
@@ -38,13 +31,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button middleButton;
     private Button rightButton;
     private boolean isCreateTripFragmentDisplayed = false;
-
-    { // giving CreateTripFragment instance of RequestItem to complete it with user data
-        Bundle data = new Bundle();
-        data.putParcelable(requestItem.getClass().getCanonicalName(), requestItem);
-        createTripFragment.setArguments(data);
-    }
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
