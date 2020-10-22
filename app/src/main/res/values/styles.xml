@@ -14,4 +14,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="TripItemMainBackground">
+        <item name="android:background">@color/colorPrimary</item>
+
+    </style>
+
 </resources>
