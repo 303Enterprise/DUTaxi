@@ -5,23 +5,33 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.room303.dutaxi.R;
 
 public class AccountFragment extends Fragment {
 
+    private ImageView userPortrait;
+    private TextView userName;
+    private TextView userPhone;
+    private TextView userVkref;
+
     public AccountFragment() {
-        // Required empty public constructor
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_account, container, false);
+        initUi(rootView);
         return rootView;
     }
 
-    private void initUi() {
-
+    private void initUi(View rootView) {
+        userPortrait = rootView.findViewById(R.id.account_user_portrait);
+        userName = rootView.findViewById(R.id.account_user_name);
+        userPhone = rootView.findViewById(R.id.account_user_phone);
+        userVkref = rootView.findViewById(R.id.account_user_vkref);
     }
 }

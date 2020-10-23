@@ -16,7 +16,10 @@
 
     <style name="TripItemMainBackground">
         <item name="android:background">@color/colorPrimary</item>
+    </style>
 
+    <style name="WithTopMargin">
+        <item name="android:layout_marginTop">20dp</item>
     </style>
 
 </resources>

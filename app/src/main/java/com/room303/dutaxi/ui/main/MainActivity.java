@@ -17,12 +17,14 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.room303.dutaxi.R;
+import com.room303.dutaxi.ui.main.accountfragment.AccountFragment;
 import com.room303.dutaxi.ui.main.createtripfragment.CreateTripFragment;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = "AppDebug_MainActivity";
     private final CreateTripFragment createTripFragment = new CreateTripFragment();
+    private final AccountFragment accountFragment = new AccountFragment();
     private FrameLayout mainContainer;
     private FragmentManager fragmentManager = getSupportFragmentManager();
     private FragmentTransaction fragmentTransaction;
@@ -56,14 +58,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.bottom_button_left: // Create Trip Button
+            case R.id.bottom_button_left: // CreateTripFragment button
                 isCreateTripFragmentDisplayed = true;
-                changeToolbar();
+                changeToolbarForCreateTripActivity();
                 changeFragment(createTripFragment);
                 break;
-            case R.id.bottom_button_middle:
+            case R.id.bottom_button_middle: // TripsFragment button
                 break;
-            case R.id.bottom_button_right:
+            case R.id.bottom_button_right: // AccountFragment button
+                changeFragment(accountFragment);
                 break;
         }
     }
@@ -75,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @SuppressLint("RestrictedApi")
-    private void changeToolbar() {
+    private void changeToolbarForCreateTripActivity() {
         ActionBar toolbar = getSupportActionBar();
         if (toolbar != null) { // true guaranteed
             toolbar.invalidateOptionsMenu();
@@ -86,6 +89,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ConstraintLayout layoutToInstall = findViewById(R.id.toolbar_create_trip_layout);
         layoutToInstall.setVisibility(View.VISIBLE);
     }
+
+
 
     private void initUi() {
         Toolbar mainToolbar = findViewById(R.id.toolbar_main);

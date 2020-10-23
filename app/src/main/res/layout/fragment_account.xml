@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@tools:sample/avatars" />
+            tools:src="@drawable/placeholder_portrait" />
 
     <TextView
             style="@style/WithTopMargin"
