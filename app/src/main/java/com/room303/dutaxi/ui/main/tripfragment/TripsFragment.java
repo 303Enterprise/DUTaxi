@@ -15,7 +15,9 @@ public class TripsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_create_trip, container, false);
+        // TODO
+        //  change R.layout.trip_item back to R.layout.fragment_trips
+        View rootView = inflater.inflate(R.layout.trip_item, container, false);
         return rootView;
     }
 }

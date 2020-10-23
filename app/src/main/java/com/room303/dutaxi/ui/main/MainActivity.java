@@ -19,12 +19,13 @@ import android.widget.LinearLayout;
 import com.room303.dutaxi.R;
 import com.room303.dutaxi.ui.main.accountfragment.AccountFragment;
 import com.room303.dutaxi.ui.main.createtripfragment.CreateTripFragment;
+import com.room303.dutaxi.ui.main.tripfragment.TripsFragment;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-
     private static final String TAG = "AppDebug_MainActivity";
     private final CreateTripFragment createTripFragment = new CreateTripFragment();
     private final AccountFragment accountFragment = new AccountFragment();
+    private final TripsFragment tripsFragment = new TripsFragment();
     private FrameLayout mainContainer;
     private FragmentManager fragmentManager = getSupportFragmentManager();
     private FragmentTransaction fragmentTransaction;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        changeFragment(tripsFragment);
         setContentView(R.layout.activity_main);
         initUi();
     }
@@ -60,12 +62,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()) {
             case R.id.bottom_button_left: // CreateTripFragment button
                 isCreateTripFragmentDisplayed = true;
-                changeToolbarForCreateTripActivity();
+                setToolbarForCreateTripActivity();
                 changeFragment(createTripFragment);
                 break;
             case R.id.bottom_button_middle: // TripsFragment button
+                isCreateTripFragmentDisplayed = false;
+                setToolbarMain();
+                changeFragment(tripsFragment);
                 break;
             case R.id.bottom_button_right: // AccountFragment button
+                isCreateTripFragmentDisplayed = false;
+                setToolbarMain();
                 changeFragment(accountFragment);
                 break;
         }
@@ -78,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @SuppressLint("RestrictedApi")
-    private void changeToolbarForCreateTripActivity() {
+    private void setToolbarForCreateTripActivity() {
         ActionBar toolbar = getSupportActionBar();
         if (toolbar != null) { // true guaranteed
             toolbar.invalidateOptionsMenu();
@@ -90,6 +97,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         layoutToInstall.setVisibility(View.VISIBLE);
     }
 
+    @SuppressLint("RestrictedApi")
+    private void setToolbarMain() {
+        ActionBar toolbar = getSupportActionBar();
+        if (toolbar != null) { // true guaranteed
+            toolbar.invalidateOptionsMenu();
+            // telling to call onPrepareOptionsMenu();
+        }
+        LinearLayout toolbarLayout = findViewById(R.id.toolbar_main_layout);
+        toolbarLayout.setVisibility(View.VISIBLE);
+        ConstraintLayout layoutToInstall = findViewById(R.id.toolbar_create_trip_layout);
+        layoutToInstall.setVisibility(View.GONE);
+    }
 
 
     private void initUi() {

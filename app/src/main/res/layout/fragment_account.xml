@@ -11,11 +11,11 @@
     <ImageView
             style="@style/WithTopMargin"
             android:id="@+id/account_user_portrait"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100pt"
+            android:layout_height="100pt"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/placeholder_portrait" />
+            android:src="@drawable/placeholder_portrait" />
 
     <TextView
             style="@style/WithTopMargin"
