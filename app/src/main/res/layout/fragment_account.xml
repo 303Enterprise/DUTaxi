@@ -39,4 +39,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="https://vk.com/a3b_ecmb" />
+
+    <Button
+            android:id="@+id/account_button_show_history"
+            style="@style/WithTopMargin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="Show history" />
 </LinearLayout>

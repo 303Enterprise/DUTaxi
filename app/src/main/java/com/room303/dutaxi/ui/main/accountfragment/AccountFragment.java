@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,6 +18,7 @@ public class AccountFragment extends Fragment {
     private TextView userName;
     private TextView userPhone;
     private TextView userVkref;
+    private Button buttonHistory;
 
     public AccountFragment() {
     }
@@ -34,5 +36,6 @@ public class AccountFragment extends Fragment {
         userName = rootView.findViewById(R.id.account_user_name);
         userPhone = rootView.findViewById(R.id.account_user_phone);
         userVkref = rootView.findViewById(R.id.account_user_vkref);
+        buttonHistory = rootView.findViewById(R.id.account_button_show_history);
     }
 }
