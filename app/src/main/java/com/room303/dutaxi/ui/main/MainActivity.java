@@ -111,7 +111,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         layoutToInstall.setVisibility(View.GONE);
     }
 
-
     private void initUi() {
         Toolbar mainToolbar = findViewById(R.id.toolbar_main);
         setSupportActionBar(mainToolbar);
