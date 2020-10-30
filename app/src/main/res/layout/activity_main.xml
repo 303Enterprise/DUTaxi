@@ -6,72 +6,6 @@
         android:layout_height="match_parent"
         tools:context=".ui.main.MainActivity">
 
-    <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_main"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:contentInsetStart="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:titleMargin="0dp">
-
-        <LinearLayout
-                android:id="@+id/toolbar_main_layout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                tools:layout_editor_absoluteX="16dp"
-                tools:visibility="gone">
-
-            <TextView
-                    android:id="@+id/toolbar_main_app_name"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:paddingStart="18dp"
-                    android:text="@string/app_name"
-                    android:textColor="@color/white"
-                    android:textSize="24sp" />
-        </LinearLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/toolbar_create_trip_layout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:theme="@style/ThemeOverlay.AppCompat.Light"
-                android:visibility="gone"
-                tools:context=".ui.main.MainActivity"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="4dp"
-                tools:visibility="visible">
-
-            <ImageButton
-                    android:id="@+id/toolbar_button_cancel"
-                    android:layout_width="?android:actionBarSize"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0"
-                    android:background="@android:color/transparent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_cross" />
-
-            <ImageButton
-                    android:id="@+id/toolbar_button_commit"
-                    android:layout_width="?android:actionBarSize"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0"
-                    android:background="@android:color/transparent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_check" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.appcompat.widget.Toolbar>
-
     <FrameLayout
             android:id="@+id/main_container"
             android:layout_width="0dp"
@@ -79,7 +13,7 @@
             app:layout_constraintBottom_toTopOf="@+id/bottom_navigation_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar_main" />
+            app:layout_constraintTop_toBottomOf="parent" />
 
     <LinearLayout
             android:id="@+id/bottom_navigation_layout"
