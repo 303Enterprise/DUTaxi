@@ -60,13 +60,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void changeFragment(Fragment fragment) {
-        fragmentTransaction = fragmentManager.beginTransaction().addToBackStack(fragment.getClass().getSimpleName());
+        /*fragmentTransaction = fragmentManager.beginTransaction().addToBackStack(fragment.getClass().getSimpleName());
         fragmentTransaction.replace(R.id.main_container, fragment);
-        fragmentTransaction.commitAllowingStateLoss();
+        fragmentTransaction.commitAllowingStateLoss(); */
     }
 
     private void initUi() {
-        mainContainer = findViewById(R.id.main_container);
+        //mainContainer = findViewById(R.id.main_container);
         /*
         leftButton = findViewById(R.id.bottom_button_left);
         leftButton.setOnClickListener(this);
