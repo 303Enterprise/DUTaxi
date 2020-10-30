@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -39,14 +40,19 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
     private RadioGroup freeseatsInput;
     private Spinner departureInput;
     private Spinner destinationInput;
-    private Button cancelButton;
-    private Button commitButton;
+    private ImageButton cancelButton;
+    private ImageButton commitButton;
     private TextView timeDisplay;
 
     private int tripMinute;
     private int tripHour;
     private int freeSeats;
     private boolean isTimePicked;
+
+    /*
+    Toolbar mainToolbar = findViewById(R.id.toolbar_main);
+        setSupportActionBar(mainToolbar);
+     */
 
     public CreateTripFragment() {
     }

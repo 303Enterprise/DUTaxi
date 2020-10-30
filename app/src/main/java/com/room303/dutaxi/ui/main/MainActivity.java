@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button leftButton;
     private Button middleButton;
     private Button rightButton;
-    private boolean isCreateTripFragmentDisplayed = false;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,35 +44,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        // being called by invalidateOptionsMenu();
-        // hides the menu button at main toolbar
-        // if now CreateTripFragment is being displayed
-        return !isCreateTripFragmentDisplayed;
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.bottom_button_left: // CreateTripFragment button
-                isCreateTripFragmentDisplayed = true;
-                setToolbarForCreateTripActivity();
                 changeFragment(createTripFragment);
                 break;
             case R.id.bottom_button_middle: // TripsFragment button
-                isCreateTripFragmentDisplayed = false;
-                setToolbarMain();
                 changeFragment(tripsFragment);
                 break;
             case R.id.bottom_button_right: // AccountFragment button
-                isCreateTripFragmentDisplayed = false;
-                setToolbarMain();
                 changeFragment(accountFragment);
                 break;
         }
@@ -85,35 +64,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         fragmentTransaction.commitAllowingStateLoss();
     }
 
-    @SuppressLint("RestrictedApi")
-    private void setToolbarForCreateTripActivity() {
-        ActionBar toolbar = getSupportActionBar();
-        if (toolbar != null) { // true guaranteed
-            toolbar.invalidateOptionsMenu();
-            // telling to call onPrepareOptionsMenu();
-        }
-        LinearLayout toolbarLayout = findViewById(R.id.toolbar_main_layout);
-        toolbarLayout.setVisibility(View.GONE);
-        ConstraintLayout layoutToInstall = findViewById(R.id.toolbar_create_trip_layout);
-        layoutToInstall.setVisibility(View.VISIBLE);
-    }
-
-    @SuppressLint("RestrictedApi")
-    private void setToolbarMain() {
-        ActionBar toolbar = getSupportActionBar();
-        if (toolbar != null) { // true guaranteed
-            toolbar.invalidateOptionsMenu();
-            // telling to call onPrepareOptionsMenu();
-        }
-        LinearLayout toolbarLayout = findViewById(R.id.toolbar_main_layout);
-        toolbarLayout.setVisibility(View.VISIBLE);
-        ConstraintLayout layoutToInstall = findViewById(R.id.toolbar_create_trip_layout);
-        layoutToInstall.setVisibility(View.GONE);
-    }
-
     private void initUi() {
-        Toolbar mainToolbar = findViewById(R.id.toolbar_main);
-        setSupportActionBar(mainToolbar);
         mainContainer = findViewById(R.id.main_container);
         leftButton = findViewById(R.id.bottom_button_left);
         leftButton.setOnClickListener(this);
