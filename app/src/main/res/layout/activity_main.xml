@@ -10,6 +10,7 @@
             android:id="@+id/nav_host_fragment"
             android:name="androidx.navigation.fragment.NavHostFragment"
             app:defaultNavHost="true"
+            app:navGraph="@navigation/nav_trips"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@+id/bottomNavigationMenu"
