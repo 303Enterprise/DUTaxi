@@ -5,7 +5,12 @@
         android:layout_height="match_parent"
         tools:context=".ui.main.tripfragment.TripsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+    </androidx.appcompat.widget.Toolbar>
     <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
