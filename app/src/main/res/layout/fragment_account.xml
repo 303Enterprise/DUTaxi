@@ -8,6 +8,28 @@
         android:layout_height="match_parent"
         tools:context=".ui.main.accountfragment.AccountFragment">
 
+    <androidx.appcompat.widget.Toolbar
+            android:id="@+id/account_toolbar"
+            app:menu="@menu/menu_main"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+        <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                android:text="@string/app_name">
+            </TextView>
+        </FrameLayout>
+    </androidx.appcompat.widget.Toolbar>
+
     <ImageView
             style="@style/WithTopMargin"
             android:id="@+id/account_user_portrait"
