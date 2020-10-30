@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -61,6 +62,21 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
         View rootView = inflater.inflate(R.layout.fragment_create_trip, container, false);
         initUi(rootView);
         fragmentManager = getParentFragmentManager();
+
+        departureInput.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View selectedView, int position, long id) {
+                if(position == 0) {
+                    destinationInput.setSelection(1);
+                }
+                if(position == 1) {
+                    destinationInput.setSelection(0);
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
 
         Calendar cal = Calendar.getInstance();
         tripHour = cal.get(Calendar.HOUR_OF_DAY);
@@ -145,6 +161,7 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
         commitButton.setOnClickListener(this);
         departureInput = rootView.findViewById(R.id.departure_input);
         destinationInput = rootView.findViewById(R.id.destination_input);
+        destinationInput.setSelection(1);
         phoneInput = rootView.findViewById(R.id.phone_input);
         vkrefInput = rootView.findViewById(R.id.vkref_input);
         freeseatsInput = rootView.findViewById(R.id.freeseats_input);
