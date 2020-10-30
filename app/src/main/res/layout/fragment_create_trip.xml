@@ -129,26 +129,28 @@
 
     <RadioGroup
             android:id="@+id/freeseats_input"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            >
 
         <RadioButton
                 android:id="@+id/freesets_button_three"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
                 android:text="3 places" />
 
         <RadioButton
                 android:id="@+id/freesets_button_two"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="2 places" />
 
         <RadioButton
                 android:id="@+id/freesets_button_one"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1 place" />
 
