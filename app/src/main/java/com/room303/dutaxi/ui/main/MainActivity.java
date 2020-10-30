@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
+        /*
         switch (view.getId()) {
             case R.id.bottom_button_left: // CreateTripFragment button
                 changeFragment(createTripFragment);
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.bottom_button_right: // AccountFragment button
                 changeFragment(accountFragment);
                 break;
-        }
+        }*/
     }
 
     private void changeFragment(Fragment fragment) {
@@ -66,11 +67,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initUi() {
         mainContainer = findViewById(R.id.main_container);
+        /*
         leftButton = findViewById(R.id.bottom_button_left);
         leftButton.setOnClickListener(this);
         middleButton = findViewById(R.id.bottom_button_middle);
         middleButton.setOnClickListener(this);
         rightButton = findViewById(R.id.bottom_button_right);
         rightButton.setOnClickListener(this);
+         */
     }
 }

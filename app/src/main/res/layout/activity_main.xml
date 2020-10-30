@@ -10,40 +10,20 @@
             android:id="@+id/main_container"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/bottom_navigation_layout"
+            app:layout_constraintBottom_toTopOf="@+id/bottomNavigationMenu"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-            android:id="@+id/bottom_navigation_layout"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:orientation="horizontal"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationMenu"
+            app:menu="@menu/menu_main_bottom_nav"
+            android:layout_width="0dp"
+            android:background="@color/colorPrimary"
+            app:itemBackground="@color/white"
+            android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
-                android:id="@+id/bottom_button_left"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Host" />
-
-        <Button
-                android:id="@+id/bottom_button_middle"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Trips" />
-
-        <Button
-                android:id="@+id/bottom_button_right"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Account" />
-
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
