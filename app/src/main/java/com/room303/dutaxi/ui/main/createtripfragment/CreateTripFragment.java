@@ -8,20 +8,23 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.room303.dutaxi.R;
+import com.room303.dutaxi.ui.main.tripfragment.TripsFragment;
 
 import java.util.Calendar;
 
 /**
  * TODO
- *  - Add displaying chosen time
  *  - Make sending data to Firebase when commitButton is pressed
  *  - Make returning to TripsFragment when cancelButton is pressed
  *  - Make taking data about telephone number and vk reference from local database,
@@ -32,7 +35,7 @@ import java.util.Calendar;
  */
 
 public class CreateTripFragment extends Fragment implements View.OnClickListener {
-    private static final String FIRST_DESCRIPTION = "SAMPLE DESCRIPTION";
+    private FragmentManager fragmentManager;
 
     private EditText phoneInput;
     private EditText vkrefInput;
@@ -49,11 +52,6 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
     private int freeSeats;
     private boolean isTimePicked;
 
-    /*
-    Toolbar mainToolbar = findViewById(R.id.toolbar_main);
-        setSupportActionBar(mainToolbar);
-     */
-
     public CreateTripFragment() {
     }
 
@@ -62,10 +60,10 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_create_trip, container, false);
         initUi(rootView);
+        fragmentManager = getParentFragmentManager();
 
         Calendar cal = Calendar.getInstance();
         tripHour = cal.get(Calendar.HOUR_OF_DAY);
-
         tripMinute = cal.get(Calendar.MINUTE);
         setTimeDisplay(tripHour, tripMinute);
 
@@ -114,12 +112,16 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.toolbar_button_cancel:
+                fragmentManager.popBackStack();
+                cleanForm();
                 // go to TripsFragment
                 break;
             case R.id.toolbar_button_commit:
                 if (phoneInput.getText().toString().length() == 11 &&
                         vkrefInput.getText().toString().length() != 0 &&
                         freeSeats != -1) {
+                    fragmentManager.popBackStack();
+                    cleanForm();
                     // go to TripsFragment
                     // and create a new trip in the list
                     // if everything correct
@@ -128,15 +130,25 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
         }
     }
 
+    private void cleanForm() {
+        departureInput.setSelection(0);
+        destinationInput.setSelection(0);
+        phoneInput.setText("");
+        vkrefInput.setText("");
+        freeseatsInput.check(R.id.freesets_button_three);
+    }
+
     private void initUi(View rootView) {
+        cancelButton = rootView.findViewById(R.id.toolbar_button_cancel);
+        cancelButton.setOnClickListener(this);
+        commitButton = rootView.findViewById(R.id.toolbar_button_commit);
+        commitButton.setOnClickListener(this);
         departureInput = rootView.findViewById(R.id.departure_input);
         destinationInput = rootView.findViewById(R.id.destination_input);
         phoneInput = rootView.findViewById(R.id.phone_input);
         vkrefInput = rootView.findViewById(R.id.vkref_input);
         freeseatsInput = rootView.findViewById(R.id.freeseats_input);
         timeInputButton = rootView.findViewById(R.id.time_input);
-        cancelButton = rootView.findViewById(R.id.toolbar_button_cancel);
-        commitButton = rootView.findViewById(R.id.toolbar_button_commit);
         timeDisplay = rootView.findViewById(R.id.time_display);
     }
 
