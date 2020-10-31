@@ -6,7 +6,7 @@
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="host">HOST</string>
-    <string name="trips">TRIPS</string>
-    <string name="account">ACCOUNT</string>
+    <string name="host">Host</string>
+    <string name="trips">Trips</string>
+    <string name="account">Account</string>
 </resources>
