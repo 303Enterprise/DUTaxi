@@ -15,6 +15,13 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="BottomNavigation">
+
+        <item name="itemTextColor">@color/white</item>
+        <item name="itemBackground">@drawable/main_bottom_nav_button_color</item>
+        <item name="itemIconTint">@color/white</item>
+    </style>
+
     <style name="TripItemMainBackground">
         <item name="android:background">@color/colorPrimary</item>
     </style>
