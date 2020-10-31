@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/host"
+        android:id="@+id/bottom_nav_host"
         android:title="@string/host"
         android:icon="@drawable/ic_baseline_group_add"/>
 
     <item
-        android:id="@+id/trip"
+        android:id="@+id/bottom_nav_trip"
         android:title="@string/trips"
         android:icon="@drawable/ic_baseline_directions_car"/>
 
     <item
-        android:id="@+id/account"
+        android:id="@+id/bottom_nav_account"
         android:title="@string/account"
         android:icon="@drawable/ic_baseline_person"/>
 
