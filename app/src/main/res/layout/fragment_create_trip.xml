@@ -5,55 +5,31 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".ui.main.createtripfragment.CreateTripFragment" >
+        tools:context=".ui.main.createtripfragment.CreateTripFragment">
 
     <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_main"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="@color/white"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:contentInsetStart="0dp">
-
-        <LinearLayout
-                android:id="@+id/toolbar_main_layout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:visibility="gone"
-                tools:layout_editor_absoluteX="16dp"
-                tools:visibility="gone">
-
-            <TextView
-                    android:id="@+id/toolbar_main_app_name"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:paddingStart="18dp"
-                    android:text="@string/app_name"
-                    android:textColor="@color/white"
-                    android:textSize="24sp" />
-        </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/toolbar_create_trip_layout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:theme="@style/ThemeOverlay.AppCompat.Light"
-                android:visibility="visible"
-                tools:context=".ui.main.MainActivity"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="4dp"
-                tools:visibility="visible">
+                android:layout_height="match_parent">
 
             <ImageButton
                     android:id="@+id/toolbar_button_cancel"
                     android:layout_width="?android:actionBarSize"
                     android:layout_height="match_parent"
                     android:layout_weight="0"
-                    android:background="@android:color/transparent"
-                    android:src="@drawable/ic_cross"
+                    android:background="@drawable/ic_cross"
+                    android:scaleType="center"
+                    android:scaleX="0.6"
+                    android:scaleY="0.6"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -62,10 +38,20 @@
                     android:layout_width="?android:actionBarSize"
                     android:layout_height="match_parent"
                     android:layout_weight="0"
-                    android:background="@android:color/transparent"
-                    android:src="@drawable/ic_check"
+                    android:background="@drawable/ic_check"
+                    android:scaleType="center"
+                    android:scaleX="0.6"
+                    android:scaleY="0.6"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                    android:id="@+id/view"
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:background="@drawable/toolbar_background"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.appcompat.widget.Toolbar>
 
@@ -79,7 +65,7 @@
             android:id="@+id/departure_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:entries="@array/destinations"/>
+            android:entries="@array/destinations" />
 
     <TextView
             android:id="@+id/destination_description"
@@ -91,7 +77,7 @@
             android:id="@+id/destination_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:entries="@array/destinations"/>
+            android:entries="@array/destinations" />
 
     <TextView
             android:id="@+id/phone_description"
@@ -103,10 +89,10 @@
             android:id="@+id/phone_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:digits="0123456789"
             android:ems="10"
             android:inputType="phone"
-            android:digits="0123456789"
-            android:maxLength="11"/>
+            android:maxLength="11" />
 
     <TextView
             android:id="@+id/vkref_description"
@@ -119,7 +105,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"/>
+            android:inputType="textPersonName" />
 
     <TextView
             android:id="@+id/freeseats_description"
@@ -131,9 +117,8 @@
             android:id="@+id/freeseats_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:gravity="center_horizontal"
-            >
+            android:orientation="horizontal">
 
         <RadioButton
                 android:id="@+id/freesets_button_three"

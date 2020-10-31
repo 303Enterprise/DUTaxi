@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
     private final CreateTripFragment createTripFragment = new CreateTripFragment();
     private final AccountFragment accountFragment = new AccountFragment();
     private final TripsFragment tripsFragment = new TripsFragment();
-    private FrameLayout mainContainer;
     private FragmentManager fragmentManager = getSupportFragmentManager();
     private FragmentTransaction fragmentTransaction;
 
@@ -37,26 +36,24 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        } else {
+            // just set status bar color to colorPrimary maybe?
         }
 
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
-        navigation.bringToFront();
-        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.bottom_nav_host:
-                        changeFragment(createTripFragment);
-                        return true;
-                    case R.id.bottom_nav_trip:
-                        changeFragment(tripsFragment);
-                        return true;
-                    case R.id.bottom_nav_account:
-                        changeFragment(accountFragment);
-                        return true;
-                }
-                return false;
+        BottomNavigationView navigation = findViewById(R.id.bottomNavigationView);
+        navigation.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.bottom_nav_host:
+                    changeFragment(createTripFragment);
+                    return true;
+                case R.id.bottom_nav_trip:
+                    changeFragment(tripsFragment);
+                    return true;
+                case R.id.bottom_nav_account:
+                    changeFragment(accountFragment);
+                    return true;
             }
+            return false;
         });
     }
 
