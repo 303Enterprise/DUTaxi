@@ -14,7 +14,7 @@
         <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar_main"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
+                android:layout_height="@dimen/app_bar_height"
                 android:background="@color/white"
                 android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                 app:contentInsetStart="0dp">
@@ -26,7 +26,7 @@
 
                 <ImageButton
                         android:id="@+id/toolbar_button_cancel"
-                        android:layout_width="?android:actionBarSize"
+                        android:layout_width="@dimen/app_bar_height"
                         android:layout_height="match_parent"
                         android:layout_weight="0"
                         android:background="@drawable/ic_cross"
@@ -39,7 +39,7 @@
 
                 <ImageButton
                         android:id="@+id/toolbar_button_commit"
-                        android:layout_width="?android:actionBarSize"
+                        android:layout_width="@dimen/app_bar_height"
                         android:layout_height="match_parent"
                         android:layout_weight="0"
                         android:background="@drawable/ic_check"
