@@ -1,47 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.main.accountfragment.AccountFragment">
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
-    <androidx.appcompat.widget.Toolbar
-            android:id="@+id/account_toolbar"
-            app:menu="@menu/menu_main"
+    <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="?actionBarSize"
-            android:background="?attr/colorPrimary"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
-        <FrameLayout
+            android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+                android:id="@+id/account_toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:textColor="@color/white"
-                    android:textSize="24sp"
-                android:text="@string/app_name">
-            </TextView>
-        </FrameLayout>
-    </androidx.appcompat.widget.Toolbar>
+                android:layout_height="?actionBarSize"
+                android:background="@color/white"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:contentInsetStart="0dp"
+                app:menu="@menu/menu_main"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="Account"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="24sp"
+                        android:layout_marginStart="24dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <ImageView
-            style="@style/WithTopMargin"
             android:id="@+id/account_user_portrait"
+            style="@style/WithTopMargin"
             android:layout_width="100pt"
             android:layout_height="100pt"
+            android:src="@drawable/placeholder_portrait"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/placeholder_portrait" />
+            app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-            style="@style/WithTopMargin"
             android:id="@+id/account_user_name"
+            style="@style/WithTopMargin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Username parsed from VK"
@@ -50,16 +59,16 @@
 
     <TextView
             android:id="@+id/account_user_phone"
-            android:layout_marginTop="16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:text="+89125834552" />
 
     <TextView
             android:id="@+id/account_user_vkref"
-            android:layout_marginTop="8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:text="https://vk.com/a3b_ecmb" />
 
     <Button

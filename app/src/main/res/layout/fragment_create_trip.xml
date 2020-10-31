@@ -7,53 +7,50 @@
         android:orientation="vertical"
         tools:context=".ui.main.createtripfragment.CreateTripFragment">
 
-    <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_main"
+    <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/white"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:contentInsetStart="0dp">
+            android:layout_height="wrap_content">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/toolbar_create_trip_layout"
+        <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_main"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/white"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:contentInsetStart="0dp">
 
-            <ImageButton
-                    android:id="@+id/toolbar_button_cancel"
-                    android:layout_width="?android:actionBarSize"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0"
-                    android:background="@drawable/ic_cross"
-                    android:scaleType="center"
-                    android:scaleX="0.6"
-                    android:scaleY="0.6"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageButton
-                    android:id="@+id/toolbar_button_commit"
-                    android:layout_width="?android:actionBarSize"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0"
-                    android:background="@drawable/ic_check"
-                    android:scaleType="center"
-                    android:scaleX="0.6"
-                    android:scaleY="0.6"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            <View
-                    android:id="@+id/view"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/toolbar_create_trip_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="3dp"
-                    android:background="@drawable/toolbar_background"
-                    app:layout_constraintBottom_toBottomOf="parent" />
+                    android:layout_height="match_parent">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.appcompat.widget.Toolbar>
+                <ImageButton
+                        android:id="@+id/toolbar_button_cancel"
+                        android:layout_width="?android:actionBarSize"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0"
+                        android:background="@drawable/ic_cross"
+                        android:scaleType="center"
+                        android:scaleX="0.6"
+                        android:scaleY="0.6"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                        android:id="@+id/toolbar_button_commit"
+                        android:layout_width="?android:actionBarSize"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0"
+                        android:background="@drawable/ic_check"
+                        android:scaleType="center"
+                        android:scaleX="0.6"
+                        android:scaleY="0.6"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
             android:id="@+id/departure_description"
@@ -124,6 +121,7 @@
                 android:id="@+id/freesets_button_three"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:buttonTint="@color/colorPrimary"
                 android:checked="true"
                 android:text="3 places" />
 
@@ -131,12 +129,14 @@
                 android:id="@+id/freesets_button_two"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:buttonTint="@color/colorPrimary"
                 android:text="2 places" />
 
         <RadioButton
                 android:id="@+id/freesets_button_one"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:buttonTint="@color/colorPrimary"
                 android:text="1 place" />
 
     </RadioGroup>

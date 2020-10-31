@@ -40,8 +40,9 @@ public class MainActivity extends AppCompatActivity {
             // just set status bar color to colorPrimary maybe?
         }
 
-        BottomNavigationView navigation = findViewById(R.id.bottomNavigationView);
-        navigation.setOnNavigationItemSelectedListener(item -> {
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setSelectedItemId(R.id.bottom_nav_trip);
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.bottom_nav_host:
                     changeFragment(createTripFragment);
