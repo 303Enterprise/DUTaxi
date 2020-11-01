@@ -29,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
      * TODO
      *  - somehow fix back stack bug with saving current states of fragments
      *  - make animations of navigation actions
+     *  - make menus items click listeners and logic
+     *  - make recycler view in trips fragment
+     *  - make planning trip to tomorrow in CreateTripFragment
      */
 
     @Override

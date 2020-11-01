@@ -17,7 +17,7 @@
                 android:background="@color/white"
                 android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                 app:contentInsetStart="0dp"
-                app:menu="@menu/menu_main"
+                app:menu="@menu/menu_account"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
             <androidx.constraintlayout.widget.ConstraintLayout

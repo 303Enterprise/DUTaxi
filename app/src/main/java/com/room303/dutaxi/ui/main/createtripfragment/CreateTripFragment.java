@@ -71,10 +71,7 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
         departureInput.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View selectedView, int position, long id) {
-                if(position == 0) {
-                    destinationInput.setSelection(1);
-                }
-                if(position == 1) {
+                if(position > 0) {
                     destinationInput.setSelection(0);
                 }
             }

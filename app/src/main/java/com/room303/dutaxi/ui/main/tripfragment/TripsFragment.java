@@ -3,6 +3,8 @@ package com.room303.dutaxi.ui.main.tripfragment;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -21,6 +23,7 @@ public class TripsFragment extends Fragment {
 
     public TripsFragment() {
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

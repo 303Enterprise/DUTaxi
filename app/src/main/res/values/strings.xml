@@ -3,6 +3,13 @@
     <string-array name="destinations">
         <item>Деревня универсиады</item>
         <item>Двойка</item>
+        <item>Главное здание</item>
+        <item>Б4</item>
+        <item>ИФ</item>
+        <item>Межлаука</item>
+        <item>Пушкина</item>
+        <item>УНИКС</item>
+        <item>Кольцо</item>
     </string-array>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="host">Host</string>
