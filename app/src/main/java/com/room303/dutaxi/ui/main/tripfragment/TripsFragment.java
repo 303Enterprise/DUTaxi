@@ -26,7 +26,7 @@ public class TripsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // TODO
-        //  change R.layout.trip_item back to R.layout.fragment_trips
+        //  make commit button be in a more common place
         View rootView = inflater.inflate(R.layout.fragment_trips, container, false);
         return rootView;
     }

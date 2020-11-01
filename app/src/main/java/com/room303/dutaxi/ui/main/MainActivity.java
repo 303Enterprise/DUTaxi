@@ -25,6 +25,11 @@ public class MainActivity extends AppCompatActivity {
     private FragmentManager fragmentManager = getSupportFragmentManager();
     private FragmentTransaction fragmentTransaction;
 
+    /**
+     * TODO
+     *  - somehow fix back stack bug with saving current states of fragments
+     *  - make animations of navigation actions
+     */
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
