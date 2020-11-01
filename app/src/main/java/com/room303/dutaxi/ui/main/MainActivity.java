@@ -15,6 +15,8 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.room303.dutaxi.R;
@@ -40,18 +42,23 @@ public class MainActivity extends AppCompatActivity {
             // just set status bar color to colorPrimary maybe?
         }
 
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.bottom_nav_trip);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.bottom_nav_host:
-                    changeFragment(createTripFragment);
+                    navController.navigate(R.id.to_createTripFragment);
+                    //changeFragment(createTripFragment);
                     return true;
                 case R.id.bottom_nav_trip:
-                    changeFragment(tripsFragment);
+                    navController.navigate(R.id.to_tripsFragment);
+                    //changeFragment(tripsFragment);
                     return true;
                 case R.id.bottom_nav_account:
-                    changeFragment(accountFragment);
+                    navController.navigate(R.id.to_accountFragment);
+                    //changeFragment(accountFragment);
                     return true;
             }
             return false;
@@ -61,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
     private void changeFragment(Fragment fragment) {
         fragmentTransaction = fragmentManager.beginTransaction().addToBackStack(fragment.getClass().getSimpleName());
         fragmentTransaction.addToBackStack(fragment.getClass().getSimpleName());
-        fragmentTransaction.replace(R.id.main_container, fragment);
         fragmentTransaction.commitAllowingStateLoss();
     }
 }
