@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,6 +16,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.room303.dutaxi.R;
 
 public class TripsFragment extends Fragment {
+
     private NavController navController;
 
     public TripsFragment() {
@@ -31,11 +31,26 @@ public class TripsFragment extends Fragment {
         return rootView;
     }
 
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        navController = Navigation.findNavController(view);
     }
 
-
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.bottom_nav_host:
+                    navController.navigate(R.id.action_tripsFragment_to_createTripFragment);
+                    return true;
+                case R.id.bottom_nav_account:
+                    navController.navigate(R.id.action_tripsFragment_to_accountFragment);
+                    return true;
+            }
+            return false;
+        });
+    }
 }

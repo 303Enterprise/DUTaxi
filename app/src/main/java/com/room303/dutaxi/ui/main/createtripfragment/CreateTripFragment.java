@@ -15,10 +15,15 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.room303.dutaxi.R;
 import com.room303.dutaxi.ui.main.tripfragment.TripsFragment;
 
@@ -36,6 +41,7 @@ import java.util.Calendar;
  */
 
 public class CreateTripFragment extends Fragment implements View.OnClickListener {
+    private NavController navController;
     private FragmentManager fragmentManager;
 
     private EditText phoneInput;
@@ -103,7 +109,6 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
             }
         });
 
-
         freeseatsInput.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -122,6 +127,12 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
         });
 
         return rootView;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        navController = Navigation.findNavController(view);
     }
 
     @Override
@@ -144,6 +155,23 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
                 }
                 break;
         }
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.bottom_nav_trips:
+                    navController.navigate(R.id.action_createTripFragment_to_tripsFragment);
+                    return true;
+                case R.id.bottom_nav_account:
+                    navController.navigate(R.id.action_createTripFragment_to_accountFragment);
+                    return true;
+            }
+            return false;
+        });
     }
 
     private void cleanForm() {

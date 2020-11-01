@@ -7,7 +7,7 @@
         android:icon="@drawable/ic_baseline_group_add"/>
 
     <item
-        android:id="@+id/bottom_nav_trip"
+        android:id="@+id/bottom_nav_trips"
         android:title="@string/trips"
         android:icon="@drawable/ic_baseline_directions_car"/>
 

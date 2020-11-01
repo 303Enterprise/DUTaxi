@@ -42,34 +42,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             // just set status bar color to colorPrimary maybe?
         }
-
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        bottomNavigationView.setSelectedItemId(R.id.bottom_nav_trip);
-        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
-            switch (item.getItemId()) {
-                case R.id.bottom_nav_host:
-                    //navController.navigate(R.id.to_createTripFragment);
-                    changeFragment(createTripFragment);
-                    return true;
-                case R.id.bottom_nav_trip:
-                    //navController.navigate(R.id.to_tripsFragment);
-                    changeFragment(tripsFragment);
-                    return true;
-                case R.id.bottom_nav_account:
-                    //navController.navigate(R.id.to_accountFragment);
-                    changeFragment(accountFragment);
-                    return true;
-            }
-            return false;
-        });
-    }
-
-    private void changeFragment(Fragment fragment) {
-        fragmentTransaction = fragmentManager.beginTransaction().addToBackStack(fragment.getClass().getSimpleName());
-        fragmentTransaction.addToBackStack(fragment.getClass().getSimpleName());
-        fragmentTransaction.replace(R.id.main_container, fragment);
-        fragmentTransaction.commitAllowingStateLoss();
+        bottomNavigationView.setSelectedItemId(R.id.bottom_nav_trips);
     }
 }
