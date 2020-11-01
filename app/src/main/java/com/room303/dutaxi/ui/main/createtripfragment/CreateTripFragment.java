@@ -42,6 +42,7 @@ import java.util.Calendar;
 
 public class CreateTripFragment extends Fragment implements View.OnClickListener {
     private NavController navController;
+    private BottomNavigationView bottomNavigationView;
     private FragmentManager fragmentManager;
 
     private EditText phoneInput;
@@ -139,7 +140,7 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.toolbar_button_cancel:
-                fragmentManager.popBackStack();
+                bottomNavigationView.setSelectedItemId(R.id.bottom_nav_trips);
                 cleanForm();
                 // go to TripsFragment
                 break;
@@ -147,7 +148,7 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
                 if (phoneInput.getText().toString().length() == 11 &&
                         vkrefInput.getText().toString().length() != 0 &&
                         freeSeats != -1) {
-                    fragmentManager.popBackStack();
+                    bottomNavigationView.setSelectedItemId(R.id.bottom_nav_trips);
                     cleanForm();
                     // go to TripsFragment
                     // and create a new trip in the list
@@ -160,7 +161,7 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottomNavigationView);
+        bottomNavigationView = getActivity().findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.bottom_nav_trips:
