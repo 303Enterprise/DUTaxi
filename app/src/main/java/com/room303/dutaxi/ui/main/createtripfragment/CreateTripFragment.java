@@ -1,6 +1,6 @@
 package com.room303.dutaxi.ui.main.createtripfragment;
 
-import android.app.TimePickerDialog;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +9,6 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -19,13 +18,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.room303.dutaxi.R;
-import com.room303.dutaxi.ui.main.tripfragment.TripsFragment;
 
 import java.util.Calendar;
 
@@ -54,9 +51,10 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
     private ImageButton cancelButton;
     private ImageButton commitButton;
     private TextView timeDisplay;
+    private TimePicker timePicker;
 
-    private int tripMinute;
-    private int tripHour;
+    private int currentMinute;
+    private int currentHour;
     private int freeSeats;
     private boolean isTimePicked;
 
@@ -86,29 +84,18 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
         });
 
         Calendar cal = Calendar.getInstance();
-        tripHour = cal.get(Calendar.HOUR_OF_DAY);
-        tripMinute = cal.get(Calendar.MINUTE);
-        setTimeDisplay(tripHour, tripMinute);
+        currentHour = cal.get(Calendar.HOUR_OF_DAY);
+        currentMinute = cal.get(Calendar.MINUTE);
 
-        timeInputButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // when user clicks OK button at TimePickerDialog
-                TimePickerDialog.OnTimeSetListener timeSetListener = new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker view, int hour, int minute) {
-                        tripHour = hour;
-                        tripMinute = minute;
-                        setTimeDisplay(tripHour, tripMinute);
-                    }
-                };
-
-                // creating new dialog window
-                TimePickerDialog timePickerDialog = new TimePickerDialog(
-                        getActivity(), timeSetListener, tripHour, tripMinute, true);
-                timePickerDialog.show();
-            }
-        });
+        timePicker = rootView.findViewById(R.id.timePicker);
+        timePicker.setIs24HourView(true);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            timePicker.setHour(currentHour);
+            timePicker.setMinute(currentMinute);
+        } else {
+            timePicker.setCurrentHour(currentHour);
+            timePicker.setCurrentMinute(currentMinute);
+        }
 
         freeseatsInput.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -194,8 +181,6 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
         phoneInput = rootView.findViewById(R.id.phone_input);
         vkrefInput = rootView.findViewById(R.id.vkref_input);
         freeseatsInput = rootView.findViewById(R.id.freeseats_input);
-        timeInputButton = rootView.findViewById(R.id.time_input);
-        timeDisplay = rootView.findViewById(R.id.time_display);
     }
 
     private void setTimeDisplay(int hour, int minute) {

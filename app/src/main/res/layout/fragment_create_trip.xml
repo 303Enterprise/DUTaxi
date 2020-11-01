@@ -21,9 +21,9 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/toolbar_create_trip_layout"
-                    android:theme="@style/ThemeOverlay.AppCompat.Light"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:theme="@style/ThemeOverlay.AppCompat.Light">
 
 
                 <ImageButton
@@ -37,6 +37,18 @@
                         android:scaleY="1.2"
                         android:src="@drawable/ic_cross"
                         app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="Create a new request"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/toolbar_text_size"
+                        app:layout_constraintEnd_toStartOf="@+id/toolbar_button_commit"
+                        app:layout_constraintStart_toEndOf="@+id/toolbar_button_cancel"
                         app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageButton
@@ -57,33 +69,39 @@
 
     <TextView
             android:id="@+id/departure_description"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Departure" />
+            android:text="Pick a place of departure"
+            android:theme="@style/CreateTripTextItem" />
 
     <Spinner
             android:id="@+id/departure_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:entries="@array/destinations" />
 
     <TextView
             android:id="@+id/destination_description"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Destination" />
+            android:text="Pick a place to go to"
+            android:theme="@style/CreateTripTextItem" />
 
     <Spinner
             android:id="@+id/destination_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:entries="@array/destinations" />
 
     <TextView
             android:id="@+id/phone_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Phone" />
+            android:text="Phone"
+            android:theme="@style/CreateTripTextItem"
+            android:visibility="gone" />
 
     <EditText
             android:id="@+id/phone_input"
@@ -92,26 +110,30 @@
             android:digits="0123456789"
             android:ems="10"
             android:inputType="phone"
-            android:maxLength="11" />
+            android:maxLength="11"
+            android:visibility="gone" />
 
     <TextView
             android:id="@+id/vkref_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="VK ref" />
+            android:text="VK ref"
+            android:visibility="gone" />
 
     <EditText
             android:id="@+id/vkref_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:visibility="gone" />
 
     <TextView
             android:id="@+id/freeseats_description"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Free seats" />
+            android:text="Pick a number of remaining places"
+            android:theme="@style/CreateTripTextItem" />
 
     <RadioGroup
             android:id="@+id/freeseats_input"
@@ -146,20 +168,16 @@
 
     <TextView
             android:id="@+id/time_description"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Time" />
+            android:text="Pick time of meeting"
+            android:theme="@style/CreateTripTextItem" />
 
-    <Button
-            android:id="@+id/time_input"
-            android:layout_width="match_parent"
+    <TimePicker
+            android:id="@+id/timePicker"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="choose time" />
-
-    <TextView
-            android:id="@+id/time_display"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Time display" />
-
+            android:layout_gravity="center_horizontal"
+            android:theme="@style/TimePickerTheme"
+            android:timePickerMode="spinner" />
 </LinearLayout>
