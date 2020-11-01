@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private FragmentManager fragmentManager = getSupportFragmentManager();
     private FragmentTransaction fragmentTransaction;
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,16 +50,16 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.bottom_nav_host:
-                    navController.navigate(R.id.to_createTripFragment);
-                    //changeFragment(createTripFragment);
+                    //navController.navigate(R.id.to_createTripFragment);
+                    changeFragment(createTripFragment);
                     return true;
                 case R.id.bottom_nav_trip:
-                    navController.navigate(R.id.to_tripsFragment);
-                    //changeFragment(tripsFragment);
+                    //navController.navigate(R.id.to_tripsFragment);
+                    changeFragment(tripsFragment);
                     return true;
                 case R.id.bottom_nav_account:
-                    navController.navigate(R.id.to_accountFragment);
-                    //changeFragment(accountFragment);
+                    //navController.navigate(R.id.to_accountFragment);
+                    changeFragment(accountFragment);
                     return true;
             }
             return false;
@@ -68,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
     private void changeFragment(Fragment fragment) {
         fragmentTransaction = fragmentManager.beginTransaction().addToBackStack(fragment.getClass().getSimpleName());
         fragmentTransaction.addToBackStack(fragment.getClass().getSimpleName());
+        fragmentTransaction.replace(R.id.main_container, fragment);
         fragmentTransaction.commitAllowingStateLoss();
     }
 }
