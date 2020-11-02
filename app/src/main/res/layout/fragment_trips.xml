@@ -17,7 +17,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/app_bar_height"
                 android:background="@color/white"
-                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                 app:contentInsetStart="20dp"
                 app:menu="@menu/menu_account"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
@@ -29,7 +28,7 @@
                 <TextView
                         android:id="@+id/textView"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="48dp"
                         android:gravity="center_vertical"
                         android:text="Current requests"
                         android:textColor="@color/colorPrimary"

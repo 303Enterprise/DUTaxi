@@ -54,18 +54,6 @@ public class TripsFragment extends Fragment {
                     )
             );
         }
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            requestItems.sort(new Comparator<RequestItem>() {
-                @Override
-                public int compare(RequestItem t0, RequestItem t1) {
-                    Calendar calendar = Calendar.getInstance();
-                    int hour = calendar.get(Calendar.HOUR);
-                    int minute = calendar.get(Calendar.MINUTE);
-                }
-            });
-        }
-
         return requestItems;
     }
 
