@@ -18,12 +18,40 @@ import com.room303.dutaxi.ui.main.tripsfragment.recyclerview.RecyclerAdapter;
 import com.room303.dutaxi.ui.main.tripsfragment.recyclerview.RequestItem;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class TripsFragment extends Fragment {
 
     private NavController navController;
 
     public TripsFragment() {
+    }
+
+    private ArrayList<RequestItem> generateRandomRequests(int size) {
+        Random rand = new Random();
+        String[] placesToGo = {
+                "ДУ",
+                "Двойка",
+                "Главное здание",
+                "Б4",
+                "ИФ",
+                "Межлаука",
+                "Пушкина",
+                "УНИКС",
+                "Кольцо"
+        };
+        ArrayList<RequestItem> requestItems = new ArrayList<>();
+        for (int i = 0; i < size; i++) {
+            requestItems.add(
+                    new RequestItem(
+                            placesToGo[rand.nextInt(placesToGo.length)],
+                            placesToGo[rand.nextInt(placesToGo.length)],
+                            rand.nextInt(60) + ":" + rand.nextInt(60),
+                            Integer.toString(rand.nextInt(3))
+                    )
+            );
+        }
+        return requestItems;
     }
 
 
@@ -36,12 +64,7 @@ public class TripsFragment extends Fragment {
         //  make commit button be in a more common place
         View rootView = inflater.inflate(R.layout.fragment_trips, container, false);
 
-        requestItems.add(new RequestItem("123", "123", "123", "123"));
-        requestItems.add(new RequestItem("123", "123", "123", "123"));
-        requestItems.add(new RequestItem("123", "123", "123", "123"));
-        requestItems.add(new RequestItem("123", "123", "123", "123"));
-        requestItems.add(new RequestItem("123", "123", "123", "123"));
-        requestItems.add(new RequestItem("123", "123", "123", "123"));
+        requestItems = generateRandomRequests(15);
         RecyclerView recyclerView = rootView.findViewById(R.id.tripsFragmentRecyclerView);
         RecyclerAdapter adapter = new RecyclerAdapter(getContext(), requestItems);
         recyclerView.setAdapter(adapter);
