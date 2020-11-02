@@ -35,7 +35,7 @@
                         android:scaleType="center"
                         android:scaleX="1.2"
                         android:scaleY="1.2"
-                        android:src="@drawable/ic_cross"
+                        android:src="@drawable/ic_arrow_back"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -47,12 +47,11 @@
                         android:text="Create a new request"
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/toolbar_text_size"
-                        app:layout_constraintEnd_toStartOf="@+id/toolbar_button_commit"
                         app:layout_constraintStart_toEndOf="@+id/toolbar_button_cancel"
                         app:layout_constraintTop_toTopOf="parent" />
-
                 <ImageButton
                         android:id="@+id/toolbar_button_commit"
+                        android:visibility="gone"
                         android:layout_width="@dimen/app_bar_height"
                         android:layout_height="match_parent"
                         android:layout_weight="0"

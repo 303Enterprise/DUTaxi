@@ -51,7 +51,7 @@
     <Button
             android:id="@+id/account_user_name"
             android:layout_width="match_parent"
-            android:layout_height="52dp"
+            android:layout_height="55dp"
             android:layout_marginTop="16dp"
             android:background="@drawable/button_fragment_account"
             android:foreground="?attr/selectableItemBackgroundBorderless"
@@ -117,7 +117,7 @@
     <Button
             android:id="@+id/account_button_show_history"
             android:layout_width="match_parent"
-            android:layout_height="52dp"
+            android:layout_height="55dp"
             android:background="@drawable/button_fragment_account"
             android:foreground="?attr/selectableItemBackgroundBorderless"
             android:text="Show history"
