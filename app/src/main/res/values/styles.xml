@@ -5,7 +5,8 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="actionOverflowButtonStyle">@style/AccountToolbarMenuButtonStyle</item>
-        <item name="colorControlHighlight">@color/colorPrimaryLight</item>
+        <!-- <item name="colorControlHighlight">@color/colorPrimaryLight</item> -->
+
     </style>
 
     <style name="AccountToolbarMenuButtonStyle" parent="Widget.AppCompat.ActionButton.Overflow">

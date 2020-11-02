@@ -43,8 +43,8 @@
             android:id="@+id/account_user_portrait"
             android:layout_width="100pt"
             android:layout_height="100pt"
-            android:src="@drawable/placeholder_portrait"
             android:layout_marginTop="16dp"
+            android:src="@drawable/placeholder_portrait"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -52,8 +52,9 @@
             android:id="@+id/account_user_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/button_fragment_account"
             android:layout_marginTop="16dp"
+            android:background="@drawable/button_fragment_account"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
             android:text="Anikin Kirill"
             android:textColor="@color/colorPrimary"
             android:textSize="18sp"
@@ -68,6 +69,7 @@
             android:background="@drawable/button_fragment_account"
             android:clickable="true"
             android:focusable="true"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
             android:orientation="vertical"
             android:paddingTop="6dp"
             android:paddingBottom="8dp">
@@ -84,7 +86,6 @@
                 android:text="+7 (912) 583-45-52"
                 android:textColor="@color/black"
                 android:theme="@style/AccountRowItem" />
-
     </LinearLayout>
 
     <LinearLayout
@@ -94,6 +95,7 @@
             android:background="@drawable/button_fragment_account"
             android:clickable="true"
             android:focusable="true"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
             android:orientation="vertical"
             android:paddingTop="6dp"
             android:paddingBottom="8dp">
@@ -117,6 +119,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/button_fragment_account"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
             android:text="Show history"
             android:textColor="@color/colorPrimary"
             android:theme="@style/AccountRowItem" />

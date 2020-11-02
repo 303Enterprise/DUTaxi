@@ -1,5 +1,6 @@
 package com.room303.dutaxi.ui.main.tripsfragment;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,8 @@ import com.room303.dutaxi.ui.main.tripsfragment.recyclerview.RecyclerAdapter;
 import com.room303.dutaxi.ui.main.tripsfragment.recyclerview.RequestItem;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Comparator;
 import java.util.Random;
 
 public class TripsFragment extends Fragment {
@@ -46,11 +49,23 @@ public class TripsFragment extends Fragment {
                     new RequestItem(
                             placesToGo[rand.nextInt(placesToGo.length)],
                             placesToGo[rand.nextInt(placesToGo.length)],
-                            rand.nextInt(60) + ":" + rand.nextInt(60),
-                            Integer.toString(rand.nextInt(3))
+                            rand.nextInt(24) + ":" + rand.nextInt(60),
+                            Integer.toString(rand.nextInt(3) + 1)
                     )
             );
         }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            requestItems.sort(new Comparator<RequestItem>() {
+                @Override
+                public int compare(RequestItem t0, RequestItem t1) {
+                    Calendar calendar = Calendar.getInstance();
+                    int hour = calendar.get(Calendar.HOUR);
+                    int minute = calendar.get(Calendar.MINUTE);
+                }
+            });
+        }
+
         return requestItems;
     }
 
@@ -62,7 +77,7 @@ public class TripsFragment extends Fragment {
         //  make commit button be in a more common place
         View rootView = inflater.inflate(R.layout.fragment_trips, container, false);
 
-        ArrayList<RequestItem> requestItems = generateRandomRequests(15);
+        ArrayList<RequestItem> requestItems = generateRandomRequests(25);
         RecyclerView recyclerView = rootView.findViewById(R.id.tripsFragmentRecyclerView);
         RecyclerAdapter adapter = new RecyclerAdapter(getContext(), requestItems);
         recyclerView.setAdapter(adapter);

@@ -66,11 +66,6 @@ public class AccountFragment extends Fragment {
     }
 
     private void initUi(View rootView) {
-        Toolbar accountToolbar = rootView.findViewById(R.id.account_toolbar);
-        userPortrait = rootView.findViewById(R.id.account_user_portrait);
-        userName = rootView.findViewById(R.id.account_user_name);
-        userPhone = rootView.findViewById(R.id.account_user_phone);
-        userVkref = rootView.findViewById(R.id.account_user_vkref);
-        buttonHistory = rootView.findViewById(R.id.account_button_show_history);
+        
     }
 }
