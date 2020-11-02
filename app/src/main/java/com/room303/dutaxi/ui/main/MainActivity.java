@@ -15,7 +15,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.room303.dutaxi.R;
 import com.room303.dutaxi.ui.main.accountfragment.AccountFragment;
 import com.room303.dutaxi.ui.main.createtripfragment.CreateTripFragment;
-import com.room303.dutaxi.ui.main.tripfragment.TripsFragment;
+import com.room303.dutaxi.ui.main.tripsfragment.TripsFragment;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "AppDebug_MainActivity";

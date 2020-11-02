@@ -6,7 +6,7 @@
         app:startDestination="@id/tripsFragment">
     <fragment
             android:id="@+id/tripsFragment"
-            android:name="com.room303.dutaxi.ui.main.tripfragment.TripsFragment"
+            android:name="com.room303.dutaxi.ui.main.tripsfragment.TripsFragment"
             android:label="fragment_trips"
             tools:layout="@layout/fragment_trips" >
         <action

@@ -1,10 +1,7 @@
-package com.room303.dutaxi.ui.main.tripfragment;
+package com.room303.dutaxi.ui.main.tripsfragment;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 

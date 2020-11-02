@@ -5,7 +5,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".ui.main.tripfragment.TripsFragment">
+        tools:context=".ui.main.tripsfragment.TripsFragment">
 
     <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
@@ -48,7 +48,7 @@
             android:layout_marginEnd="8dp"
             app:cardBackgroundColor="@color/colorPrimaryBackground"
             app:cardCornerRadius="10dp"
-            tools:context="ui.main.tripfragment.TripsFragment">
+            tools:context="ui.main.tripsfragment.TripsFragment">
 
         <RelativeLayout
                 android:layout_width="match_parent"
@@ -153,7 +153,7 @@
             android:layout_marginEnd="8dp"
             app:cardBackgroundColor="@color/colorPrimaryBackground"
             app:cardCornerRadius="10dp"
-            tools:context="ui.main.tripfragment.TripsFragment">
+            tools:context="ui.main.tripsfragment.TripsFragment">
 
         <RelativeLayout
                 android:layout_width="match_parent"
@@ -258,7 +258,7 @@
             android:layout_marginEnd="8dp"
             app:cardBackgroundColor="@color/colorPrimaryBackground"
             app:cardCornerRadius="10dp"
-            tools:context="ui.main.tripfragment.TripsFragment">
+            tools:context="ui.main.tripsfragment.TripsFragment">
 
         <RelativeLayout
                 android:layout_width="match_parent"
