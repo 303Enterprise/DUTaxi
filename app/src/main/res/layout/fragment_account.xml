@@ -28,11 +28,11 @@
                         android:id="@+id/textView"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:layout_marginStart="20dp"
                         android:gravity="center_vertical"
                         android:text="Account"
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/toolbar_text_size"
-                        android:layout_marginStart="20dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -41,41 +41,83 @@
 
     <ImageView
             android:id="@+id/account_user_portrait"
-            style="@style/WithTopMargin"
             android:layout_width="100pt"
             android:layout_height="100pt"
             android:src="@drawable/placeholder_portrait"
+            android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <Button
             android:id="@+id/account_user_name"
-            style="@style/WithTopMargin"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Username parsed from VK"
+            android:background="@drawable/button_fragment_account"
+            android:layout_marginTop="16dp"
+            android:text="Anikin Kirill"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            android:theme="@style/AccountRowItem"
             app:layout_constraintStart_toEndOf="@+id/imageView2"
             app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <LinearLayout
             android:id="@+id/account_user_phone"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="+89125834552" />
+            android:background="@drawable/button_fragment_account"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="vertical"
+            android:paddingTop="6dp"
+            android:paddingBottom="8dp">
 
-    <TextView
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone number:"
+                android:theme="@style/AccountRowItem" />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+7 (912) 583-45-52"
+                android:textColor="@color/black"
+                android:theme="@style/AccountRowItem" />
+
+    </LinearLayout>
+
+    <LinearLayout
             android:id="@+id/account_user_vkref"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="https://vk.com/a3b_ecmb" />
+            android:background="@drawable/button_fragment_account"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="vertical"
+            android:paddingTop="6dp"
+            android:paddingBottom="8dp">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="VK link:"
+                android:theme="@style/AccountRowItem" />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="https://vk.com/a3b_ecmb"
+                android:textColor="@color/black"
+                android:theme="@style/AccountRowItem" />
+    </LinearLayout>
 
     <Button
             android:id="@+id/account_button_show_history"
-            style="@style/WithTopMargin"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:text="Show history" />
+            android:background="@drawable/button_fragment_account"
+            android:text="Show history"
+            android:textColor="@color/colorPrimary"
+            android:theme="@style/AccountRowItem" />
 </LinearLayout>
