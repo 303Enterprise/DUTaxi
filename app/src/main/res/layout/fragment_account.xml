@@ -44,6 +44,7 @@
             android:layout_width="100pt"
             android:layout_height="100pt"
             android:src="@drawable/placeholder_portrait"
+            android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -52,35 +53,71 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/button_fragment_account"
-            android:textSize="18sp"
-            android:textColor="@color/colorPrimary"
+            android:layout_marginTop="16dp"
             android:text="Anikin Kirill"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
             android:theme="@style/AccountRowItem"
             app:layout_constraintStart_toEndOf="@+id/imageView2"
             app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <LinearLayout
             android:id="@+id/account_user_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/button_fragment_account"
-            android:text="+7 (912) 583-45-52"
-            android:theme="@style/AccountRowItem" />
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="vertical"
+            android:paddingTop="6dp"
+            android:paddingBottom="8dp">
 
-    <Button
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone number:"
+                android:theme="@style/AccountRowItem" />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+7 (912) 583-45-52"
+                android:textColor="@color/black"
+                android:theme="@style/AccountRowItem" />
+
+    </LinearLayout>
+
+    <LinearLayout
             android:id="@+id/account_user_vkref"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/button_fragment_account"
-            android:text="https://vk.com/a3b_ecmb"
-            android:theme="@style/AccountRowItem" />
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="vertical"
+            android:paddingTop="6dp"
+            android:paddingBottom="8dp">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="VK link:"
+                android:theme="@style/AccountRowItem" />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="https://vk.com/a3b_ecmb"
+                android:textColor="@color/black"
+                android:theme="@style/AccountRowItem" />
+    </LinearLayout>
 
     <Button
             android:id="@+id/account_button_show_history"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/button_fragment_account"
-            android:textColor="@color/colorPrimary"
             android:text="Show history"
+            android:textColor="@color/colorPrimary"
             android:theme="@style/AccountRowItem" />
 </LinearLayout>
