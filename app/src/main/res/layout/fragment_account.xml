@@ -28,11 +28,11 @@
                         android:id="@+id/textView"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:layout_marginStart="20dp"
                         android:gravity="center_vertical"
                         android:text="Account"
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/toolbar_text_size"
-                        android:layout_marginStart="20dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -41,7 +41,6 @@
 
     <ImageView
             android:id="@+id/account_user_portrait"
-            android:theme="@style/AccountRowItem"
             android:layout_width="100pt"
             android:layout_height="100pt"
             android:src="@drawable/placeholder_portrait"
@@ -50,10 +49,13 @@
 
     <Button
             android:id="@+id/account_user_name"
-            android:theme="@style/AccountRowItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Username parsed from VK"
+            android:background="@drawable/button_fragment_account"
+            android:textSize="18sp"
+            android:textColor="@color/colorPrimary"
+            android:text="Anikin Kirill"
+            android:theme="@style/AccountRowItem"
             app:layout_constraintStart_toEndOf="@+id/imageView2"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -61,20 +63,24 @@
             android:id="@+id/account_user_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:theme="@style/AccountRowItem"
-            android:text="+89125834552" />
+            android:background="@drawable/button_fragment_account"
+            android:text="+7 (912) 583-45-52"
+            android:theme="@style/AccountRowItem" />
 
     <Button
             android:id="@+id/account_user_vkref"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:theme="@style/AccountRowItem"
-            android:text="https://vk.com/a3b_ecmb" />
+            android:background="@drawable/button_fragment_account"
+            android:text="https://vk.com/a3b_ecmb"
+            android:theme="@style/AccountRowItem" />
 
     <Button
             android:id="@+id/account_button_show_history"
-            android:theme="@style/AccountRowItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Show history" />
+            android:background="@drawable/button_fragment_account"
+            android:textColor="@color/colorPrimary"
+            android:text="Show history"
+            android:theme="@style/AccountRowItem" />
 </LinearLayout>
