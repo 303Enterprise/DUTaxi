@@ -184,4 +184,19 @@
             android:layout_gravity="center_horizontal"
             android:theme="@style/TimePickerTheme"
             android:timePickerMode="spinner" />
+
+    <Button
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="24dp"
+            android:paddingStart="16dp"
+            android:background="@drawable/button_create_trip"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:gravity="left|center_vertical"
+            android:text="send request"
+            android:textColor="@color/colorPrimary" />
 </LinearLayout>
