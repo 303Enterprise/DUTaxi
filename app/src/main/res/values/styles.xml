@@ -17,8 +17,11 @@
         <item name="android:textSize">16sp</item>
     </style>
 
-    <style name="WithTopMargin">
-        <item name="android:layout_marginTop">20dp</item>
+    <style name="AccountRowItem">
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">false</item>
     </style>
 
     <style name="TimePickerTheme">

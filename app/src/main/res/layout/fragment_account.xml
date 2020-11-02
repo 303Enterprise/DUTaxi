@@ -41,41 +41,40 @@
 
     <ImageView
             android:id="@+id/account_user_portrait"
-            style="@style/WithTopMargin"
+            android:theme="@style/AccountRowItem"
             android:layout_width="100pt"
             android:layout_height="100pt"
             android:src="@drawable/placeholder_portrait"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <Button
             android:id="@+id/account_user_name"
-            style="@style/WithTopMargin"
-            android:layout_width="wrap_content"
+            android:theme="@style/AccountRowItem"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Username parsed from VK"
             app:layout_constraintStart_toEndOf="@+id/imageView2"
             app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <Button
             android:id="@+id/account_user_phone"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:theme="@style/AccountRowItem"
             android:text="+89125834552" />
 
-    <TextView
+    <Button
             android:id="@+id/account_user_vkref"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:theme="@style/AccountRowItem"
             android:text="https://vk.com/a3b_ecmb" />
 
     <Button
             android:id="@+id/account_button_show_history"
-            style="@style/WithTopMargin"
-            android:layout_width="wrap_content"
+            android:theme="@style/AccountRowItem"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
             android:text="Show history" />
 </LinearLayout>
