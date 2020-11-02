@@ -20,7 +20,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     private LayoutInflater layoutInflater;
     private ArrayList<RequestItem> requestItems;
 
-    RecyclerAdapter(Context context, ArrayList<RequestItem> requestItems) {
+    public RecyclerAdapter(Context context, ArrayList<RequestItem> requestItems) {
         this.requestItems = requestItems;
         this.layoutInflater = LayoutInflater.from(context);
     }

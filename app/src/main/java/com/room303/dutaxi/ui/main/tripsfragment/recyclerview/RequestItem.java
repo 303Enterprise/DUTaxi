@@ -6,6 +6,13 @@ public class RequestItem {
     private String time;
     private String seats;
 
+    public RequestItem(String departure, String destination, String time, String seats) {
+        this.departure = departure;
+        this.destination = destination;
+        this.time = time;
+        this.seats = seats;
+    }
+
     public String getDeparture() {
         return departure;
     }
