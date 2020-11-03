@@ -70,13 +70,18 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.account_user_portrait:
+                break;
             case R.id.account_user_name:
                 navController.navigate(R.id.action_accountFragment_to_editFragment);
+                break;
             case R.id.account_user_phone:
                 navController.navigate(R.id.action_accountFragment_to_editFragment);
+                break;
             case R.id.account_user_vkref:
                 navController.navigate(R.id.action_accountFragment_to_editFragment);
+                break;
             case R.id.account_button_show_history:
+                break;
         }
     }
 
