@@ -8,7 +8,7 @@
             android:id="@+id/tripsFragment"
             android:name="com.room303.dutaxi.ui.main.tripsfragment.TripsFragment"
             android:label="fragment_trips"
-            tools:layout="@layout/fragment_trips" >
+            tools:layout="@layout/fragment_trips">
         <action
                 android:id="@+id/action_tripsFragment_to_accountFragment"
                 app:destination="@id/accountFragment" />
@@ -20,7 +20,7 @@
             android:id="@+id/createTripFragment"
             android:name="com.room303.dutaxi.ui.main.createtripfragment.CreateTripFragment"
             android:label="fragment_create_trip"
-            tools:layout="@layout/fragment_create_trip" >
+            tools:layout="@layout/fragment_create_trip">
         <action
                 android:id="@+id/action_createTripFragment_to_tripsFragment"
                 app:destination="@id/tripsFragment" />
@@ -39,5 +39,17 @@
         <action
                 android:id="@+id/action_accountFragment_to_tripsFragment"
                 app:destination="@id/tripsFragment" />
+        <action
+                android:id="@+id/action_accountFragment_to_editFragment"
+                app:destination="@id/editFragment" />
+    </fragment>
+    <fragment
+            android:id="@+id/editFragment"
+            android:name="com.room303.dutaxi.ui.main.accountfragment.editfragment.EditFragment"
+            android:label="EditFragment"
+            tools:layout="@layout/fragment_edit" >
+        <action
+                android:id="@+id/action_editFragment_to_accountFragment"
+                app:destination="@id/accountFragment" />
     </fragment>
 </navigation>

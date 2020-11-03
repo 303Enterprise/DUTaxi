@@ -26,9 +26,9 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
 
     private NavController navController;
     private ImageView userPortrait;
-    private LinearLayout userName;
+    private Button userName;
     private LinearLayout userPhone;
-    private TextView userVkref;
+    private LinearLayout userVkref;
     private Button buttonHistory;
 
     public AccountFragment() {
@@ -46,7 +46,6 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
-
     }
 
     @Override
@@ -72,18 +71,26 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
         switch (view.getId()) {
             case R.id.account_user_portrait:
             case R.id.account_user_name:
+                navController.navigate(R.id.action_accountFragment_to_editFragment);
             case R.id.account_user_phone:
+                navController.navigate(R.id.action_accountFragment_to_editFragment);
             case R.id.account_user_vkref:
+                navController.navigate(R.id.action_accountFragment_to_editFragment);
             case R.id.account_button_show_history:
         }
     }
 
     private void initUi(View rootView) {
         userPortrait = rootView.findViewById(R.id.account_user_portrait);
+        userPortrait.setOnClickListener(this);
         userName = rootView.findViewById(R.id.account_user_name);
+        userName.setOnClickListener(this);
         userPhone = rootView.findViewById(R.id.account_user_phone);
+        userPhone.setOnClickListener(this);
         userVkref = rootView.findViewById(R.id.account_user_vkref);
+        userVkref.setOnClickListener(this);
         buttonHistory = rootView.findViewById(R.id.account_button_show_history);
+        buttonHistory.setOnClickListener(this);
     }
 
 }
