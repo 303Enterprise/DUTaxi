@@ -17,10 +17,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.room303.dutaxi.R;
+import com.room303.dutaxi.ui.main.accountfragment.editfragment.EditFragmentDirections;
 
 public class AccountFragment extends Fragment implements View.OnClickListener {
 
@@ -30,9 +32,6 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
     private LinearLayout userPhone;
     private LinearLayout userVkref;
     private Button buttonHistory;
-
-    public AccountFragment() {
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,6 +50,8 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+
         BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
@@ -68,11 +69,19 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
+        /*
+        EditText amountTv = (EditText) getView().findViewById(R.id.editTextAmount);
+        int amount = Integer.parseInt(amountTv.getText().toString());*/
+        NavDirections wtf =  AccountFragmentDirections.Companion.actionAccountFragmentToEditFragment("NANA", "NAMA", "ANAN");
+
+
+
         switch (view.getId()) {
             case R.id.account_user_portrait:
                 break;
             case R.id.account_user_name:
-                navController.navigate(R.id.action_accountFragment_to_editFragment);
+               // navController.navigate(R.id.action_accountFragment_to_editFragment);
+                navController.navigate(wtf);
                 break;
             case R.id.account_user_phone:
                 navController.navigate(R.id.action_accountFragment_to_editFragment);

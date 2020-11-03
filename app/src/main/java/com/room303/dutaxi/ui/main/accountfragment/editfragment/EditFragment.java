@@ -43,6 +43,9 @@ public class EditFragment extends Fragment implements View.OnClickListener {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
+
+        String amount = EditFragmentArgs.fromBundle(getArguments()).getTitle();
+        toolbarTopic.setText(amount);
     }
 
     @Override

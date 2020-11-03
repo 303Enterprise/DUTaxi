@@ -18,13 +18,6 @@ import com.room303.dutaxi.ui.main.createtripfragment.CreateTripFragment;
 import com.room303.dutaxi.ui.main.tripsfragment.TripsFragment;
 
 public class MainActivity extends AppCompatActivity {
-    private static final String TAG = "AppDebug_MainActivity";
-    private final CreateTripFragment createTripFragment = new CreateTripFragment();
-    private final AccountFragment accountFragment = new AccountFragment();
-    private final TripsFragment tripsFragment = new TripsFragment();
-    private FragmentManager fragmentManager = getSupportFragmentManager();
-    private FragmentTransaction fragmentTransaction;
-
     /**
      * TODO
      * - somehow fix back stack bug with saving current states of fragments

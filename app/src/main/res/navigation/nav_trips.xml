@@ -47,9 +47,20 @@
             android:id="@+id/editFragment"
             android:name="com.room303.dutaxi.ui.main.accountfragment.editfragment.EditFragment"
             android:label="EditFragment"
-            tools:layout="@layout/fragment_edit" >
+            tools:layout="@layout/fragment_edit">
         <action
                 android:id="@+id/action_editFragment_to_accountFragment"
                 app:destination="@id/accountFragment" />
+        <argument
+                android:name="title"
+                app:argType="string"
+                android:defaultValue="Account edit" />
+        <argument
+                android:name="textToEdit"
+                app:argType="string" />
+        <argument
+                android:name="description"
+                app:argType="string"
+                android:defaultValue="Sample descripton" />
     </fragment>
 </navigation>
