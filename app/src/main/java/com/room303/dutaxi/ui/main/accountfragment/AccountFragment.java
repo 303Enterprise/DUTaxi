@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,13 +22,12 @@ import androidx.navigation.Navigation;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.room303.dutaxi.R;
 
-public class AccountFragment extends Fragment {
+public class AccountFragment extends Fragment implements View.OnClickListener {
 
     private NavController navController;
-
     private ImageView userPortrait;
-    private TextView userName;
-    private TextView userPhone;
+    private LinearLayout userName;
+    private LinearLayout userPhone;
     private TextView userVkref;
     private Button buttonHistory;
 
@@ -67,7 +67,23 @@ public class AccountFragment extends Fragment {
 
     }
 
-    private void initUi(View rootView) {
-        
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.account_user_portrait:
+            case R.id.account_user_name:
+            case R.id.account_user_phone:
+            case R.id.account_user_vkref:
+            case R.id.account_button_show_history:
+        }
     }
+
+    private void initUi(View rootView) {
+        userPortrait = rootView.findViewById(R.id.account_user_portrait);
+        userName = rootView.findViewById(R.id.account_user_name);
+        userPhone = rootView.findViewById(R.id.account_user_phone);
+        userVkref = rootView.findViewById(R.id.account_user_vkref);
+        buttonHistory = rootView.findViewById(R.id.account_button_show_history);
+    }
+
 }
