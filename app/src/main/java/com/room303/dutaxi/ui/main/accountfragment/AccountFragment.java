@@ -1,10 +1,7 @@
 package com.room303.dutaxi.ui.main.accountfragment;
 
-import android.app.ActionBar;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -14,7 +11,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDirections;
@@ -22,15 +18,16 @@ import androidx.navigation.Navigation;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.room303.dutaxi.R;
-import com.room303.dutaxi.ui.main.accountfragment.editfragment.EditFragmentDirections;
 
 public class AccountFragment extends Fragment implements View.OnClickListener {
 
     private NavController navController;
     private ImageView userPortrait;
     private Button userName;
-    private LinearLayout userPhone;
-    private LinearLayout userVkref;
+    private LinearLayout userPhoneLayout;
+    private TextView userPhone;
+    private LinearLayout userVkrefLayout;
+    private TextView userVkref;
     private Button buttonHistory;
 
     @Override
@@ -50,8 +47,6 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-
         BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
@@ -74,11 +69,26 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.account_user_name:
                 break;
-            case R.id.account_user_phone:
-                navController.navigate(passArgsToEditFragment("Change the phone number", editPhoneDescription));
+            case R.id.account_user_phone_layout:
+                navController.navigate(
+                        passArgsToEditFragment(
+                                "Change the phone number",
+                                userPhone.getText().toString()
+                                        .replace("+", "")
+                                        .replaceAll(" ", "")
+                                        .replaceAll("-", "")
+                                        .replace("(", "")
+                                        .replace(")",""),
+                                editPhoneDescription
+                        )
+                );
                 break;
-            case R.id.account_user_vkref:
-                navController.navigate(passArgsToEditFragment("Change the VK link", editLinkDescription));
+            case R.id.account_user_vkref_layout:
+                navController.navigate(
+                        passArgsToEditFragment(
+                                "Change the VK link",
+                                userVkref.getText().toString(),
+                                editLinkDescription));
                 break;
             case R.id.account_button_show_history:
                 break;
@@ -86,20 +96,21 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
     }
 
     String editLinkDescription =
-            "Please, use your actual VK link\n" +
-                    "If you set false one \n" +
+            "Please, use your actual VK link.\n" +
+                    "Remember, that if you are setting false one \n" +
                     "you wouldn't be available to create requests";
 
     String editPhoneDescription =
-            "Please, use your actual phone number\n" +
-                    "If you set false number \n" +
+            "While setting phone number, please \n" +
+                    "do not use service characters as '+', '(', ')' etc. \n" +
+                    "Remember, that if you are setting false number \n" +
                     "you wouldn't be available to create requests";
 
-    private NavDirections passArgsToEditFragment(String toolbarTitle, String description) {
+    private NavDirections passArgsToEditFragment(String toolbarTitle, String textToEdit, String description) {
         return AccountFragmentDirections.Companion
                 .actionAccountFragmentToEditFragment(
                         toolbarTitle,
-                        userName.getText().toString(),
+                        textToEdit,
                         description
                 );
     }
@@ -109,10 +120,12 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
         userPortrait.setOnClickListener(this);
         userName = rootView.findViewById(R.id.account_user_name);
         userName.setOnClickListener(this);
+        userPhoneLayout = rootView.findViewById(R.id.account_user_phone_layout);
+        userPhoneLayout.setOnClickListener(this);
         userPhone = rootView.findViewById(R.id.account_user_phone);
-        userPhone.setOnClickListener(this);
+        userVkrefLayout = rootView.findViewById(R.id.account_user_vkref_layout);
+        userVkrefLayout.setOnClickListener(this);
         userVkref = rootView.findViewById(R.id.account_user_vkref);
-        userVkref.setOnClickListener(this);
         buttonHistory = rootView.findViewById(R.id.account_button_show_history);
         buttonHistory.setOnClickListener(this);
     }

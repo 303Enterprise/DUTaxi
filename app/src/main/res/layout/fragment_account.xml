@@ -63,7 +63,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-            android:id="@+id/account_user_phone"
+            android:id="@+id/account_user_phone_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/button_fragment_account"
@@ -81,6 +81,7 @@
                 android:theme="@style/AccountRowItem" />
 
         <TextView
+                android:id="@+id/account_user_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="+7 (912) 583-45-52"
@@ -89,7 +90,7 @@
     </LinearLayout>
 
     <LinearLayout
-            android:id="@+id/account_user_vkref"
+            android:id="@+id/account_user_vkref_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/button_fragment_account"
@@ -107,6 +108,7 @@
                 android:theme="@style/AccountRowItem" />
 
         <TextView
+                android:id="@+id/account_user_vkref"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="https://vk.com/a3b_ecmb"

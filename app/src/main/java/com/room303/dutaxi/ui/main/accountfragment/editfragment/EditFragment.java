@@ -2,6 +2,8 @@ package com.room303.dutaxi.ui.main.accountfragment.editfragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.text.InputFilter;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,9 +45,14 @@ public class EditFragment extends Fragment implements View.OnClickListener {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
+        toolbarTopic.setText(EditFragmentArgs.fromBundle(getArguments()).getTitle());
+        input.setText(EditFragmentArgs.fromBundle(getArguments()).getTextToEdit());
+        description.setText(EditFragmentArgs.fromBundle(getArguments()).getDescription());
 
-        String amount = EditFragmentArgs.fromBundle(getArguments()).getTitle();
-        toolbarTopic.setText(amount);
+        if(toolbarTopic.getText().toString().equals("Change the phone number")) {
+            input.setInputType(InputType.TYPE_CLASS_PHONE);
+            input.setFilters(new InputFilter[] {new InputFilter.LengthFilter(11)});
+        }
     }
 
     @Override
