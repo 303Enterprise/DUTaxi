@@ -37,7 +37,7 @@ import java.util.Calendar;
  *  - Add material design
  */
 
-public class CreateTripFragment extends Fragment implements View.OnClickListener {
+public class CreateTripFragment extends Fragment {
     private NavController navController;
     private BottomNavigationView bottomNavigationView;
     private FragmentManager fragmentManager;
@@ -48,8 +48,6 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
     private RadioGroup freeseatsInput;
     private Spinner departureInput;
     private Spinner destinationInput;
-    private ImageButton cancelButton;
-    private ImageButton commitButton;
     private TextView timeDisplay;
     private TimePicker timePicker;
 
@@ -71,6 +69,9 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
         departureInput.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View selectedView, int position, long id) {
+                if(position == 1) {
+                    destinationInput.setSelection(1);
+                }
                 if(position > 0) {
                     destinationInput.setSelection(0);
                 }
@@ -118,28 +119,7 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
-    }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.toolbar_button_cancel:
-                bottomNavigationView.setSelectedItemId(R.id.bottom_nav_trips);
-                cleanForm();
-                // go to TripsFragment
-                break;
-            case R.id.toolbar_button_commit:
-                if (phoneInput.getText().toString().length() == 11 &&
-                        vkrefInput.getText().toString().length() != 0 &&
-                        freeSeats != -1) {
-                    bottomNavigationView.setSelectedItemId(R.id.bottom_nav_trips);
-                    cleanForm();
-                    // go to TripsFragment
-                    // and create a new trip in the list
-                    // if everything correct
-                }
-                break;
-        }
     }
 
     @Override
@@ -168,10 +148,6 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
     }
 
     private void initUi(View rootView) {
-        cancelButton = rootView.findViewById(R.id.toolbar_button_cancel);
-        cancelButton.setOnClickListener(this);
-        commitButton = rootView.findViewById(R.id.toolbar_button_commit);
-        commitButton.setOnClickListener(this);
         departureInput = rootView.findViewById(R.id.departure_input);
         destinationInput = rootView.findViewById(R.id.destination_input);
         destinationInput.setSelection(1);

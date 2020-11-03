@@ -24,43 +24,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:theme="@style/ThemeOverlay.AppCompat.Light">
-
-
-                <ImageButton
-                        android:id="@+id/toolbar_button_cancel"
-                        android:layout_width="@dimen/app_bar_height"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:scaleType="center"
-                        android:scaleX="1.2"
-                        android:scaleY="1.2"
-                        android:src="@drawable/ic_arrow_back"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
                 <TextView
                         android:id="@+id/textView"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:layout_marginStart="20dp"
                         android:gravity="center_vertical"
-                        android:text="Create a new request"
+                        android:text="Create new request"
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/toolbar_text_size"
-                        app:layout_constraintStart_toEndOf="@+id/toolbar_button_cancel"
-                        app:layout_constraintTop_toTopOf="parent" />
-                <ImageButton
-                        android:id="@+id/toolbar_button_commit"
-                        android:visibility="gone"
-                        android:layout_width="@dimen/app_bar_height"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:scaleType="center"
-                        android:scaleX="1.2"
-                        android:scaleY="1.2"
-                        android:src="@drawable/ic_check"
-                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.appcompat.widget.Toolbar>

@@ -46,6 +46,7 @@ public class AccountFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
+
     }
 
     @Override
@@ -63,6 +64,7 @@ public class AccountFragment extends Fragment {
             }
             return false;
         });
+
     }
 
     private void initUi(View rootView) {

@@ -27,11 +27,14 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * TODO
-     *  - somehow fix back stack bug with saving current states of fragments
-     *  - make animations of navigation actions
-     *  - make menus items click listeners and logic
-     *  - make recycler view in trips fragment
-     *  - make planning trip to tomorrow in CreateTripFragment
+     * - somehow fix back stack bug with saving current states of fragments
+     * - make animations of navigation actions
+     * - make menus items click listeners and logic
+     * - make recycler view in trips fragment
+     * - make planning trips to tomorrow in CreateTripFragment
+     * - add EditText at CreateTripActivity to manually enter time
+     * - TripsFragment: filters at the toolbar
+     * - BUG: fix back stack bottom buttons switching
      */
 
     @Override
