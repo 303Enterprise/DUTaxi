@@ -69,29 +69,39 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        /*
-        EditText amountTv = (EditText) getView().findViewById(R.id.editTextAmount);
-        int amount = Integer.parseInt(amountTv.getText().toString());*/
-        NavDirections wtf =  AccountFragmentDirections.Companion.actionAccountFragmentToEditFragment("NANA", "NAMA", "ANAN");
-
-
-
         switch (view.getId()) {
             case R.id.account_user_portrait:
                 break;
             case R.id.account_user_name:
-               // navController.navigate(R.id.action_accountFragment_to_editFragment);
-                navController.navigate(wtf);
                 break;
             case R.id.account_user_phone:
-                navController.navigate(R.id.action_accountFragment_to_editFragment);
+                navController.navigate(passArgsToEditFragment("Change the phone number", editPhoneDescription));
                 break;
             case R.id.account_user_vkref:
-                navController.navigate(R.id.action_accountFragment_to_editFragment);
+                navController.navigate(passArgsToEditFragment("Change the VK link", editLinkDescription));
                 break;
             case R.id.account_button_show_history:
                 break;
         }
+    }
+
+    String editLinkDescription =
+            "Please, use your actual VK link\n" +
+                    "If you set false one \n" +
+                    "you wouldn't be available to create requests";
+
+    String editPhoneDescription =
+            "Please, use your actual phone number\n" +
+                    "If you set false number \n" +
+                    "you wouldn't be available to create requests";
+
+    private NavDirections passArgsToEditFragment(String toolbarTitle, String description) {
+        return AccountFragmentDirections.Companion
+                .actionAccountFragmentToEditFragment(
+                        toolbarTitle,
+                        userName.getText().toString(),
+                        description
+                );
     }
 
     private void initUi(View rootView) {
