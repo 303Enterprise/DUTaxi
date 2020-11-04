@@ -155,7 +155,8 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
                     new HistoryItem(
                             placesToGo[rand.nextInt(placesToGo.length)],
                             placesToGo[rand.nextInt(placesToGo.length)],
-                            rand.nextInt(24) + ":" + rand.nextInt(60),
+                            (rand.nextInt(31) + 1) + "." + rand.nextInt(12) + "." + 2020 + "\n"
+                            + rand.nextInt(24) + ":" + rand.nextInt(60),
                             new String[]{
                                     names[rand.nextInt(names.length)],
                                     names[rand.nextInt(names.length)],
