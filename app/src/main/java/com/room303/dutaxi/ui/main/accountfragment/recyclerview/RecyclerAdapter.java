@@ -26,7 +26,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.bottom_sheet_item, parent, false);
+        View view = layoutInflater.inflate(R.layout.history_bottom_sheet_item, parent, false);
         return new ViewHolder(view);
     }
 

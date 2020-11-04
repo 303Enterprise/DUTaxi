@@ -24,6 +24,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:theme="@style/ThemeOverlay.AppCompat.Light">
+
                 <TextView
                         android:id="@+id/textView"
                         android:layout_width="wrap_content"
@@ -159,16 +160,17 @@
 
     <Button
             style="?android:attr/borderlessButtonStyle"
-            android:layout_gravity="center"
+            android:id="@+id/create_trip_send_request_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
             android:layout_marginTop="24dp"
-            android:paddingStart="16dp"
+            android:layout_marginEnd="16dp"
             android:background="@drawable/button_create_trip"
             android:foreground="?attr/selectableItemBackgroundBorderless"
             android:gravity="left|center_vertical"
+            android:paddingStart="16dp"
             android:text="send request"
             android:textColor="@color/colorPrimary" />
 </LinearLayout>

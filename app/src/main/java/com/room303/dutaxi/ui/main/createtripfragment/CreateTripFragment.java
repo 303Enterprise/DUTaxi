@@ -37,27 +37,20 @@ import java.util.Calendar;
  *  - Add material design
  */
 
-public class CreateTripFragment extends Fragment {
+public class CreateTripFragment extends Fragment implements View.OnClickListener {
     private NavController navController;
     private BottomNavigationView bottomNavigationView;
     private FragmentManager fragmentManager;
 
-    private EditText phoneInput;
-    private EditText vkrefInput;
-    private Button timeInputButton;
-    private RadioGroup freeseatsInput;
     private Spinner departureInput;
     private Spinner destinationInput;
-    private TextView timeDisplay;
+    private RadioGroup freeseatsInput;
     private TimePicker timePicker;
+    private Button sendRequest;
 
     private int currentMinute;
     private int currentHour;
     private int freeSeats;
-    private boolean isTimePicked;
-
-    public CreateTripFragment() {
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -142,8 +135,6 @@ public class CreateTripFragment extends Fragment {
     private void cleanForm() {
         departureInput.setSelection(0);
         destinationInput.setSelection(0);
-        phoneInput.setText("");
-        vkrefInput.setText("");
         freeseatsInput.check(R.id.freesets_button_three);
     }
 
@@ -151,9 +142,9 @@ public class CreateTripFragment extends Fragment {
         departureInput = rootView.findViewById(R.id.departure_input);
         destinationInput = rootView.findViewById(R.id.destination_input);
         destinationInput.setSelection(1);
-        phoneInput = rootView.findViewById(R.id.phone_input);
-        vkrefInput = rootView.findViewById(R.id.vkref_input);
         freeseatsInput = rootView.findViewById(R.id.freeseats_input);
+        sendRequest = rootView.findViewById(R.id.create_trip_send_request_button);
+        sendRequest.setOnClickListener(this);
     }
 
     private void setTimeDisplay(int hour, int minute) {
@@ -164,6 +155,15 @@ public class CreateTripFragment extends Fragment {
         if(timeString.length() == 4) {
             timeString += '0';
         }
-        timeDisplay.setText(timeString);
+        //timeDisplayTextView.setText(timeString);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.create_trip_send_request_button:
+                navController.navigate(R.id.action_createTripFragment_to_tripsFragment);
+                break;
+        }
     }
 }

@@ -1,12 +1,10 @@
 package com.room303.dutaxi.ui.main.accountfragment;
 
-import android.app.Dialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,8 +19,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
-import com.makeramen.roundedimageview.RoundedDrawable;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.room303.dutaxi.R;
 import com.room303.dutaxi.ui.main.accountfragment.recyclerview.HistoryItem;
@@ -111,7 +107,7 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
                 getContext(), R.style.BottomSheetTheme);
         View bottomSheetView = LayoutInflater.from(getActivity().getApplicationContext())
-                .inflate(R.layout.bottom_sheet, getActivity().findViewById(R.id.bottom_sheet_main_layout));
+                .inflate(R.layout.history_bottom_sheet, getActivity().findViewById(R.id.bottom_sheet_main_layout));
         RecyclerView recyclerView = bottomSheetView.findViewById(R.id.bottom_sheet_recycler_view);
         ArrayList<HistoryItem> historyItems = generateRandomRequests(25);
         RecyclerAdapter adapter = new RecyclerAdapter(getContext(), historyItems);
