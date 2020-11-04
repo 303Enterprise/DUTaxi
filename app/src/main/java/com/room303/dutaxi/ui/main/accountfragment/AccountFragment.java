@@ -1,5 +1,6 @@
 package com.room303.dutaxi.ui.main.accountfragment;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,6 +19,8 @@ import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.room303.dutaxi.R;
 
 public class AccountFragment extends Fragment implements View.OnClickListener {
@@ -66,8 +70,7 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.account_user_portrait:
-                break;
-            case R.id.account_user_name:
+                Toast.makeText(getContext(), "Dialog to choose a new photo", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.account_user_phone_layout:
                 navController.navigate(
@@ -91,6 +94,12 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
                                 editLinkDescription));
                 break;
             case R.id.account_button_show_history:
+                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
+                        getContext(), R.style.BottomSheetTheme);
+                View bottomSheetView = LayoutInflater.from(getActivity().getApplicationContext())
+                        .inflate(R.layout.bottom_sheet, getActivity().findViewById(R.id.bottom_sheet_main_layout));
+                bottomSheetDialog.setContentView(bottomSheetView);
+                bottomSheetDialog.show();
                 break;
         }
     }
@@ -119,7 +128,6 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
         userPortrait = rootView.findViewById(R.id.account_user_portrait);
         userPortrait.setOnClickListener(this);
         userName = rootView.findViewById(R.id.account_user_name);
-        userName.setOnClickListener(this);
         userPhoneLayout = rootView.findViewById(R.id.account_user_phone_layout);
         userPhoneLayout.setOnClickListener(this);
         userPhone = rootView.findViewById(R.id.account_user_phone);
