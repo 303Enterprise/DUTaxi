@@ -39,11 +39,14 @@
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <ImageView
+    <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/account_user_portrait"
-            android:layout_width="100pt"
-            android:layout_height="100pt"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:layout_marginTop="16dp"
+            android:scaleType="centerCrop"
+            app:riv_mutate_background="true"
+            app:riv_corner_radius="20dip"
             android:src="@drawable/placeholder_portrait"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -54,7 +57,7 @@
             android:layout_height="55dp"
             android:layout_marginTop="16dp"
             android:background="@drawable/rectangle_underline"
-            android:text="Anikin Kirill"
+            android:text="User Name"
             android:textColor="@color/colorPrimary"
             android:textSize="20sp"
             android:theme="@style/AccountRowItem"

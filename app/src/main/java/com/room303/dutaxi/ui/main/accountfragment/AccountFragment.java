@@ -22,6 +22,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import com.makeramen.roundedimageview.RoundedDrawable;
+import com.makeramen.roundedimageview.RoundedImageView;
 import com.room303.dutaxi.R;
 import com.room303.dutaxi.ui.main.accountfragment.recyclerview.HistoryItem;
 import com.room303.dutaxi.ui.main.accountfragment.recyclerview.RecyclerAdapter;
@@ -32,7 +34,7 @@ import java.util.Random;
 public class AccountFragment extends Fragment implements View.OnClickListener {
 
     private NavController navController;
-    private ImageView userPortrait;
+    private RoundedImageView userPortrait;
     private Button userName;
     private LinearLayout userPhoneLayout;
     private TextView userPhone;
