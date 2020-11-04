@@ -30,7 +30,7 @@ public class TripsFragment extends Fragment {
     public TripsFragment() {
     }
 
-    private ArrayList<RequestItem> generateRandomRequests(int size) {
+    private static ArrayList<RequestItem> generateRandomRequests(int size) {
         Random rand = new Random();
         String[] placesToGo = {
                 "ДУ",
@@ -65,7 +65,7 @@ public class TripsFragment extends Fragment {
         //  make commit button be in a more common place
         View rootView = inflater.inflate(R.layout.fragment_trips, container, false);
 
-        ArrayList<RequestItem> requestItems = generateRandomRequests(25);
+        ArrayList<RequestItem> requestItems = generateRandomRequests(10);
         RecyclerView recyclerView = rootView.findViewById(R.id.tripsFragmentRecyclerView);
         RecyclerAdapter adapter = new RecyclerAdapter(getContext(), requestItems);
         recyclerView.setAdapter(adapter);

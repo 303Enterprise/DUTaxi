@@ -17,11 +17,17 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.room303.dutaxi.R;
+import com.room303.dutaxi.ui.main.accountfragment.recyclerview.HistoryItem;
+import com.room303.dutaxi.ui.main.accountfragment.recyclerview.RecyclerAdapter;
+
+import java.util.ArrayList;
+import java.util.Random;
 
 public class AccountFragment extends Fragment implements View.OnClickListener {
 
@@ -81,7 +87,7 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
                                         .replaceAll(" ", "")
                                         .replaceAll("-", "")
                                         .replace("(", "")
-                                        .replace(")",""),
+                                        .replace(")", ""),
                                 editPhoneDescription
                         )
                 );
@@ -94,14 +100,71 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
                                 editLinkDescription));
                 break;
             case R.id.account_button_show_history:
-                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
-                        getContext(), R.style.BottomSheetTheme);
-                View bottomSheetView = LayoutInflater.from(getActivity().getApplicationContext())
-                        .inflate(R.layout.bottom_sheet, getActivity().findViewById(R.id.bottom_sheet_main_layout));
-                bottomSheetDialog.setContentView(bottomSheetView);
-                bottomSheetDialog.show();
+                showHistoryBottomSheet();
                 break;
         }
+    }
+
+    private void showHistoryBottomSheet() {
+        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
+                getContext(), R.style.BottomSheetTheme);
+        View bottomSheetView = LayoutInflater.from(getActivity().getApplicationContext())
+                .inflate(R.layout.bottom_sheet, getActivity().findViewById(R.id.bottom_sheet_main_layout));
+        RecyclerView recyclerView = bottomSheetView.findViewById(R.id.bottom_sheet_recycler_view);
+        ArrayList<HistoryItem> historyItems = generateRandomRequests(25);
+        RecyclerAdapter adapter = new RecyclerAdapter(getContext(), historyItems);
+        recyclerView.setAdapter(adapter);
+        bottomSheetDialog.setContentView(bottomSheetView);
+        bottomSheetDialog.show();
+    }
+
+    private static ArrayList<HistoryItem> generateRandomRequests(int size) {
+        Random rand = new Random();
+        String[] placesToGo = {
+                "ДУ",
+                "Двойка",
+                "Главное здание",
+                "Б4",
+                "ИФ",
+                "Межлаука",
+                "Пушкина",
+                "УНИКС",
+                "Кольцо"
+        };
+        String[] names = {
+                "Кирилл",
+                "Катя",
+                "Адель",
+                "Александр",
+                "Сергей",
+                "Данил",
+                "Мария",
+                "Тимур",
+                "Семен",
+                "Карина",
+                "Роман",
+                "Владимир",
+                "Егор",
+                "Алина",
+                "Полина",
+                "Настя"
+        };
+        ArrayList<HistoryItem> HistoryItems = new ArrayList<>();
+        for (int i = 0; i < size; i++) {
+            HistoryItems.add(
+                    new HistoryItem(
+                            placesToGo[rand.nextInt(placesToGo.length)],
+                            placesToGo[rand.nextInt(placesToGo.length)],
+                            rand.nextInt(24) + ":" + rand.nextInt(60),
+                            new String[]{
+                                    names[rand.nextInt(names.length)],
+                                    names[rand.nextInt(names.length)],
+                                    names[rand.nextInt(names.length)]
+                            }
+                    )
+            );
+        }
+        return HistoryItems;
     }
 
     String editLinkDescription =
