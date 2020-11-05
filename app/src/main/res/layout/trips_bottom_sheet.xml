@@ -7,11 +7,12 @@
         android:background="@drawable/bottom_sheet_background"
         android:gravity="center_horizontal"
         android:orientation="vertical">
+
     <View
-            android:layout_marginTop="8dp"
-            android:background="@drawable/oval_lever"
             android:layout_width="40dp"
-            android:layout_height="4dp"/>
+            android:layout_height="4dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/oval_lever" />
 
     <TextView
             android:layout_width="wrap_content"
@@ -21,5 +22,12 @@
             android:text="Trip item"
             android:textColor="@color/colorPrimary"
             android:textSize="20sp" />
+
+    <ImageView
+            android:layout_marginTop="140dp"
+            android:layout_marginBottom="300dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/belissimo" />
 
 </LinearLayout>

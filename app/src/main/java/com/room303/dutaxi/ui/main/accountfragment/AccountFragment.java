@@ -168,14 +168,14 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
 
     String editLinkDescription =
             "Please, use your actual VK link.\n" +
-                    "Remember, that if you are setting false one \n" +
-                    "you wouldn't be available to create requests";
+                    "Remember, that if you are setting a false one \n" +
+                    "you wouldn't be able to create requests";
 
     String editPhoneDescription =
             "While setting phone number, please \n" +
-                    "do not use service characters as '+', '(', ')' etc. \n" +
-                    "Remember, that if you are setting false number \n" +
-                    "you wouldn't be available to create requests";
+                    "do not use service characters as [ + - ( ) ] etc. \n" +
+                    "Remember, that if you are setting false phone number \n" +
+                    "you wouldn't be able to create requests";
 
     private NavDirections passArgsToEditFragment(String toolbarTitle, String textToEdit, String description) {
         return AccountFragmentDirections.Companion
