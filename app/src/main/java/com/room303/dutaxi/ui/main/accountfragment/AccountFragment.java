@@ -28,8 +28,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class AccountFragment extends Fragment implements View.OnClickListener {
-
     private NavController navController;
+
     private RoundedImageView userPortrait;
     private Button userName;
     private LinearLayout userPhoneLayout;
@@ -107,8 +107,8 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
                 getContext(), R.style.BottomSheetTheme);
         View bottomSheetView = LayoutInflater.from(getActivity().getApplicationContext())
-                .inflate(R.layout.history_bottom_sheet, getActivity().findViewById(R.id.bottom_sheet_main_layout));
-        RecyclerView recyclerView = bottomSheetView.findViewById(R.id.bottom_sheet_recycler_view);
+                .inflate(R.layout.history_bottom_sheet, getActivity().findViewById(R.id.history_bottom_sheet_main_layout));
+        RecyclerView recyclerView = bottomSheetView.findViewById(R.id.history_bottom_sheet_recycler_view);
         ArrayList<HistoryItem> historyItems = generateRandomRequests(25);
         RecyclerAdapter adapter = new RecyclerAdapter(getContext(), historyItems);
         recyclerView.setAdapter(adapter);

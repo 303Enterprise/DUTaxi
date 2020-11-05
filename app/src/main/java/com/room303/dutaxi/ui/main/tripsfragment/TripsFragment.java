@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.room303.dutaxi.R;
 import com.room303.dutaxi.ui.main.tripsfragment.recyclerview.RecyclerAdapter;
+import com.room303.dutaxi.ui.main.tripsfragment.recyclerview.RecyclerClickListener;
 import com.room303.dutaxi.ui.main.tripsfragment.recyclerview.RequestItem;
 
 import java.util.ArrayList;
@@ -24,11 +26,7 @@ import java.util.Comparator;
 import java.util.Random;
 
 public class TripsFragment extends Fragment {
-
     private NavController navController;
-
-    public TripsFragment() {
-    }
 
     private static ArrayList<RequestItem> generateRandomRequests(int size) {
         Random rand = new Random();
@@ -61,14 +59,24 @@ public class TripsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // TODO
-        //  make commit button be in a more common place
         View rootView = inflater.inflate(R.layout.fragment_trips, container, false);
-
         ArrayList<RequestItem> requestItems = generateRandomRequests(10);
         RecyclerView recyclerView = rootView.findViewById(R.id.tripsFragmentRecyclerView);
         RecyclerAdapter adapter = new RecyclerAdapter(getContext(), requestItems);
         recyclerView.setAdapter(adapter);
+        recyclerView.addOnItemTouchListener(
+                new RecyclerClickListener(getContext(), recyclerView , new RecyclerClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+                        Toast.makeText(getContext(), "Click", Toast.LENGTH_SHORT).show();
+                        // do whatever
+                    }
+
+                    @Override public void onLongItemClick(View view, int position) {
+                        Toast.makeText(getContext(), "LongClick", Toast.LENGTH_SHORT).show();
+                        // do whatever
+                    }
+                })
+        );
         return rootView;
     }
 

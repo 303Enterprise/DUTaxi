@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/history_bottom_sheet_main_layout"
+        android:id="@+id/trips_bottom_sheet_main_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bottom_sheet_background"
@@ -18,13 +18,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:gravity="center_vertical"
-            android:text="History"
+            android:text="Trip"
             android:textColor="@color/colorPrimary"
             android:textSize="20sp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/history_bottom_sheet_recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 </LinearLayout>
