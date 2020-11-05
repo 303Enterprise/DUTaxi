@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:gravity="center_vertical"
-            android:text="Trip"
+            android:text="Trip item"
             android:textColor="@color/colorPrimary"
             android:textSize="20sp" />
 

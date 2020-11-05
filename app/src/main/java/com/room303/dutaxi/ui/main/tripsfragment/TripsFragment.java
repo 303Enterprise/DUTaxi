@@ -15,7 +15,9 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.room303.dutaxi.R;
+import com.room303.dutaxi.ui.main.accountfragment.recyclerview.HistoryItem;
 import com.room303.dutaxi.ui.main.tripsfragment.recyclerview.RecyclerAdapter;
 import com.room303.dutaxi.ui.main.tripsfragment.recyclerview.RecyclerClickListener;
 import com.room303.dutaxi.ui.main.tripsfragment.recyclerview.RequestItem;
@@ -66,19 +68,31 @@ public class TripsFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         recyclerView.addOnItemTouchListener(
                 new RecyclerClickListener(getContext(), recyclerView , new RecyclerClickListener.OnItemClickListener() {
-                    @Override public void onItemClick(View view, int position) {
-                        Toast.makeText(getContext(), "Click", Toast.LENGTH_SHORT).show();
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        showTripsBottomSheet();
                         // do whatever
                     }
 
-                    @Override public void onLongItemClick(View view, int position) {
-                        Toast.makeText(getContext(), "LongClick", Toast.LENGTH_SHORT).show();
+                    @Override
+                    public void onLongItemClick(View view, int position) {
+                        Toast.makeText(getContext(), "*Long click indicator*", Toast.LENGTH_SHORT).show();
                         // do whatever
                     }
                 })
         );
         return rootView;
     }
+
+    private void showTripsBottomSheet() {
+        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
+                getContext(), R.style.BottomSheetTheme);
+        View bottomSheetView = LayoutInflater.from(getActivity().getApplicationContext())
+                .inflate(R.layout.trips_bottom_sheet, getActivity().findViewById(R.id.trips_bottom_sheet_main_layout));
+        bottomSheetDialog.setContentView(bottomSheetView);
+        bottomSheetDialog.show();
+    }
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -103,4 +117,6 @@ public class TripsFragment extends Fragment {
             return false;
         });
     }
+
+
 }
