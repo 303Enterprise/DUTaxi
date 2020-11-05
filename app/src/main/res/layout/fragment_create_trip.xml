@@ -40,137 +40,148 @@
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <TextView
-            android:id="@+id/departure_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pick a place of departure"
-            android:theme="@style/CreateTripTextItem" />
-
-    <Spinner
-            android:id="@+id/departure_input"
+    <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/spinner_fragment_create_trip"
-            android:entries="@array/destinations" />
+            android:layout_height="wrap_content">
 
-    <TextView
-            android:id="@+id/destination_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pick a place to go to"
-            android:theme="@style/CreateTripTextItem" />
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-    <Spinner
-            android:id="@+id/destination_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/spinner_fragment_create_trip"
-            android:entries="@array/destinations" />
+            <TextView
+                    android:id="@+id/departure_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pick a place of departure"
+                    android:theme="@style/CreateTripTextItem" />
 
-    <TextView
-            android:id="@+id/phone_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Phone"
-            android:theme="@style/CreateTripTextItem"
-            android:visibility="gone" />
+            <Spinner
+                    android:id="@+id/departure_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/spinner_fragment_create_trip"
+                    android:entries="@array/destinations" />
 
-    <EditText
-            android:id="@+id/phone_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:digits="0123456789"
-            android:ems="10"
-            android:inputType="phone"
-            android:maxLength="11"
-            android:visibility="gone" />
+            <TextView
+                    android:id="@+id/destination_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pick a place to go to"
+                    android:theme="@style/CreateTripTextItem" />
 
-    <TextView
-            android:id="@+id/vkref_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="VK ref"
-            android:visibility="gone" />
+            <Spinner
+                    android:id="@+id/destination_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/spinner_fragment_create_trip"
+                    android:entries="@array/destinations" />
 
-    <EditText
-            android:id="@+id/vkref_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:visibility="gone" />
+            <TextView
+                    android:id="@+id/phone_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Phone"
+                    android:theme="@style/CreateTripTextItem"
+                    android:visibility="gone" />
 
-    <TextView
-            android:id="@+id/freeseats_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pick a number of remaining places"
-            android:theme="@style/CreateTripTextItem" />
+            <EditText
+                    android:id="@+id/phone_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:digits="0123456789"
+                    android:ems="10"
+                    android:inputType="phone"
+                    android:maxLength="11"
+                    android:visibility="gone" />
 
-    <RadioGroup
-            android:id="@+id/freeseats_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
+            <TextView
+                    android:id="@+id/vkref_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="VK ref"
+                    android:visibility="gone" />
 
-        <RadioButton
-                android:id="@+id/freesets_button_three"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/colorPrimary"
-                android:checked="true"
-                android:text="3 places" />
+            <EditText
+                    android:id="@+id/vkref_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:visibility="gone" />
 
-        <RadioButton
-                android:id="@+id/freesets_button_two"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/colorPrimary"
-                android:text="2 places" />
+            <TextView
+                    android:id="@+id/freeseats_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pick a number of remaining places"
+                    android:theme="@style/CreateTripTextItem" />
 
-        <RadioButton
-                android:id="@+id/freesets_button_one"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/colorPrimary"
-                android:text="1 place" />
+            <RadioGroup
+                    android:id="@+id/freeseats_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
 
-    </RadioGroup>
+                <RadioButton
+                        android:id="@+id/freesets_button_three"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/colorPrimary"
+                        android:checked="true"
+                        android:text="3 places" />
 
-    <TextView
-            android:id="@+id/time_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pick time of meeting"
-            android:theme="@style/CreateTripTextItem" />
+                <RadioButton
+                        android:id="@+id/freesets_button_two"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/colorPrimary"
+                        android:text="2 places" />
 
-    <TimePicker
-            android:id="@+id/timePicker"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:theme="@style/TimePickerTheme"
-            android:timePickerMode="spinner" />
+                <RadioButton
+                        android:id="@+id/freesets_button_one"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/colorPrimary"
+                        android:text="1 place" />
 
-    <Button
-            style="?android:attr/borderlessButtonStyle"
-            android:id="@+id/create_trip_send_request_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/button_create_trip"
-            android:foreground="?attr/selectableItemBackgroundBorderless"
-            android:gravity="left|center_vertical"
-            android:paddingStart="16dp"
-            android:text="send request"
-            android:textColor="@color/colorPrimary" />
+            </RadioGroup>
+
+            <TextView
+                    android:id="@+id/time_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pick time of meeting"
+                    android:theme="@style/CreateTripTextItem" />
+
+            <TimePicker
+                    android:id="@+id/timePicker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:theme="@style/TimePickerTheme"
+                    android:timePickerMode="spinner" />
+
+            <Button
+                    android:id="@+id/create_trip_send_request_button"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/button_create_trip"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:gravity="left|center_vertical"
+                    android:paddingStart="16dp"
+                    android:text="send request"
+                    android:textColor="@color/colorPrimary" />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
