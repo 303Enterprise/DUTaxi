@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,12 +36,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
+import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
 
 public class AccountFragment extends Fragment implements View.OnClickListener {
     private NavController navController;
 
-    private RoundedImageView userPortrait;
+    private ImageView userPortrait;
     private Button userName;
     private LinearLayout userPhoneLayout;
     private TextView userPhone;
@@ -220,7 +222,6 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
         builder.setItems(options, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int item) {
-
                 if (options[item].equals("Take photo")) {
                     Intent takePicture = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
                     startActivityForResult(takePicture, 0);
@@ -240,7 +241,7 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) { // метод, выполняющийся, после загрузки фотографиии пользователем
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode != -1) {
+        if(resultCode != RESULT_CANCELED) {
             switch (requestCode) {
                 case 0: // если фото было сделвно
                     if (resultCode == RESULT_OK && data != null) {
@@ -263,5 +264,4 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
             }
         }
     }
-
 }
