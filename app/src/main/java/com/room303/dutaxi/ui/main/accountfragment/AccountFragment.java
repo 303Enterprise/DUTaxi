@@ -50,6 +50,9 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
     private TextView userVkref;
     private Button buttonHistory;
 
+    private static final int TAKE_PHOTO_CODE = 0;
+    private static final int GET_PHOTO_CODE = 1;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -86,7 +89,6 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.account_user_portrait:
-                Toast.makeText(getContext(), "Dialog to choose a new photo", Toast.LENGTH_SHORT).show();
                 selectImage(getContext());
                 break;
             case R.id.account_user_phone_layout:
@@ -224,11 +226,11 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
             public void onClick(DialogInterface dialog, int item) {
                 if (options[item].equals("Take photo")) {
                     Intent takePicture = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                    startActivityForResult(takePicture, 0);
+                    startActivityForResult(takePicture, TAKE_PHOTO_CODE);
                 }
                 else if (options[item].equals("Choose from gallery")) {
                     Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                    startActivityForResult(pickPhoto, 1);
+                    startActivityForResult(pickPhoto, GET_PHOTO_CODE);
                 }
                 else if (options[item].equals("Cancel")) {
                     dialog.dismiss();
@@ -243,13 +245,13 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode != RESULT_CANCELED) {
             switch (requestCode) {
-                case 0: // если фото было сделвно
+                case TAKE_PHOTO_CODE: // если фото было сделвно
                     if (resultCode == RESULT_OK && data != null) {
                         Bitmap bitmap = (Bitmap) data.getExtras().get("data");
                         userPortrait.setImageBitmap(bitmap);
                     }
                     break;
-                case 1: // если фото было загружено из галереи
+                case GET_PHOTO_CODE: // если фото было загружено из галереи
                     if (resultCode == RESULT_OK && data != null) {
                         Uri selectedImage = data.getData();
                         Bitmap bitmap = null;

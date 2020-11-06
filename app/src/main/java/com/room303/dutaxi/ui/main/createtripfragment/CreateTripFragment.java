@@ -1,5 +1,7 @@
 package com.room303.dutaxi.ui.main.createtripfragment;
 
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,6 +15,7 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,23 +27,27 @@ import androidx.navigation.Navigation;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.room303.dutaxi.R;
 
+import java.io.IOException;
 import java.util.Calendar;
 
 /**
  * TODO
- *  - Make sending data to Firebase when commitButton is pressed
- *  - Make returning to TripsFragment when cancelButton is pressed
- *  - Make taking data about telephone number and vk reference from local database,
- *  when registration will be done
- *  - Maybe make better TimePicker
- *  - Replace hardcoded strings with strings from resources
- *  - Add material design
+ * - Make sending data to Firebase when commitButton is pressed
+ * - Make returning to TripsFragment when cancelButton is pressed
+ * - Make taking data about telephone number and vk reference from local database,
+ * when registration will be done
+ * - Maybe make better TimePicker
+ * - Replace hardcoded strings with strings from resources
+ * - Add material design
  */
 
 public class CreateTripFragment extends Fragment implements View.OnClickListener {
     private NavController navController;
     private BottomNavigationView bottomNavigationView;
     private FragmentManager fragmentManager;
+    private MediaPlayer mediaPlayer;
+    private AudioManager audioManager;
+    private int systemVolumeLevel;
 
     private Spinner departureInput;
     private Spinner destinationInput;
@@ -62,17 +69,19 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
         departureInput.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View selectedView, int position, long id) {
-                if(position == 1) {
+                if (position == 1) {
                     destinationInput.setSelection(1);
                 }
-                if(position > 0) {
+                if (position > 0) {
                     destinationInput.setSelection(0);
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
+
 
         Calendar cal = Calendar.getInstance();
         currentHour = cal.get(Calendar.HOUR_OF_DAY);
@@ -87,6 +96,23 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
             timePicker.setCurrentHour(currentHour);
             timePicker.setCurrentMinute(currentMinute);
         }
+
+
+        mediaPlayer = MediaPlayer.create(getContext(), R.raw.click_3);
+        audioManager = (AudioManager) getActivity().getSystemService(getContext().AUDIO_SERVICE);
+        mediaPlayer.setAudioStreamType(audioManager.STREAM_MUSIC);
+        timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
+            @Override
+            public void onTimeChanged(TimePicker timePicker, int i, int i1) {
+                systemVolumeLevel = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+                float volumeLevel = calculateVolumeLevel(systemVolumeLevel);
+                mediaPlayer.setVolume(volumeLevel, volumeLevel); //set volume takes two paramater
+                Toast.makeText(getContext(), "Set volume level: " + volumeLevel, Toast.LENGTH_SHORT).show();
+                mediaPlayer.seekTo(0);
+                mediaPlayer.start();
+            }
+        });
+
 
         freeseatsInput.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -107,6 +133,16 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
 
         return rootView;
     }
+
+    private float calculateVolumeLevel(int systemVolumeLevel) {
+        float percentage = (float) systemVolumeLevel / 15;
+        if(percentage == 1) {
+            return 0.05f;
+        }
+        else
+            return 1 - percentage;
+    }
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -149,10 +185,10 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
 
     private void setTimeDisplay(int hour, int minute) {
         String timeString = hour + ":" + minute;
-        if(timeString.charAt(1) == ':') {
+        if (timeString.charAt(1) == ':') {
             timeString = '0' + timeString;
         }
-        if(timeString.length() == 4) {
+        if (timeString.length() == 4) {
             timeString += '0';
         }
         //timeDisplayTextView.setText(timeString);

@@ -1,5 +1,6 @@
 package com.room303.dutaxi.ui.main.tripsfragment;
 
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -85,6 +86,8 @@ public class TripsFragment extends Fragment {
     }
 
     private void showTripsBottomSheet() {
+        final MediaPlayer mediaPlayer = MediaPlayer.create(getContext(), R.raw.music_file);
+        mediaPlayer.start();
         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
                 getContext(), R.style.BottomSheetTheme);
         View bottomSheetView = LayoutInflater.from(getActivity().getApplicationContext())

@@ -60,12 +60,13 @@
                     app:riv_corner_radius="20dip"
                     app:riv_mutate_background="true" />
 -->
+
             <ImageView
                     android:id="@+id/account_user_portrait"
                     android:layout_width="200dp"
                     android:layout_height="200dp"
                     android:layout_marginTop="16dp"
-                    android:scaleType="centerCrop"
+                    android:scaleType="center"
                     android:src="@drawable/placeholder_portrait"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
