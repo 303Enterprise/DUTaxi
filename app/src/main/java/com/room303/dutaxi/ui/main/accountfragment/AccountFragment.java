@@ -1,6 +1,13 @@
 package com.room303.dutaxi.ui.main.accountfragment;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,8 +31,11 @@ import com.room303.dutaxi.R;
 import com.room303.dutaxi.ui.main.accountfragment.recyclerview.HistoryItem;
 import com.room303.dutaxi.ui.main.accountfragment.recyclerview.RecyclerAdapter;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
+
+import static android.app.Activity.RESULT_OK;
 
 public class AccountFragment extends Fragment implements View.OnClickListener {
     private NavController navController;
@@ -75,6 +85,7 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
         switch (view.getId()) {
             case R.id.account_user_portrait:
                 Toast.makeText(getContext(), "Dialog to choose a new photo", Toast.LENGTH_SHORT).show();
+                selectImage(getContext());
                 break;
             case R.id.account_user_phone_layout:
                 navController.navigate(
@@ -198,6 +209,59 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
         userVkref = rootView.findViewById(R.id.account_user_vkref);
         buttonHistory = rootView.findViewById(R.id.account_button_show_history);
         buttonHistory.setOnClickListener(this);
+    }
+
+    private void selectImage(Context context) {
+        final CharSequence[] options = {"Take photo", "Choose from gallery", "Cancel"};
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("Choose profile photo");
+
+        builder.setItems(options, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int item) {
+
+                if (options[item].equals("Take photo")) {
+                    Intent takePicture = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(takePicture, 0);
+                }
+                else if (options[item].equals("Choose from gallery")) {
+                    Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(pickPhoto, 1);
+                }
+                else if (options[item].equals("Cancel")) {
+                    dialog.dismiss();
+                }
+            }
+        });
+        builder.show();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) { // метод, выполняющийся, после загрузки фотографиии пользователем
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode != -1) {
+            switch (requestCode) {
+                case 0: // если фото было сделвно
+                    if (resultCode == RESULT_OK && data != null) {
+                        Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+                        userPortrait.setImageBitmap(bitmap);
+                    }
+                    break;
+                case 1: // если фото было загружено из галереи
+                    if (resultCode == RESULT_OK && data != null) {
+                        Uri selectedImage = data.getData();
+                        Bitmap bitmap = null;
+                        try {
+                            bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), selectedImage);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        userPortrait.setImageBitmap(bitmap);
+                    }
+                    break;
+            }
+        }
     }
 
 }
