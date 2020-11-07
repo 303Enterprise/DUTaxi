@@ -107,12 +107,10 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
                 systemVolumeLevel = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
                 float volumeLevel = calculateVolumeLevel(systemVolumeLevel);
                 mediaPlayer.setVolume(volumeLevel, volumeLevel); //set volume takes two paramater
-                Toast.makeText(getContext(), "Set volume level: " + volumeLevel, Toast.LENGTH_SHORT).show();
                 mediaPlayer.seekTo(0);
                 mediaPlayer.start();
             }
         });
-
 
         freeseatsInput.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -135,12 +133,13 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
     }
 
     private float calculateVolumeLevel(int systemVolumeLevel) {
-        float percentage = (float) systemVolumeLevel / 15;
-        if(percentage == 1) {
+        float section = 1f / 14f;
+        float value = section * (systemVolumeLevel - 1);
+        if(value == 1) {
             return 0.05f;
         }
         else
-            return 1 - percentage;
+            return 1 - value;
     }
 
 

@@ -58,7 +58,6 @@ public class TripsFragment extends Fragment {
         return requestItems;
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -86,8 +85,6 @@ public class TripsFragment extends Fragment {
     }
 
     private void showTripsBottomSheet() {
-        final MediaPlayer mediaPlayer = MediaPlayer.create(getContext(), R.raw.music_file);
-        mediaPlayer.start();
         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
                 getContext(), R.style.BottomSheetTheme);
         View bottomSheetView = LayoutInflater.from(getActivity().getApplicationContext())
@@ -96,12 +93,10 @@ public class TripsFragment extends Fragment {
         bottomSheetDialog.show();
     }
 
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
-
     }
 
     @Override
@@ -120,6 +115,4 @@ public class TripsFragment extends Fragment {
             return false;
         });
     }
-
-
 }
