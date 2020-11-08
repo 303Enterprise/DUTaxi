@@ -60,7 +60,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         String timeString = currentRequestItem.getTime();
         int tripHour = Integer.parseInt(timeString.substring(0, timeString.indexOf(':')));
         int tripMinute = Integer.parseInt(timeString.substring(timeString.indexOf(':') + 1));
-        Log.d(TAG, "setTimeRemainState: " + currentHour + ":" + currentMinute + " // " + tripHour + ":" + tripMinute);
         if (tripHour == currentHour && tripMinute > currentMinute) {
             holder.timeRemainLayout.setVisibility(View.VISIBLE);
             holder.timeRemainTextView.setText((tripMinute - currentMinute) + "");
