@@ -1,7 +1,5 @@
 package com.room303.dutaxi.ui.main.tripsfragment;
 
-import android.media.MediaPlayer;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,14 +16,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.room303.dutaxi.R;
-import com.room303.dutaxi.ui.main.accountfragment.recyclerview.HistoryItem;
 import com.room303.dutaxi.ui.main.tripsfragment.recyclerview.RecyclerAdapter;
 import com.room303.dutaxi.ui.main.tripsfragment.recyclerview.RecyclerClickListener;
 import com.room303.dutaxi.ui.main.tripsfragment.recyclerview.RequestItem;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Comparator;
 import java.util.Random;
 
 public class TripsFragment extends Fragment {

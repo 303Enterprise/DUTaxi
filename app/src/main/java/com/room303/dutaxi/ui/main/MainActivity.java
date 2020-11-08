@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
      * - add EditText at CreateTripActivity to manually enter time
      * - TripsFragment: filters at the toolbar
      * - BUG: fix back stack bottom buttons switching
+     * - make possible setting description in CreateTripFragment
      */
 
     @Override
