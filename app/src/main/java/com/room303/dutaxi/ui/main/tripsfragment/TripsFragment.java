@@ -45,7 +45,7 @@ public class TripsFragment extends Fragment {
                     new RequestItem(
                             placesToGo[rand.nextInt(placesToGo.length)],
                             placesToGo[rand.nextInt(placesToGo.length)],
-                            rand.nextInt(24) + ":" + rand.nextInt(60),
+                            (16 + rand.nextInt(2)) + ":" + rand.nextInt(60),
                             Integer.toString(rand.nextInt(3) + 1)
                     )
             );
@@ -57,7 +57,7 @@ public class TripsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_trips, container, false);
-        ArrayList<RequestItem> requestItems = generateRandomRequests(10);
+        ArrayList<RequestItem> requestItems = generateRandomRequests(20);
         RecyclerView recyclerView = rootView.findViewById(R.id.tripsFragmentRecyclerView);
         RecyclerAdapter adapter = new RecyclerAdapter(getContext(), requestItems);
         recyclerView.setAdapter(adapter);

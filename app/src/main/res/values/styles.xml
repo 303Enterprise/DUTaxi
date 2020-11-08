@@ -1,4 +1,5 @@
 <resources>
+
     <style name="NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:statusBarColor">@color/white</item>
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -60,4 +61,11 @@
         <item name="civ_border_width">1dp</item>
     </style>
 
+
+    <style name="CardViewDefault">
+        <item name="android:layout_marginTop">1dp</item>
+        <item name="android:layout_marginEnd">2dp</item>
+        <item name="android:layout_marginBottom">2dp</item>
+        <item name="cardCornerRadius">10dp</item>
+    </style>
 </resources>
