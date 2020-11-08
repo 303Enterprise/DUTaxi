@@ -45,7 +45,7 @@ public class TripsFragment extends Fragment {
                     new RequestItem(
                             placesToGo[rand.nextInt(placesToGo.length)],
                             placesToGo[rand.nextInt(placesToGo.length)],
-                            (16 + rand.nextInt(2)) + ":" + rand.nextInt(60),
+                            (7 + rand.nextInt(12)) + ":" + rand.nextInt(60),
                             Integer.toString(rand.nextInt(3) + 1)
                     )
             );

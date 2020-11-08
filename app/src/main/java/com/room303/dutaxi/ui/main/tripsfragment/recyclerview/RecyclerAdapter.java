@@ -62,9 +62,21 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         int tripMinute = Integer.parseInt(timeString.substring(timeString.indexOf(':') + 1));
         Log.d(TAG, "setTimeRemainState: " + currentHour + ":" + currentMinute + " // " + tripHour + ":" + tripMinute);
         if (tripHour == currentHour && tripMinute > currentMinute) {
+            holder.timeRemainLayout.setVisibility(View.VISIBLE);
             holder.timeRemainTextView.setText((tripMinute - currentMinute) + "");
+            if((tripMinute - currentMinute) % 10 == 1) {
+                holder.timeRemainTagTextView.setText("minute");
+            } else {
+                holder.timeRemainTagTextView.setText("minutes");
+            }
         } else if (tripHour == currentHour + 1 && (60 - currentMinute + tripMinute) < 60) {
+            holder.timeRemainLayout.setVisibility(View.VISIBLE);
             holder.timeRemainTextView.setText((60 - currentMinute + tripMinute) + "");
+            if((60 - currentMinute + tripMinute) % 10 == 1) {
+                holder.timeRemainTagTextView.setText("minute");
+            } else {
+                holder.timeRemainTagTextView.setText("minutes");
+            }
         } else {
             holder.timeRemainLayout.setVisibility(View.INVISIBLE);
         }
@@ -81,6 +93,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         TextView timeTextView;
         LinearLayout timeRemainLayout;
         TextView timeRemainTextView;
+        TextView timeRemainTagTextView;
         CircleImageView memberHostImage;
         CircleImageView member1Image;
         CircleImageView member2Image;
@@ -94,6 +107,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             timeTextView = view.findViewById(R.id.trip_item_time);
             timeRemainLayout = view.findViewById(R.id.trip_item_time_remain_layout);
             timeRemainTextView = view.findViewById(R.id.trip_item_time_remain);
+            timeRemainTagTextView = view.findViewById(R.id.trip_item_time_remain_text);
             memberHostImage = view.findViewById(R.id.trip_item_member_host);
             member1Image = view.findViewById(R.id.trip_item_member_1);
             member2Image = view.findViewById(R.id.trip_item_member_2);
