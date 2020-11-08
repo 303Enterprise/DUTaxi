@@ -12,7 +12,8 @@
             </item>
 
             <item android:drawable="@drawable/ic_arrow_right"
-                    android:gravity="right|center_vertical">
+                    android:gravity="right|center_vertical"
+                    android:top="6dp">
             </item>
         </layer-list>
     </item>

@@ -22,7 +22,7 @@
             android:paddingStart="4dp"
             android:paddingTop="4dp"
             android:paddingEnd="4dp"
-            android:paddingBottom="10dp">
+            android:paddingBottom="8dp">
 
         <LinearLayout
                 style="@style/TripItemLayoutStyle"
@@ -125,9 +125,31 @@
                 style="@style/TripItemLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/rectangle_upperline_arrowright"
-                android:paddingTop="6dp"
-                android:paddingEnd="20dp">
+                android:paddingTop="8dp"
+                android:paddingEnd="26dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                    style="@style/TripItemImageStyle"
+                    android:layout_marginEnd="16dp"
+                    android:src="@drawable/placeholder_portrait"
+                    app:civ_border_color="@color/colorPrimary" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                    style="@style/TripItemImageStyle"
+                    android:src="@drawable/placeholder_portrait"
+                    app:civ_border_color="@color/colorGrayLight" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                    style="@style/TripItemImageStyle"
+                    android:src="@drawable/placeholder_portrait"
+                    app:civ_border_color="@color/colorGrayLight" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                    style="@style/TripItemImageStyle"
+                    android:src="@drawable/placeholder_portrait"
+                    app:civ_border_color="@color/colorGrayLight"/>
 
             <TextView
                     android:layout_width="wrap_content"
