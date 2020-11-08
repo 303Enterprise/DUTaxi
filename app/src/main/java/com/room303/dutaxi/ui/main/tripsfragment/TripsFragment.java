@@ -41,11 +41,12 @@ public class TripsFragment extends Fragment {
         };
         ArrayList<RequestItem> requestItems = new ArrayList<>();
         for (int i = 0; i < size; i++) {
+            int minute;
             requestItems.add(
                     new RequestItem(
                             placesToGo[rand.nextInt(placesToGo.length)],
                             placesToGo[rand.nextInt(placesToGo.length)],
-                            (7 + rand.nextInt(12)) + ":" + rand.nextInt(60),
+                            (7 + rand.nextInt(12)) + ":" + ((minute = rand.nextInt(12) * 5) < 10 ? "0" + minute : minute),
                             Integer.toString(rand.nextInt(3) + 1)
                     )
             );
