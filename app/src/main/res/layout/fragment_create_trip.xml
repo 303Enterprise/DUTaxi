@@ -45,9 +45,9 @@
             android:layout_height="wrap_content">
 
         <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
             <TextView
                     android:id="@+id/departure_description"
@@ -167,6 +167,21 @@
                     android:theme="@style/TimePickerTheme"
                     android:timePickerMode="spinner" />
 
+            <TextView
+                    android:id="@+id/description_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="16dp"
+                    android:text="Set a description" />
+
+            <EditText
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:hint="Describe your appearance, specify meeting place or leave estimated taxi cost" />
+
             <Button
                     android:id="@+id/create_trip_send_request_button"
                     style="?android:attr/borderlessButtonStyle"
@@ -174,8 +189,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="24dp"
                     android:layout_marginEnd="16dp"
+                    android:layout_marginTop="8dp"
                     android:background="@drawable/button_create_trip"
                     android:foreground="?attr/selectableItemBackgroundBorderless"
                     android:gravity="left|center_vertical"
