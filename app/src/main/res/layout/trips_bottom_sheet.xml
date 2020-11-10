@@ -130,13 +130,14 @@
     </LinearLayout>
 
     <TextView
-            style="@style/TripItemLayoutStyle"
+            style="@style/TripsBottomSheetLayoutStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:padding="8dp"
             android:text="Description, which host might leave at the create trip fragment to tell passengers about special things or maybe describe his own appearance so that they would easy find him at the meet place" />
 
     <LinearLayout
+            style="@style/TripsBottomSheetLayoutStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
@@ -145,7 +146,6 @@
             android:paddingBottom="4dp">
 
         <LinearLayout
-                style="@style/TripItemLayoutStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -166,6 +166,7 @@
     </LinearLayout>
 
     <LinearLayout
+            style="@style/TripsBottomSheetLayoutStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rectangle_underline_arrowright"
@@ -173,7 +174,6 @@
             android:paddingBottom="4dp">
 
         <LinearLayout
-                style="@style/TripItemLayoutStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -194,6 +194,7 @@
     </LinearLayout>
 
     <LinearLayout
+            style="@style/TripsBottomSheetLayoutStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rectangle_underline_arrowright"
@@ -201,7 +202,6 @@
             android:paddingBottom="4dp">
 
         <LinearLayout
-                style="@style/TripItemLayoutStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -222,6 +222,7 @@
     </LinearLayout>
 
     <LinearLayout
+            style="@style/TripsBottomSheetLayoutStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rectangle_arrowright"
@@ -229,7 +230,6 @@
             android:paddingBottom="4dp">
 
         <LinearLayout
-                style="@style/TripItemLayoutStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -250,11 +250,11 @@
     </LinearLayout>
 
     <LinearLayout
-            android:visibility="visible"
-            style="@style/TripItemLayoutStyle"
+            style="@style/TripsBottomSheetLayoutStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="visible">
 
         <TextView
                 android:layout_width="wrap_content"
@@ -262,10 +262,10 @@
                 android:text="Group host phone number: " />
 
         <TextView
-                android:theme="@style/TripItemTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="+7 (XXX) XXX-XX-XX" />
+                android:text="+7 (XXX) XXX-XX-XX"
+                android:theme="@style/TripItemTextStyle" />
     </LinearLayout>
 
     <Button

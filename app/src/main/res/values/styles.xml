@@ -25,6 +25,12 @@
         <item name="android:layout_marginStart">6dp</item>
     </style>
 
+    <style name="TripsBottomSheetLayoutStyle">
+        <item name="android:layout_marginTop">6dp</item>
+        <item name="android:layout_marginEnd">6dp</item>
+        <item name="android:layout_marginStart">6dp</item>
+    </style>
+
     <style name="AccountRowItem">
         <item name="android:paddingStart">16dp</item>
         <item name="android:textSize">14sp</item>
@@ -66,6 +72,7 @@
         <item name="android:layout_marginTop">1dp</item>
         <item name="android:layout_marginEnd">2dp</item>
         <item name="android:layout_marginBottom">2dp</item>
+        <item name="android:layout_marginStart">1dp</item>
         <item name="cardCornerRadius">10dp</item>
     </style>
 </resources>
