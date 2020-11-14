@@ -175,12 +175,10 @@
                     android:text="Set a description" />
 
             <EditText
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:hint="Describe your appearance, specify meeting place or leave estimated taxi cost" />
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp" />
 
             <Button
                     android:id="@+id/create_trip_send_request_button"
@@ -189,11 +187,11 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginStart="16dp"
+                    android:layout_marginTop="12dp"
                     android:layout_marginEnd="16dp"
-                    android:layout_marginTop="8dp"
                     android:background="@drawable/button_create_trip"
                     android:foreground="?attr/selectableItemBackgroundBorderless"
-                    android:gravity="left|center_vertical"
+                    android:gravity="start|center_vertical"
                     android:paddingStart="16dp"
                     android:text="send request"
                     android:textColor="@color/colorPrimary" />
