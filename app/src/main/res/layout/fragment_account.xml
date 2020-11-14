@@ -67,7 +67,7 @@
                     android:layout_height="200dp"
                     android:layout_marginTop="16dp"
                     android:scaleType="center"
-                    android:src="@drawable/placeholder_portrait"
+                    android:src="@drawable/portrait_placeholder"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 

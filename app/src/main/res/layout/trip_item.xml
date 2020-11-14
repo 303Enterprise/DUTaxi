@@ -62,10 +62,10 @@
                 android:orientation="horizontal">
 
             <TextView
-                    android:textColor="@color/colorPrimary"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Meeting time: " />
+                    android:text="Meeting time: "
+                    android:textColor="@color/colorPrimary" />
 
             <androidx.cardview.widget.CardView
                     style="@style/CardViewDefault"
@@ -142,41 +142,41 @@
                     android:id="@+id/trip_item_member_host"
                     style="@style/TripItemImageStyle"
                     android:layout_marginEnd="16dp"
-                    android:src="@drawable/placeholder_portrait"
+                    android:src="@drawable/portrait_placeholder"
                     app:civ_border_color="@color/colorPrimary" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/trip_item_member_1"
                     style="@style/TripItemImageStyle"
-                    android:src="@drawable/placeholder_portrait"
+                    android:src="@drawable/portrait_placeholder"
                     app:civ_border_color="@color/colorGrayLight" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/trip_item_member_2"
                     style="@style/TripItemImageStyle"
-                    android:src="@drawable/placeholder_portrait"
+                    android:src="@drawable/portrait_placeholder"
                     app:civ_border_color="@color/colorGrayLight" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/trip_item_member_3"
                     style="@style/TripItemImageStyle"
-                    android:src="@drawable/placeholder_portrait"
+                    android:src="@drawable/portrait_placeholder"
                     app:civ_border_color="@color/colorGrayLight" />
 
             <TextView
-                    android:visibility="invisible"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="end"
-                    android:text="Seats remaining:" />
+                    android:text="Seats remaining:"
+                    android:visibility="invisible" />
 
             <androidx.cardview.widget.CardView
-                    android:visibility="invisible"
                     style="@style/CardViewDefault"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
+                    android:visibility="invisible"
                     app:cardBackgroundColor="#fff">
 
                 <TextView

@@ -155,7 +155,7 @@
                     android:layout_width="20pt"
                     android:layout_height="20pt"
                     android:layout_marginEnd="16dp"
-                    android:src="@drawable/placeholder_portrait" />
+                    android:src="@drawable/portrait_placeholder" />
 
             <TextView
                     android:layout_width="wrap_content"
@@ -183,7 +183,7 @@
                     android:layout_width="20pt"
                     android:layout_height="20pt"
                     android:layout_marginEnd="16dp"
-                    android:src="@drawable/placeholder_portrait" />
+                    android:src="@drawable/portrait_placeholder" />
 
             <TextView
                     android:layout_width="wrap_content"
@@ -211,7 +211,7 @@
                     android:layout_width="20pt"
                     android:layout_height="20pt"
                     android:layout_marginEnd="16dp"
-                    android:src="@drawable/placeholder_portrait" />
+                    android:src="@drawable/portrait_placeholder" />
 
             <TextView
                     android:layout_width="wrap_content"
@@ -239,7 +239,7 @@
                     android:layout_width="20pt"
                     android:layout_height="20pt"
                     android:layout_marginEnd="16dp"
-                    android:src="@drawable/placeholder_portrait" />
+                    android:src="@drawable/portrait_placeholder" />
 
             <TextView
                     android:layout_width="wrap_content"
