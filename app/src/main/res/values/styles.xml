@@ -62,8 +62,8 @@
     <style name="TripItemImageStyle">
         <item name="android:layout_marginTop">1dp</item>
         <item name="android:layout_marginEnd">4dp</item>
-        <item name="android:layout_width">10pt</item>
-        <item name="android:layout_height">10pt</item>
+        <item name="android:layout_width">14pt</item>
+        <item name="android:layout_height">14pt</item>
         <item name="civ_border_width">1dp</item>
     </style>
 
