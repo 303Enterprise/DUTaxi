@@ -16,15 +16,36 @@
             android:layout_marginTop="8dp"
             android:background="@drawable/oval_lever" />
 
-    <TextView
-            android:layout_width="wrap_content"
+    <LinearLayout
+            style="@style/TripItemLayoutStyle"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:gravity="center_vertical"
-            android:text="Trip item"
-            android:textColor="@color/colorPrimary"
-            android:textSize="20sp" />
+            android:orientation="horizontal">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Chosen trip"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp" />
+
+        <ImageButton
+                android:background="@color/white"
+                android:id="@+id/trips_bottom_sheet_button_cancel"
+                android:layout_width="15pt"
+                android:layout_height="15pt"
+                android:layout_weight="0"
+                android:scaleType="center"
+                android:scaleX="1.2"
+                android:scaleY="1.2"
+                android:src="@drawable/ic_cross"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
 
     <LinearLayout
             style="@style/TripItemLayoutStyle"
@@ -65,7 +86,8 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Meeting time: " />
+                android:text="Meeting time: "
+                android:textColor="@color/colorPrimary" />
 
         <androidx.cardview.widget.CardView
                 style="@style/CardViewDefault"
@@ -113,17 +135,10 @@
                             android:layout_height="wrap_content"
                             android:paddingStart="7dp"
                             android:paddingEnd="7dp"
-                            android:text="mm"
+                            android:text="HH:mm"
                             android:theme="@style/TripItemTextStyle" />
 
-                    <TextView
-                            android:id="@+id/trips_bottom_sheet_time_remain_text"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="-3dp"
-                            android:layout_marginEnd="4dp"
-                            android:paddingEnd="5dp"
-                            android:text="minutes" />
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>
@@ -133,6 +148,7 @@
             style="@style/TripsBottomSheetLayoutStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:padding="8dp"
             android:text="Description, which host might leave at the create trip fragment to tell passengers about special things or maybe describe his own appearance so that they would easy find him at the meet place" />
 
@@ -155,7 +171,9 @@
                     android:layout_width="20pt"
                     android:layout_height="20pt"
                     android:layout_marginEnd="16dp"
-                    android:src="@drawable/portrait_placeholder" />
+                    android:src="@drawable/portrait_placeholder"
+                    app:civ_border_color="@color/colorPrimary"
+                    app:civ_border_width="1dp" />
 
             <TextView
                     android:layout_width="wrap_content"
@@ -253,13 +271,15 @@
             style="@style/TripsBottomSheetLayoutStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:visibility="visible">
+            android:layout_marginTop="24dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
 
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Group host phone number: " />
+                android:text="Group host phone number: "
+                android:textColor="@color/colorPrimary" />
 
         <TextView
                 android:layout_width="wrap_content"
@@ -272,7 +292,7 @@
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="6dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="24dp"
