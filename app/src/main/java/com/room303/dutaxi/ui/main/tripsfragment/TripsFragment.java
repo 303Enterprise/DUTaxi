@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,8 +26,9 @@ import com.room303.dutaxi.ui.main.tripsfragment.recyclerview.RequestItem;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class TripsFragment extends Fragment {
+public class TripsFragment extends Fragment implements View.OnClickListener {
     private NavController navController;
+    private BottomSheetDialog bottomSheetDialog;
 
     private static ArrayList<RequestItem> generateRandomRequests(int size) {
         Random rand = new Random();
@@ -63,7 +67,7 @@ public class TripsFragment extends Fragment {
         RecyclerAdapter adapter = new RecyclerAdapter(getContext(), requestItems);
         recyclerView.setAdapter(adapter);
         recyclerView.addOnItemTouchListener(
-                new RecyclerClickListener(getContext(), recyclerView , new RecyclerClickListener.OnItemClickListener() {
+                new RecyclerClickListener(getContext(), recyclerView, new RecyclerClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
                         showTripsBottomSheet();
@@ -81,12 +85,24 @@ public class TripsFragment extends Fragment {
     }
 
     private void showTripsBottomSheet() {
-        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
+        bottomSheetDialog = new BottomSheetDialog(
                 getContext(), R.style.BottomSheetTheme);
         View bottomSheetView = LayoutInflater.from(getActivity().getApplicationContext())
                 .inflate(R.layout.trips_bottom_sheet, getActivity().findViewById(R.id.trips_bottom_sheet_main_layout));
+        initUiBottomSheet(bottomSheetView);
         bottomSheetDialog.setContentView(bottomSheetView);
         bottomSheetDialog.show();
+    }
+
+    private void initUiBottomSheet(View rootView) {
+        ImageButton cancel = rootView.findViewById(R.id.trips_bottom_sheet_button_cancel);
+        cancel.setOnClickListener(this);
+        LinearLayout layoutHost = rootView.findViewById(R.id.trips_bottom_sheet_image_host);
+        LinearLayout layoutMember1 = rootView.findViewById(R.id.trips_bottom_sheet_image_member1);
+        LinearLayout layoutMember2 = rootView.findViewById(R.id.trips_bottom_sheet_image_member2);
+        LinearLayout layoutMember3 = rootView.findViewById(R.id.trips_bottom_sheet_image_member3);
+
+
     }
 
     @Override
@@ -110,5 +126,14 @@ public class TripsFragment extends Fragment {
             }
             return false;
         });
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.trips_bottom_sheet_button_cancel:
+                bottomSheetDialog.hide();
+                break;
+        }
     }
 }
