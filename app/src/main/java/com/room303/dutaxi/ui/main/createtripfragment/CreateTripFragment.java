@@ -197,7 +197,7 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.create_trip_send_request_button:
-                navController.navigate(R.id.action_createTripFragment_to_tripsFragment);
+                bottomNavigationView.setSelectedItemId(R.id.bottom_nav_trips);
                 break;
         }
     }

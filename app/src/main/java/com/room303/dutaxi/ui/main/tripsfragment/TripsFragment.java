@@ -34,6 +34,8 @@ import java.util.Random;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import static com.room303.dutaxi.R.id.trips_bottom_sheet_layout_member1;
+
 public class TripsFragment extends Fragment implements View.OnClickListener {
     private static final String TAG = "TripsFragment debug";
     private NavController navController;
@@ -80,13 +82,11 @@ public class TripsFragment extends Fragment implements View.OnClickListener {
                     @Override
                     public void onItemClick(View view, int position) {
                         showTripsBottomSheet();
-                        // do whatever
                     }
 
                     @Override
                     public void onLongItemClick(View view, int position) {
                         Toast.makeText(getContext(), "*Long click indicator*", Toast.LENGTH_SHORT).show();
-                        // do whatever
                     }
                 })
         );
@@ -104,16 +104,22 @@ public class TripsFragment extends Fragment implements View.OnClickListener {
     }
 
     private TextView phoneHost;
+
     private void initUiBottomSheet(View rootView) {
         ImageButton cancel = rootView.findViewById(R.id.trips_bottom_sheet_button_cancel);
         cancel.setOnClickListener(this);
+
+        TextView departure = rootView.findViewById(R.id.trips_bottom_sheet_departure);
+        TextView destination = rootView.findViewById(R.id.trips_bottom_sheet_destination);
+        TextView time = rootView.findViewById(R.id.trips_bottom_sheet_time);
+        TextView timeRemain = rootView.findViewById(R.id.trips_bottom_sheet_time_remain);
 
         LinearLayout layoutHost = rootView.findViewById(R.id.trips_bottom_sheet_layout_host);
         layoutHost.setOnClickListener(this);
         CircleImageView imageHost = rootView.findViewById(R.id.trips_bottom_sheet_image_host);
         TextView nameHost = rootView.findViewById(R.id.trips_bottom_sheet_text_name_host);
 
-        LinearLayout layoutMember1 = rootView.findViewById(R.id.trips_bottom_sheet_layout_member1);
+        LinearLayout layoutMember1 = rootView.findViewById(trips_bottom_sheet_layout_member1);
         layoutMember1.setOnClickListener(this);
         CircleImageView imageMember1 = rootView.findViewById(R.id.trips_bottom_sheet_image_member1);
         TextView nameMember1 = rootView.findViewById(R.id.trips_bottom_sheet_text_name_member1);
@@ -157,13 +163,15 @@ public class TripsFragment extends Fragment implements View.OnClickListener {
             return false;
         });
     }
-    String usetUri = "https://vk.com/a3b_ecmb";
-    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(usetUri));
+
+    private static final String userUri = "https://vk.com/a3b_ecmb";
+    private static final Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(userUri));
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.trips_bottom_sheet_button_cancel:
-                bottomSheetDialog.hide();
+                bottomSheetDialog.cancel();
                 break;
             case R.id.trips_bottom_sheet_layout_host:
                 startActivity(browserIntent);
@@ -184,7 +192,7 @@ public class TripsFragment extends Fragment implements View.OnClickListener {
                 clipboard.setPrimaryClip(clip);
                 break;
             case R.id.trips_bottom_sheet_button_join:
-                bottomSheetDialog.hide();
+                bottomSheetDialog.cancel();
                 break;
         }
     }
