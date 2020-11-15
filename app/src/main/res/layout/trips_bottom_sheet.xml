@@ -152,6 +152,7 @@ to tell passengers about special things or maybe describe his own appearance
 so that they would easy find him at the meet place" />
 
     <LinearLayout
+            android:id="@+id/trips_bottom_sheet_layout_host"
             style="@style/TripsBottomSheetLayoutStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -176,6 +177,7 @@ so that they would easy find him at the meet place" />
                     app:civ_border_width="1dp" />
 
             <TextView
+                    android:id="@+id/trips_bottom_sheet_text_name_host"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Group host name"
@@ -184,6 +186,7 @@ so that they would easy find him at the meet place" />
     </LinearLayout>
 
     <LinearLayout
+            android:id="@+id/trips_bottom_sheet_layout_member1"
             style="@style/TripsBottomSheetLayoutStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -205,6 +208,7 @@ so that they would easy find him at the meet place" />
                     android:src="@drawable/portrait_placeholder" />
 
             <TextView
+                    android:id="@+id/trips_bottom_sheet_text_name_member1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Group member name"
@@ -213,6 +217,7 @@ so that they would easy find him at the meet place" />
     </LinearLayout>
 
     <LinearLayout
+            android:id="@+id/trips_bottom_sheet_layout_member2"
             style="@style/TripsBottomSheetLayoutStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -234,6 +239,7 @@ so that they would easy find him at the meet place" />
                     android:src="@drawable/portrait_placeholder" />
 
             <TextView
+                    android:id="@+id/trips_bottom_sheet_text_name_member2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Group member name"
@@ -242,6 +248,7 @@ so that they would easy find him at the meet place" />
     </LinearLayout>
 
     <LinearLayout
+            android:id="@+id/trips_bottom_sheet_layout_member3"
             style="@style/TripsBottomSheetLayoutStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -263,6 +270,7 @@ so that they would easy find him at the meet place" />
                     android:src="@drawable/portrait_placeholder" />
 
             <TextView
+                    android:id="@+id/trips_bottom_sheet_text_name_member3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Group member name"
@@ -285,6 +293,7 @@ so that they would easy find him at the meet place" />
                 android:textColor="@color/colorPrimary" />
 
         <TextView
+                android:id="@+id/trips_bottom_sheet_text_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="+7 (XXX) XXX-XX-XX"
@@ -292,6 +301,7 @@ so that they would easy find him at the meet place" />
     </LinearLayout>
 
     <Button
+            android:id="@+id/trips_bottom_sheet_button_join"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
