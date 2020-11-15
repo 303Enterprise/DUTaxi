@@ -9,13 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,19 +23,7 @@ import androidx.navigation.Navigation;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.room303.dutaxi.R;
 
-import java.io.IOException;
 import java.util.Calendar;
-
-/**
- * TODO
- * - Make sending data to Firebase when commitButton is pressed
- * - Make returning to TripsFragment when cancelButton is pressed
- * - Make taking data about telephone number and vk reference from local database,
- * when registration will be done
- * - Maybe make better TimePicker
- * - Replace hardcoded strings with strings from resources
- * - Add material design
- */
 
 public class CreateTripFragment extends Fragment implements View.OnClickListener {
     private NavController navController;
@@ -57,7 +41,6 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
 
     private int currentMinute;
     private int currentHour;
-    private int freeSeats;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -82,7 +65,6 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
             }
         });
 
-
         Calendar cal = Calendar.getInstance();
         currentHour = cal.get(Calendar.HOUR_OF_DAY);
         currentMinute = cal.get(Calendar.MINUTE);
@@ -97,36 +79,15 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
             timePicker.setCurrentMinute(currentMinute);
         }
 
-
         mediaPlayer = MediaPlayer.create(getContext(), R.raw.click_3);
         audioManager = (AudioManager) getActivity().getSystemService(getContext().AUDIO_SERVICE);
         mediaPlayer.setAudioStreamType(audioManager.STREAM_MUSIC);
-        timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
-            @Override
-            public void onTimeChanged(TimePicker timePicker, int i, int i1) {
-                systemVolumeLevel = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
-                float volumeLevel = calculateVolumeLevel(systemVolumeLevel);
-                mediaPlayer.setVolume(volumeLevel, volumeLevel); //set volume takes two paramater
-                mediaPlayer.seekTo(0);
-                mediaPlayer.start();
-            }
-        });
-
-        freeseatsInput.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId) {
-                    case R.id.freesets_button_one:
-                        freeSeats = 1;
-                        break;
-                    case R.id.freesets_button_two:
-                        freeSeats = 2;
-                        break;
-                    case R.id.freesets_button_three:
-                        freeSeats = 3;
-                        break;
-                }
-            }
+        timePicker.setOnTimeChangedListener((timePicker, i, i1) -> {
+            systemVolumeLevel = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+            float volumeLevel = calculateVolumeLevel(systemVolumeLevel);
+            mediaPlayer.setVolume(volumeLevel, volumeLevel); //set volume takes two paramater
+            mediaPlayer.seekTo(0);
+            mediaPlayer.start();
         });
 
         return rootView;
@@ -142,12 +103,10 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
             return 1 - value;
     }
 
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
-
     }
 
     @Override
@@ -165,12 +124,6 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
             }
             return false;
         });
-    }
-
-    private void cleanForm() {
-        departureInput.setSelection(0);
-        destinationInput.setSelection(0);
-        freeseatsInput.check(R.id.freesets_button_three);
     }
 
     private void initUi(View rootView) {
@@ -197,6 +150,14 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.create_trip_send_request_button:
+                switch (freeseatsInput.getCheckedRadioButtonId()) {
+                    case R.id.freesets_button_one:
+                        break;
+                    case R.id.freesets_button_two:
+                        break;
+                    case R.id.freesets_button_three:
+                        break;
+                }
                 bottomNavigationView.setSelectedItemId(R.id.bottom_nav_trips);
                 break;
         }
