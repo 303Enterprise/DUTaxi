@@ -1,5 +1,7 @@
 package com.room303.dutaxi.ui.main.createtripfragment;
 
+import android.app.Activity;
+import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Build;
@@ -7,8 +9,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TimePicker;
@@ -24,6 +28,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.room303.dutaxi.R;
 
 import java.util.Calendar;
+import java.util.concurrent.TimeUnit;
 
 public class CreateTripFragment extends Fragment implements View.OnClickListener {
     private NavController navController;
@@ -37,6 +42,7 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
     private Spinner destinationInput;
     private RadioGroup freeseatsInput;
     private TimePicker timePicker;
+    private EditText description;
     private Button sendRequest;
 
     private int currentMinute;
@@ -131,8 +137,22 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
         destinationInput = rootView.findViewById(R.id.destination_input);
         destinationInput.setSelection(1);
         freeseatsInput = rootView.findViewById(R.id.freeseats_input);
+        description = rootView.findViewById(R.id.create_trip_description_edit_text);
+        description.setOnFocusChangeListener((v, hasFocus) -> {
+            if(hasFocus) {
+                bottomNavigationView.setVisibility(View.GONE);
+            } else {
+                hideKeyboard(description, getContext());
+                bottomNavigationView.setVisibility(View.VISIBLE);
+            }
+        });
         sendRequest = rootView.findViewById(R.id.create_trip_send_request_button);
         sendRequest.setOnClickListener(this);
+    }
+
+    private static void hideKeyboard(View focusedView, Context context) {
+        InputMethodManager imm = (InputMethodManager) context.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(focusedView.getWindowToken(), 0);
     }
 
     private void setTimeDisplay(int hour, int minute) {
