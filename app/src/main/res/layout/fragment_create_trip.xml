@@ -85,39 +85,6 @@
                     android:entries="@array/destinations" />
 
             <TextView
-                    android:id="@+id/phone_description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Phone"
-                    android:theme="@style/CreateTripTextItem"
-                    android:visibility="gone" />
-
-            <EditText
-                    android:id="@+id/phone_input"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:digits="0123456789"
-                    android:ems="10"
-                    android:inputType="phone"
-                    android:maxLength="11"
-                    android:visibility="gone" />
-
-            <TextView
-                    android:id="@+id/vkref_description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="VK ref"
-                    android:visibility="gone" />
-
-            <EditText
-                    android:id="@+id/vkref_input"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:visibility="gone" />
-
-            <TextView
                     android:id="@+id/freeseats_description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
