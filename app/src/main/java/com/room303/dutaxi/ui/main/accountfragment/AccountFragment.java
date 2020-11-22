@@ -224,9 +224,6 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
                         Bitmap bitmap = null;
                         try {
                             bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), selectedImage);
-                            bitmap = cutBitmap(bitmap);
-                            bitmap = Bitmap.createScaledBitmap(bitmap, 400, 400, true);
-                            //bitmap = compressBitmap(bitmap, Bitmap.CompressFormat.JPEG, 60);
 
                         } catch (IOException e) {
                             e.printStackTrace();
@@ -315,6 +312,7 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
                     )
             );
         }
+
         return HistoryItems;
     }
 }
