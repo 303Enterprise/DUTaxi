@@ -9,6 +9,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -16,8 +18,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDirections;
@@ -48,6 +53,9 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
     private TextView userVkref;
     private Button buttonHistory;
 
+    private ConstraintLayout toolbarLayout;
+    private Toolbar toolbar;
+
     private static final int TAKE_PHOTO_CODE = 0;
     private static final int GET_PHOTO_CODE = 1;
 
@@ -55,6 +63,7 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_account, container, false);
+        setHasOptionsMenu(true);
         initUi(rootView);
         return rootView;
     }
@@ -80,7 +89,12 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
             }
             return false;
         });
+    }
 
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.menu_account, menu);
     }
 
     @Override
@@ -211,6 +225,9 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
         userVkref = rootView.findViewById(R.id.account_user_vkref);
         buttonHistory = rootView.findViewById(R.id.account_button_show_history);
         buttonHistory.setOnClickListener(this);
+
+        toolbarLayout = rootView.findViewById(R.id.account_toolbar_layout);
+        toolbar = rootView.findViewById(R.id.account_toolbar);
     }
 
     private void selectImage(Context context) {
