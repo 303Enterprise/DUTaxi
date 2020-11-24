@@ -168,8 +168,5 @@
                     android:text="send request"
                     android:textColor="@color/colorPrimary" />
         </LinearLayout>
-    </ScrollView
-<<<<<<< HEAD
-
-=======>
+    </ScrollView>
 </LinearLayout>
