@@ -41,7 +41,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <ScrollView
-
+            android:id="@+id/create_trip_scroll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -168,5 +168,8 @@
                     android:text="send request"
                     android:textColor="@color/colorPrimary" />
         </LinearLayout>
-    </ScrollView>
+    </ScrollView
+<<<<<<< HEAD
+
+=======>
 </LinearLayout>
