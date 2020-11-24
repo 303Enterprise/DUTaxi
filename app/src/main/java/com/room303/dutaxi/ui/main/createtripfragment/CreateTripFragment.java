@@ -6,6 +6,7 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +15,10 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,6 +34,8 @@ import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
 
 public class CreateTripFragment extends Fragment implements View.OnClickListener {
+    private static final String TAG = "CreateTripFragment";
+
     private NavController navController;
     private BottomNavigationView bottomNavigationView;
     private FragmentManager fragmentManager;
@@ -38,6 +43,7 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
     private AudioManager audioManager;
     private int systemVolumeLevel;
 
+    private ScrollView mainScrollView;
     private Spinner departureInput;
     private Spinner destinationInput;
     private RadioGroup freeseatsInput;
@@ -102,10 +108,9 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
     private float calculateVolumeLevel(int systemVolumeLevel) {
         float section = 1f / 14f;
         float value = section * (systemVolumeLevel - 1);
-        if(value == 1) {
+        if (value == 1) {
             return 0.05f;
-        }
-        else
+        } else
             return 1 - value;
     }
 
@@ -133,13 +138,15 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
     }
 
     private void initUi(View rootView) {
+        mainScrollView = rootView.findViewById(R.id.create_trip_scroll);
+        setScrollHandler(mainScrollView);
         departureInput = rootView.findViewById(R.id.departure_input);
         destinationInput = rootView.findViewById(R.id.destination_input);
         destinationInput.setSelection(1);
         freeseatsInput = rootView.findViewById(R.id.freeseats_input);
         description = rootView.findViewById(R.id.create_trip_description_edit_text);
         description.setOnFocusChangeListener((v, hasFocus) -> {
-            if(hasFocus) {
+            if (hasFocus) {
                 bottomNavigationView.setVisibility(View.GONE);
             } else {
                 hideKeyboard(description, getContext());
@@ -148,6 +155,25 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
         });
         sendRequest = rootView.findViewById(R.id.create_trip_send_request_button);
         sendRequest.setOnClickListener(this);
+    }
+
+    private void setScrollHandler(ScrollView mainScrollView) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            mainScrollView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+                @Override
+                public void onScrollChange(View view, int i, int newY, int i2, int oldY) {
+                    // i and i2 always 0
+                    // while scrolling to top i1 decreases down to 0, i3 - ?
+                    // while scrolling to bottom i1 increases up to 469
+                    if (!getActivity().getCurrentFocus().equals(description)) return;
+
+                    if(oldY != 0) {
+                        hideKeyboard(description, getContext());
+                        bottomNavigationView.setVisibility(View.VISIBLE);
+                    }
+                }
+            });
+        }
     }
 
     private static void hideKeyboard(View focusedView, Context context) {
