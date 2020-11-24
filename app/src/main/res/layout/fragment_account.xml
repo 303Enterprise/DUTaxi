@@ -20,6 +20,7 @@
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/account_toolbar_layout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
@@ -43,110 +44,121 @@
             android:layout_height="wrap_content">
 
         <LinearLayout
-                android:gravity="center_horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
                 android:orientation="vertical">
-<!--
-            <com.makeramen.roundedimageview.RoundedImageView
-                    android:id="@+id/account_user_portrait"
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:layout_marginTop="16dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/placeholder_portrait"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:riv_corner_radius="20dip"
-                    app:riv_mutate_background="true" />
--->
 
-            <ImageView
-                    android:id="@+id/account_user_portrait"
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:layout_marginTop="16dp"
-                    android:scaleType="center"
-                    android:src="@drawable/placeholder_portrait"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
-            <Button
-                    android:id="@+id/account_user_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_marginTop="16dp"
-                    android:background="@drawable/rectangle_underline"
-                    android:text="User Name"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="20sp"
-                    android:theme="@style/AccountRowItem"
-                    app:layout_constraintStart_toEndOf="@+id/imageView2"
-                    app:layout_constraintTop_toTopOf="parent" />
+                <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/account_user_portrait"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:layout_marginTop="24dp"
+                        android:scaleType="centerCrop"
+                        app:civ_border_width="2dp"
+                        app:civ_border_color="@color/colorPrimary"
+                        android:src="@drawable/portrait_placeholder"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/account_user_portrait_edit"
+                        android:layout_width="25pt"
+                        android:layout_height="25pt"
+                        android:layout_gravity="end|bottom"
+                        android:src="@drawable/ic_edit_white"
+                        app:civ_circle_background_color="@color/colorPrimary" />
+            </FrameLayout>
 
             <LinearLayout
-                    android:id="@+id/account_user_phone_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/rectangle_underline_arrowright"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:divider="@drawable/line_divider"
+                    android:gravity="center_horizontal"
                     android:orientation="vertical"
-                    android:paddingTop="6dp"
-                    android:paddingBottom="8dp">
+                    android:showDividers="middle">
 
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Phone number:"
-                        android:theme="@style/AccountRowItem" />
+                <Button
+                        android:id="@+id/account_user_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginTop="16dp"
+                        android:background="@android:color/transparent"
+                        android:text="User Name"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="20sp"
+                        android:theme="@style/AccountRowItem"
+                        app:layout_constraintStart_toEndOf="@+id/imageView2"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                        android:id="@+id/account_user_phone"
-                        android:layout_width="wrap_content"
+                <LinearLayout
+                        android:id="@+id/account_user_phone_layout"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="+7 (912) 583-45-52"
-                        android:textColor="@color/black"
+                        android:background="@drawable/rectangle_arrowright"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackgroundBorderless"
+                        android:orientation="vertical"
+                        android:paddingTop="6dp"
+                        android:paddingBottom="8dp">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Phone number:"
+                            android:theme="@style/AccountRowItem" />
+
+                    <TextView
+                            android:id="@+id/account_user_phone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="+7 (912) 583-45-52"
+                            android:textColor="@color/black"
+                            android:theme="@style/AccountRowItem" />
+                </LinearLayout>
+
+                <LinearLayout
+                        android:id="@+id/account_user_vkref_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rectangle_arrowright"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackgroundBorderless"
+                        android:orientation="vertical"
+                        android:paddingTop="6dp"
+                        android:paddingBottom="8dp">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="VK link:"
+                            android:theme="@style/AccountRowItem" />
+
+                    <TextView
+                            android:id="@+id/account_user_vkref"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="https://vk.com/a3b_ecmb"
+                            android:textColor="@color/black"
+                            android:theme="@style/AccountRowItem" />
+                </LinearLayout>
+
+                <Button
+                        android:id="@+id/account_button_show_history"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:background="@drawable/rectangle_arrowright"
+                        android:foreground="?attr/selectableItemBackgroundBorderless"
+                        android:text="Show history"
+                        android:textColor="@color/colorPrimary"
                         android:theme="@style/AccountRowItem" />
             </LinearLayout>
-
-            <LinearLayout
-                    android:id="@+id/account_user_vkref_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/rectangle_underline_arrowright"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?attr/selectableItemBackgroundBorderless"
-                    android:orientation="vertical"
-                    android:paddingTop="6dp"
-                    android:paddingBottom="8dp">
-
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="VK link:"
-                        android:theme="@style/AccountRowItem" />
-
-                <TextView
-                        android:id="@+id/account_user_vkref"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="https://vk.com/a3b_ecmb"
-                        android:textColor="@color/black"
-                        android:theme="@style/AccountRowItem" />
-            </LinearLayout>
-
-            <Button
-                    android:id="@+id/account_button_show_history"
-                    android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:background="@drawable/rectangle_arrowright"
-                    android:foreground="?attr/selectableItemBackgroundBorderless"
-                    android:text="Show history"
-                    android:textColor="@color/colorPrimary"
-                    android:theme="@style/AccountRowItem" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

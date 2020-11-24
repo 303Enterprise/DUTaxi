@@ -1,9 +1,18 @@
 package com.room303.dutaxi.ui.main.tripsfragment;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,8 +32,14 @@ import com.room303.dutaxi.ui.main.tripsfragment.recyclerview.RequestItem;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class TripsFragment extends Fragment {
+import de.hdodenhof.circleimageview.CircleImageView;
+
+import static com.room303.dutaxi.R.id.trips_bottom_sheet_layout_member1;
+
+public class TripsFragment extends Fragment implements View.OnClickListener {
+    private static final String TAG = "TripsFragment debug";
     private NavController navController;
+    private BottomSheetDialog bottomSheetDialog;
 
     private static ArrayList<RequestItem> generateRandomRequests(int size) {
         Random rand = new Random();
@@ -63,17 +78,15 @@ public class TripsFragment extends Fragment {
         RecyclerAdapter adapter = new RecyclerAdapter(getContext(), requestItems);
         recyclerView.setAdapter(adapter);
         recyclerView.addOnItemTouchListener(
-                new RecyclerClickListener(getContext(), recyclerView , new RecyclerClickListener.OnItemClickListener() {
+                new RecyclerClickListener(getContext(), recyclerView, new RecyclerClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
                         showTripsBottomSheet();
-                        // do whatever
                     }
 
                     @Override
                     public void onLongItemClick(View view, int position) {
                         Toast.makeText(getContext(), "*Long click indicator*", Toast.LENGTH_SHORT).show();
-                        // do whatever
                     }
                 })
         );
@@ -81,12 +94,51 @@ public class TripsFragment extends Fragment {
     }
 
     private void showTripsBottomSheet() {
-        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
+        bottomSheetDialog = new BottomSheetDialog(
                 getContext(), R.style.BottomSheetTheme);
         View bottomSheetView = LayoutInflater.from(getActivity().getApplicationContext())
                 .inflate(R.layout.trips_bottom_sheet, getActivity().findViewById(R.id.trips_bottom_sheet_main_layout));
+        initUiBottomSheet(bottomSheetView);
         bottomSheetDialog.setContentView(bottomSheetView);
         bottomSheetDialog.show();
+    }
+
+    private TextView phoneHost;
+
+    private void initUiBottomSheet(View rootView) {
+        ImageButton cancel = rootView.findViewById(R.id.trips_bottom_sheet_button_cancel);
+        cancel.setOnClickListener(this);
+
+        TextView departure = rootView.findViewById(R.id.trips_bottom_sheet_departure);
+        TextView destination = rootView.findViewById(R.id.trips_bottom_sheet_destination);
+        TextView time = rootView.findViewById(R.id.trips_bottom_sheet_time);
+        TextView timeRemain = rootView.findViewById(R.id.trips_bottom_sheet_time_remain);
+
+        LinearLayout layoutHost = rootView.findViewById(R.id.trips_bottom_sheet_layout_host);
+        layoutHost.setOnClickListener(this);
+        CircleImageView imageHost = rootView.findViewById(R.id.trips_bottom_sheet_image_host);
+        TextView nameHost = rootView.findViewById(R.id.trips_bottom_sheet_text_name_host);
+
+        LinearLayout layoutMember1 = rootView.findViewById(trips_bottom_sheet_layout_member1);
+        layoutMember1.setOnClickListener(this);
+        CircleImageView imageMember1 = rootView.findViewById(R.id.trips_bottom_sheet_image_member1);
+        TextView nameMember1 = rootView.findViewById(R.id.trips_bottom_sheet_text_name_member1);
+
+        LinearLayout layoutMember2 = rootView.findViewById(R.id.trips_bottom_sheet_layout_member2);
+        layoutMember2.setOnClickListener(this);
+        CircleImageView imageMember2 = rootView.findViewById(R.id.trips_bottom_sheet_image_member2);
+        TextView nameMember2 = rootView.findViewById(R.id.trips_bottom_sheet_text_name_member2);
+
+        LinearLayout layoutMember3 = rootView.findViewById(R.id.trips_bottom_sheet_layout_member3);
+        layoutMember3.setOnClickListener(this);
+        CircleImageView imageMember3 = rootView.findViewById(R.id.trips_bottom_sheet_image_member3);
+        TextView nameMember3 = rootView.findViewById(R.id.trips_bottom_sheet_text_name_member3);
+
+        phoneHost = rootView.findViewById(R.id.trips_bottom_sheet_text_phone);
+        phoneHost.setOnClickListener(this);
+
+        Button buttonJoin = rootView.findViewById(R.id.trips_bottom_sheet_button_join);
+        buttonJoin.setOnClickListener(this);
     }
 
     @Override
@@ -110,5 +162,38 @@ public class TripsFragment extends Fragment {
             }
             return false;
         });
+    }
+
+    private static final String userUri = "https://vk.com/a3b_ecmb";
+    private static final Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(userUri));
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.trips_bottom_sheet_button_cancel:
+                bottomSheetDialog.cancel();
+                break;
+            case R.id.trips_bottom_sheet_layout_host:
+                startActivity(browserIntent);
+                break;
+            case R.id.trips_bottom_sheet_layout_member1:
+                startActivity(browserIntent);
+                break;
+            case R.id.trips_bottom_sheet_layout_member2:
+                startActivity(browserIntent);
+                break;
+            case R.id.trips_bottom_sheet_layout_member3:
+                startActivity(browserIntent);
+                break;
+            case R.id.trips_bottom_sheet_text_phone:
+                Toast.makeText(getContext(), "Номер скопирован!", Toast.LENGTH_SHORT).show();
+                ClipboardManager clipboard = (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText("", phoneHost.getText().toString());
+                clipboard.setPrimaryClip(clip);
+                break;
+            case R.id.trips_bottom_sheet_button_join:
+                bottomSheetDialog.cancel();
+                break;
+        }
     }
 }

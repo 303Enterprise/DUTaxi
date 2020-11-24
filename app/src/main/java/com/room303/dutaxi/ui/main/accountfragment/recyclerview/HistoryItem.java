@@ -4,7 +4,7 @@ public class HistoryItem {
     private String departure;
     private String destination;
     private String date;
-    private String[] group = new String[3];
+    private String[] group;
 
     public HistoryItem(String departure, String destination, String date, String[] group) {
         this.departure = departure;

@@ -16,15 +16,36 @@
             android:layout_marginTop="8dp"
             android:background="@drawable/oval_lever" />
 
-    <TextView
-            android:layout_width="wrap_content"
+    <LinearLayout
+            style="@style/TripItemLayoutStyle"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:gravity="center_vertical"
-            android:text="Trip item"
-            android:textColor="@color/colorPrimary"
-            android:textSize="20sp" />
+            android:orientation="horizontal">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Chosen trip"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp" />
+
+        <ImageButton
+                android:id="@+id/trips_bottom_sheet_button_cancel"
+                android:layout_width="15pt"
+                android:layout_height="15pt"
+                android:layout_weight="0"
+                android:background="@color/white"
+                android:scaleType="center"
+                android:scaleX="1.2"
+                android:scaleY="1.2"
+                android:src="@drawable/ic_cross"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
 
     <LinearLayout
             style="@style/TripItemLayoutStyle"
@@ -65,7 +86,8 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Meeting time: " />
+                android:text="Meeting time: "
+                android:textColor="@color/colorPrimary" />
 
         <androidx.cardview.widget.CardView
                 style="@style/CardViewDefault"
@@ -84,7 +106,6 @@
         </androidx.cardview.widget.CardView>
 
         <LinearLayout
-                android:id="@+id/trips_bottom_sheet_time_remain_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -113,17 +134,8 @@
                             android:layout_height="wrap_content"
                             android:paddingStart="7dp"
                             android:paddingEnd="7dp"
-                            android:text="mm"
+                            android:text="HH:mm"
                             android:theme="@style/TripItemTextStyle" />
-
-                    <TextView
-                            android:id="@+id/trips_bottom_sheet_time_remain_text"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="-3dp"
-                            android:layout_marginEnd="4dp"
-                            android:paddingEnd="5dp"
-                            android:text="minutes" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>
@@ -133,10 +145,14 @@
             style="@style/TripsBottomSheetLayoutStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
             android:padding="8dp"
-            android:text="Description, which host might leave at the create trip fragment to tell passengers about special things or maybe describe his own appearance so that they would easy find him at the meet place" />
+            android:text="Description, which host might leave at the create trip fragment
+to tell passengers about special things or maybe describe his own appearance
+so that they would easy find him at the meet place" />
 
     <LinearLayout
+            android:id="@+id/trips_bottom_sheet_layout_host"
             style="@style/TripsBottomSheetLayoutStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -152,12 +168,16 @@
                 android:orientation="horizontal">
 
             <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/trips_bottom_sheet_image_host"
                     android:layout_width="20pt"
                     android:layout_height="20pt"
                     android:layout_marginEnd="16dp"
-                    android:src="@drawable/placeholder_portrait" />
+                    android:src="@drawable/portrait_placeholder"
+                    app:civ_border_color="@color/colorPrimary"
+                    app:civ_border_width="1dp" />
 
             <TextView
+                    android:id="@+id/trips_bottom_sheet_text_name_host"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Group host name"
@@ -166,6 +186,7 @@
     </LinearLayout>
 
     <LinearLayout
+            android:id="@+id/trips_bottom_sheet_layout_member1"
             style="@style/TripsBottomSheetLayoutStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -180,12 +201,14 @@
                 android:orientation="horizontal">
 
             <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/trips_bottom_sheet_image_member1"
                     android:layout_width="20pt"
                     android:layout_height="20pt"
                     android:layout_marginEnd="16dp"
-                    android:src="@drawable/placeholder_portrait" />
+                    android:src="@drawable/portrait_placeholder" />
 
             <TextView
+                    android:id="@+id/trips_bottom_sheet_text_name_member1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Group member name"
@@ -194,6 +217,7 @@
     </LinearLayout>
 
     <LinearLayout
+            android:id="@+id/trips_bottom_sheet_layout_member2"
             style="@style/TripsBottomSheetLayoutStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -208,12 +232,14 @@
                 android:orientation="horizontal">
 
             <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/trips_bottom_sheet_image_member2"
                     android:layout_width="20pt"
                     android:layout_height="20pt"
                     android:layout_marginEnd="16dp"
-                    android:src="@drawable/placeholder_portrait" />
+                    android:src="@drawable/portrait_placeholder" />
 
             <TextView
+                    android:id="@+id/trips_bottom_sheet_text_name_member2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Group member name"
@@ -222,6 +248,7 @@
     </LinearLayout>
 
     <LinearLayout
+            android:id="@+id/trips_bottom_sheet_layout_member3"
             style="@style/TripsBottomSheetLayoutStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -236,12 +263,14 @@
                 android:orientation="horizontal">
 
             <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/trips_bottom_sheet_image_member3"
                     android:layout_width="20pt"
                     android:layout_height="20pt"
                     android:layout_marginEnd="16dp"
-                    android:src="@drawable/placeholder_portrait" />
+                    android:src="@drawable/portrait_placeholder" />
 
             <TextView
+                    android:id="@+id/trips_bottom_sheet_text_name_member3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Group member name"
@@ -253,15 +282,18 @@
             style="@style/TripsBottomSheetLayoutStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:visibility="visible">
+            android:layout_marginTop="24dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
 
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Group host phone number: " />
+                android:text="Group host phone number: "
+                android:textColor="@color/colorPrimary" />
 
         <TextView
+                android:id="@+id/trips_bottom_sheet_text_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="+7 (XXX) XXX-XX-XX"
@@ -269,10 +301,11 @@
     </LinearLayout>
 
     <Button
+            android:id="@+id/trips_bottom_sheet_button_join"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="6dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="24dp"
