@@ -135,6 +135,13 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
             }
             return false;
         });
+        bottomNavigationView.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        bottomNavigationView.setVisibility(View.VISIBLE);
     }
 
     private void initUi(View rootView) {
@@ -146,11 +153,11 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
         freeseatsInput = rootView.findViewById(R.id.freeseats_input);
         description = rootView.findViewById(R.id.create_trip_description_edit_text);
         description.setOnFocusChangeListener((v, hasFocus) -> {
-            if (hasFocus) {
-                bottomNavigationView.setVisibility(View.GONE);
-            } else {
-                hideKeyboard(description, getContext());
+            if (!hasFocus) {
                 bottomNavigationView.setVisibility(View.VISIBLE);
+                hideKeyboard(description, getContext());
+            } else {
+                bottomNavigationView.setVisibility(View.GONE);
             }
         });
         sendRequest = rootView.findViewById(R.id.create_trip_send_request_button);
@@ -162,13 +169,15 @@ public class CreateTripFragment extends Fragment implements View.OnClickListener
             mainScrollView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
                 @Override
                 public void onScrollChange(View view, int i, int newY, int i2, int oldY) {
-                    // i and i2 always 0
-                    // while scrolling to top i1 decreases down to 0, i3 - ?
-                    // while scrolling to bottom i1 increases up to 469
-                    if (!getActivity().getCurrentFocus().equals(description)) return;
+                    //Log.d(TAG, "onScrollChange: " + newY + " " + oldY);
+                    if (getActivity().getCurrentFocus() == null
+                            || !getActivity().getCurrentFocus().equals(description)
+                            || oldY == 0)
+                        return;
 
-                    if(oldY != 0) {
+                    if (newY - oldY < 0) { // scrolling upwards
                         hideKeyboard(description, getContext());
+                        description.clearFocus();
                         bottomNavigationView.setVisibility(View.VISIBLE);
                     }
                 }
