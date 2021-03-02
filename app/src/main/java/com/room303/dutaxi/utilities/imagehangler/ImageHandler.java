@@ -1,4 +1,4 @@
-package com.room303.dutaxi.logic.imagehangler;
+package com.room303.dutaxi.utilities.imagehangler;
 
 import android.app.Activity;
 import android.content.Intent;
