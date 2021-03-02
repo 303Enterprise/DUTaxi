@@ -64,14 +64,6 @@
                         android:src="@drawable/portrait_placeholder"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/account_user_portrait_edit"
-                        android:layout_width="25pt"
-                        android:layout_height="25pt"
-                        android:layout_gravity="end|bottom"
-                        android:src="@drawable/ic_edit_white"
-                        app:civ_circle_background_color="@color/colorPrimary" />
             </FrameLayout>
 
             <LinearLayout

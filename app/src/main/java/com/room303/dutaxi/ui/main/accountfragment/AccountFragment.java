@@ -50,7 +50,6 @@ import static android.app.Activity.RESULT_OK;
 public class AccountFragment extends Fragment implements View.OnClickListener {
     private NavController navController;
 
-    private ImageView userPortraitEdit;
     private ImageView userPortrait;
     private Button userName;
     private LinearLayout userPhoneLayout;
@@ -61,9 +60,6 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
 
     private ConstraintLayout toolbarLayout;
     private Toolbar toolbar;
-
-    private static final int TAKE_PHOTO_CODE = 0;
-    private static final int GET_PHOTO_CODE = 1;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -139,9 +135,6 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.account_user_portrait_edit:
-                selectImage(getContext());
-                break;
             case R.id.account_user_phone_layout:
                 navController.navigate(
                         passArgsToEditFragment(
@@ -171,8 +164,6 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
 
     private void initUi(View rootView) {
         userPortrait = rootView.findViewById(R.id.account_user_portrait);
-        userPortraitEdit = rootView.findViewById(R.id.account_user_portrait_edit);
-        userPortraitEdit.setOnClickListener(this);
         userName = rootView.findViewById(R.id.account_user_name);
         userPhoneLayout = rootView.findViewById(R.id.account_user_phone_layout);
         userPhoneLayout.setOnClickListener(this);
@@ -185,54 +176,6 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
 
         toolbarLayout = rootView.findViewById(R.id.account_toolbar_layout);
         toolbar = rootView.findViewById(R.id.account_toolbar);
-    }
-
-    private void selectImage(Context context) {
-        final CharSequence[] options = {"Take photo", "Choose from gallery", "Cancel"};
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle("Change profile photo");
-
-        builder.setItems(options, (dialog, item) -> {
-            if (options[item].equals("Take photo")) {
-                Intent takePicture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(takePicture, TAKE_PHOTO_CODE);
-            } else if (options[item].equals("Choose from gallery")) {
-                Intent pickPhoto = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(pickPhoto, GET_PHOTO_CODE);
-            } else if (options[item].equals("Cancel")) {
-                dialog.dismiss();
-            }
-        });
-        builder.show();
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) { // метод, выполняющийся, после загрузки фотографиии пользователем
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode != RESULT_CANCELED) {
-            switch (requestCode) {
-                case TAKE_PHOTO_CODE: // если фото было сделвно
-                    if (resultCode == RESULT_OK && data != null) {
-                        Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-                        userPortrait.setImageBitmap(bitmap);
-                    }
-                    break;
-                case GET_PHOTO_CODE: // если фото было загружено из галереи
-                    if (resultCode == RESULT_OK && data != null) {
-                        Uri selectedImage = data.getData();
-                        Bitmap bitmap = null;
-                        try {
-                            bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), selectedImage);
-
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                        userPortrait.setImageBitmap(bitmap);
-                    }
-                    break;
-            }
-        }
     }
 
     // least - 0, best - 100
